@@ -8,6 +8,8 @@ A portable agent skill for natural social replies, grounded in conversation and 
 
 ## 安装
 
+**在 ChatGPT 使用：**从 [Releases](https://github.com/hotmob/mob-social-writing/releases) 下载技能上传包，按 [ChatGPT 安装说明](chatgpt/START-HERE.md) 使用。另提供完整 skills-only 插件包，以及没有 Skills 入口时的普通聊天用法。不需要服务器或 API Key；可用入口取决于账号和工作空间。
+
 使用支持 Agent Skills 的客户端，将本仓库作为一个技能目录安装。Codex 的手动安装方式：
 
 ```sh
@@ -36,6 +38,8 @@ python3 scripts/corpus.py search --query 'thank' --limit 4
 
 下载的是固定版本、校验过哈希的 MengTo 公开语料，共 40 条。数据保存在被 Git 忽略的 `.local/`，不会作为本仓库提交的一部分。它缺少父帖上下文，只能帮助观察表达方式，不能当成完整对话或你的亲身经历。
 
+ChatGPT 发布包则从同一固定公开源构建只读 Markdown 参考，直接附带 40 条及其许可，便于离线读取。打包器不读取你的 `.local/`，所以个人资料和本地反馈不会混入发布包。
+
 另外两项参考中，Humanizer 提供编辑方法；rabden 的回复归档是空模板。本项目没有虚构它们的“真实回复数据”。版本、许可和取舍见 [来源说明](references/sources.md)。
 
 ## 学成自己的语气
@@ -55,6 +59,8 @@ Use `python3 scripts/corpus.py fetch-reference` for the pinned external corpus, 
 ## 开源范围
 
 公共仓库包含技能、接话方式、署名片段、本地导入/检索工具、格式示例与测试。个人资料、未发布稿件、用户反馈、完整本地语料和账号凭据都不随仓库发布。
+
+ChatGPT 发布包另含固定版本的完整公开参考语料；它与个人本地语料是分开的。打包和使用方法见 [ChatGPT 说明](chatgpt/START-HERE.md)。
 
 本项目采用 [MIT](LICENSE)。参考 Meng To 的真实语料学习方法和 Siqi Chen 的编辑方法，保留 [第三方版权与许可](THIRD_PARTY_NOTICES.md)。外部样本不表示作者代言；项目许可不覆盖你之后自行加入的第三方材料。
 
