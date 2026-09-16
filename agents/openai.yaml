@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mob Social Writing"
+  short_description: "Natural social replies shaped by context and real examples"
+  default_prompt: "使用 $mob-social-writing 结合原帖和我们的关系，写一句自然的回复。"
+policy:
+  allow_implicit_invocation: true
