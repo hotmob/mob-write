@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文写作"
+  short_description: "按场景起草和润色中文，保留原意、事实与自然表达，不机械套用技术规范"
+  default_prompt: "用 $chinese-writing 按读者和场景润色这段中文，保留事实和原意。"

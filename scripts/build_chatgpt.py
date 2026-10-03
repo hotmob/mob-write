@@ -25,6 +25,9 @@ SKILL_FILES = (
     "third_party/MengTo-LICENSE", "third_party/Humanizer-LICENSE",
 )
 MANIFEST = f"packaging/{NAME}/.codex-plugin/plugin.json"
+COMMON_FILES = (
+    "SKILL.md", "agents/openai.yaml", "references/technical-document.md",
+)
 
 
 def read_public(root: Path, relative: str) -> bytes:
@@ -80,6 +83,8 @@ def build_packages(root: Path, raw_reference: bytes) -> dict[str, bytes]:
     records = corpus.convert_reference(raw_reference)
     skill = {name: read_public(root, name) for name in SKILL_FILES}
     skill["references/external-examples.md"] = render_examples(records)
+    common = {name: read_public(root, f"chinese-writing/{name}") for name in COMMON_FILES}
+    common["LICENSE"] = read_public(root, "LICENSE")
     manifest_bytes = read_public(root, MANIFEST)
     manifest = json.loads(manifest_bytes)
     if manifest["name"] != NAME or manifest["skills"] != "./skills/":
@@ -87,12 +92,16 @@ def build_packages(root: Path, raw_reference: bytes) -> dict[str, bytes]:
     if any(field in manifest for field in ("apps", "mcpServers", "hooks")):
         raise ValueError("This builder only supports a skills-only plugin")
     plugin = {f"skills/{NAME}/{name}": data for name, data in skill.items()}
+    plugin.update({f"skills/chinese-writing/{name}": data for name, data in common.items()})
     plugin[".codex-plugin/plugin.json"] = manifest_bytes
     plugin["LICENSE"] = skill["LICENSE"]
     plugin["README.md"] = read_public(root, "chatgpt/START-HERE.md")
     plugin["chat-starter.md"] = read_public(root, "chatgpt/chat-starter.md")
     files = {
-        f"{NAME}-chatgpt-skill.zip": archive(skill),
+        f"{NAME}-chatgpt-skill.zip": archive({**skill, **{
+            f"chinese-writing/{name}": data for name, data in common.items()
+        }}),
+        "chinese-writing-chatgpt-skill.zip": archive(common),
         f"{NAME}-plugin.zip": archive(plugin),
         "START-HERE.md": read_public(root, "chatgpt/START-HERE.md"),
         "chat-starter.md": read_public(root, "chatgpt/chat-starter.md"),
@@ -104,7 +113,8 @@ def build_packages(root: Path, raw_reference: bytes) -> dict[str, bytes]:
         "external_reference_count": len(records),
         "private_data_included": False,
         "sha256": {name: hashlib.sha256(data).hexdigest() for name, data in files.items()},
-        "skill_files": sorted(skill), "plugin_files": sorted(plugin),
+        "skill_files": sorted(skill), "common_files": sorted(common),
+        "plugin_files": sorted(plugin),
     }
     files["package-manifest.json"] = (json.dumps(report, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     return files

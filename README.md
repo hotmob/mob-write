@@ -6,6 +6,8 @@ A portable agent skill for natural social replies, grounded in conversation and 
 
 它不运营账号、不抓取私人消息、不自动发帖，也不训练模型。名字来自最初使用者，任何人都可以用自己的本地样本建立口吻。
 
+通用中文方法的源码是 [chinese-writing/SKILL.md](chinese-writing/SKILL.md)，技术排版按需读取其 reference；根 [SKILL.md](SKILL.md) 保留 `mob-social-writing` 兼容入口，只维护社交方法和 personal profile 适配。本人偏好与反馈留在 `.local/`，不进入公共仓库。单纯技术说明调用 `$chinese-writing`，社交接话调用 `$mob-social-writing` 后复用通用层。
+
 ## 安装
 
 **在 ChatGPT 使用：**从 [Releases](https://github.com/hotmob/mob-social-writing/releases) 下载技能上传包，按 [ChatGPT 安装说明](chatgpt/START-HERE.md) 使用。另提供完整 skills-only 插件包，以及没有 Skills 入口时的普通聊天用法。不需要服务器或 API Key；可用入口取决于账号和工作空间。
@@ -14,9 +16,10 @@ A portable agent skill for natural social replies, grounded in conversation and 
 
 ```sh
 git clone https://github.com/hotmob/mob-social-writing.git ~/.codex/skills/mob-social-writing
+ln -s "$HOME/.codex/skills/mob-social-writing/chinese-writing" "$HOME/.codex/skills/chinese-writing"
 ```
 
-目标目录必须尚不存在。已有同名技能时先备份并合并更新，保留 `.local/` 中的个人数据；不要直接覆盖。其他客户端可将目录放到它支持的技能路径，入口为根目录 `SKILL.md`。核心写作只需要 Markdown；语料工具使用 Python 3 标准库。
+两个目标目录必须尚不存在。已有同名技能时先检查来源与改动，备份并更新本任务相关入口，保留 `.local/` 中的个人数据；不要直接覆盖或把私人目录提交。`chinese-writing` 的同级入口应链接到同一份源码，不能另维护一份规则。其他客户端可将根目录的社交 Skill 与 `chinese-writing` 安装到其可发现路径。核心写作只需要 Markdown；语料工具使用 Python 3 标准库。
 
 对话里直接说：
 
@@ -38,7 +41,7 @@ python3 scripts/corpus.py search --query 'thank' --limit 4
 
 下载的是固定版本、校验过哈希的 MengTo 公开语料，共 40 条。数据保存在被 Git 忽略的 `.local/`，不会作为本仓库提交的一部分。它缺少父帖上下文，只能帮助观察表达方式，不能当成完整对话或你的亲身经历。
 
-ChatGPT 发布包则从同一固定公开源构建只读 Markdown 参考，直接附带 40 条及其许可，便于离线读取。打包器不读取你的 `.local/`，所以个人资料和本地反馈不会混入发布包。
+ChatGPT 发布包则从同一固定公开源构建只读 Markdown 参考，直接附带 40 条及其许可，便于离线读取。社交单技能包含嵌套的 `chinese-writing` 依赖；完整插件只在同级 `skills/chinese-writing/` 放一份，另提供独立 `chinese-writing-chatgpt-skill.zip`。所有副本由同一源码生成，测试比较字节一致性。打包器不读取你的 `.local/`，所以个人资料和本地反馈不会混入发布包。
 
 另外两项参考中，Humanizer 提供编辑方法；rabden 的回复归档是空模板。本项目没有虚构它们的“真实回复数据”。版本、许可和取舍见 [来源说明](references/sources.md)。
 
