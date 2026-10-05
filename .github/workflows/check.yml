@@ -11,3 +11,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 -m unittest discover -s tests -v
+      - name: Build offline candidate packages
+        run: python3 scripts/build_chatgpt.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wordaim-candidate-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error

@@ -1,5 +1,7 @@
 # 中文与社交分层回归记录
 
+> Historical record for the earlier Chinese-writing SSOT at `f878474` (0.3 candidate). It does not describe the current WordAim layout or acceptance result; see [current evaluation](../docs/evaluation.md).
+
 日期：2026-10-03。以下请求与 profile 均为合成测试输入，不能作为 Mob 的本人经历、个人口吻样本或偏好认可。评估代理收到实际请求与候选文件，未收到预设答案；主任务根据其交付正文审阅语义。未发送真实消息、写入个人反馈或调用付费服务。
 
 ## 来源与职责

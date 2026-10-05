@@ -1,76 +1,93 @@
-# Mob Social Writing
+# WordAim
 
-A portable agent skill for natural social replies, grounded in conversation and real writing samples. 中文说明与英文使用入口如下。
+Writing for a purpose, a reader, and a useful outcome.
 
-回复可以只是感谢、认同、惊讶或接一句玩笑。这个 skill 帮助代理根据语境选回应方式，用真实样本和明确反馈学习个人语气，避免每条都写成技术提问。
+先看目的和读者，让文字帮助理解、判断与行动。适用于消息、邮件、社交回复、文章和技术说明，支持中文表达与英文文案的中文审稿。
 
-它不运营账号、不抓取私人消息、不自动发帖，也不训练模型。名字来自最初使用者，任何人都可以用自己的本地样本建立口吻。
+**Project:** WordAim · **Invocation:** `$wordaim` · **Repository:** `hotmob/mob-social-writing` (retained for existing links). Former calls `$chinese-writing` and `$mob-social-writing` remain explicit compatibility aliases. No repository rename is required to use the new name.
 
-通用中文方法的源码是 [chinese-writing/SKILL.md](chinese-writing/SKILL.md)，技术排版按需读取其 reference；根 [SKILL.md](SKILL.md) 保留 `mob-social-writing` 兼容入口，只维护社交方法和 personal profile 适配。本人偏好与反馈留在 `.local/`，不进入公共仓库。单纯技术说明调用 `$chinese-writing`，社交接话调用 `$mob-social-writing` 后复用通用层。
+## Install the candidate
 
-## 安装
+This branch is **0.4.0-rc.1**, a review candidate. The latest published release, **v0.2.0**, has the earlier social-writing behavior. Downloading that release or cloning main before this change is merged does not install WordAim.
 
-**在 ChatGPT 使用：**从 [Releases](https://github.com/hotmob/mob-social-writing/releases) 下载技能上传包，按 [ChatGPT 安装说明](chatgpt/START-HERE.md) 使用。另提供完整 skills-only 插件包，以及没有 Skills 入口时的普通聊天用法。不需要服务器或 API Key；可用入口取决于账号和工作空间。
-
-使用支持 Agent Skills 的客户端，将本仓库作为一个技能目录安装。Codex 的手动安装方式：
+Python 3.10+ is needed for packaging and installation; writing itself uses Markdown only.
 
 ```sh
-git clone https://github.com/hotmob/mob-social-writing.git ~/.codex/skills/mob-social-writing
-ln -s "$HOME/.codex/skills/mob-social-writing/chinese-writing" "$HOME/.codex/skills/chinese-writing"
+git clone --branch feat/unified-writing https://github.com/hotmob/mob-social-writing.git wordaim-source
+cd wordaim-source
+git rev-parse HEAD
+python3 scripts/install.py --skills-dir /path/to/client/skills
 ```
 
-两个目标目录必须尚不存在。已有同名技能时先检查来源与改动，备份并更新本任务相关入口，保留 `.local/` 中的个人数据；不要直接覆盖或把私人目录提交。`chinese-writing` 的同级入口应链接到同一份源码，不能另维护一份规则。其他客户端可将根目录的社交 Skill 与 `chinese-writing` 安装到其可发现路径。核心写作只需要 Markdown；语料工具使用 Python 3 标准库。
+Use an **empty target directory** for the first trial. For a Codex project, `--skills-dir /path/to/project/.agents/skills` is a suitable project-local location. Choose the actual discoverable skill directory of your client; opening a source checkout alone does not register a skill.
 
-对话里直接说：
+The installer writes `wordaim/`, `chinese-writing/`, and `mob-social-writing/`. Within this installed set, only WordAim has implicit invocation enabled. The other two contain thin forwarding instructions; rules live once in WordAim. Older skills enabled elsewhere can still be loaded by the host; see [coexistence](docs/migration.md#coexisting-legacy-skills). Installation receipts record version and public file hashes. Read the result in a fresh client session and confirm that WordAim appears; filesystem installation and automatic discovery are different checks.
 
-> 使用 $mob-social-writing 回这条。我们不熟，轻松一点，不必提问题：［原帖］
+For an existing installation or an upgrade, read [migration](docs/migration.md). The installer updates its own unchanged files, preserves `.local/` without reading it, and refuses unknown installations or edited public files. It has no global target default. Do not overwrite an old clone or private profile.
 
-或者：
+## Use it
 
-> 用 $mob-social-writing 学习我提供的这些回复。把亲写、AI 草稿、外部参考分开，再帮我回这条。
+Give the intended recipient, purpose, and material you already have:
 
-## 在本地使用参考语料
+> Use $wordaim to reply to this English comment. We haven't met. A brief thank-you is enough: “That option only applies to the CLI; for the API, set it in the request body.” I understand, but haven't tested it.
 
-进入安装目录后：
+Example draft: **“Thanks, that clears it up!”** It does not claim the fix worked.
+
+> 使用 $wordaim 帮我给英文收件人写邮件。请先给中文释义，再给英文正文。接口部分周四前能核对；安全审查需等同事下周一回来。请对方确认周五截止是否只指接口核对。
+
+WordAim separates the Chinese review gloss from the English recipient draft. User interface language alone does not establish recipient language.
+
+> 使用 $wordaim 改这条群进度：今天没有新文档、测试、决定或协作需求，与昨天相同。
+
+WordAim can recommend waiting instead of polishing a message with no new information. If you still need wording, it follows that scope and keeps the facts accurate.
+
+At task start, a scope change, and before externally addressed copy is handed off, the method checks applicable guidance and recipient constraints. These Markdown instructions help judgment; they are not an enforced sending gate and do not grant account permissions.
+
+## What loads
+
+`SKILL.md` owns purpose, recipient language, factual boundaries, and routing. The agent then reads only applicable references:
+
+- `references/chinese.md`: Chinese wording and rhythm.
+- `references/social.md` and reply examples: natural social responses.
+- `references/work.md`: useful updates, requests, and decisions.
+- `references/technical-document.md`: formal structure and formatting.
+- `references/profile.md`: optional, narrowly scoped personal voice.
+- Learning and ChatGPT environment notes only when those tasks need them.
+
+The public default assumes no personal identity. A private profile is used only when explicitly selected or when a user-provided profile's stated scope applies. A blank [profile template](assets/voice-profile.example.md) is supplied; your own writing and feedback stay local. [Architecture and naming](docs/design.md) explains the source ownership and name search.
+
+## Packages and ChatGPT
+
+Build from this same checkout, **offline by default**:
 
 ```sh
-python3 scripts/corpus.py fetch-reference
-python3 scripts/corpus.py stats
-python3 scripts/corpus.py search --query 'thank' --limit 4
+python3 scripts/build_chatgpt.py --output dist
 ```
 
-下载的是固定版本、校验过哈希的 MengTo 公开语料，共 40 条。数据保存在被 Git 忽略的 `.local/`，不会作为本仓库提交的一部分。它缺少父帖上下文，只能帮助观察表达方式，不能当成完整对话或你的亲身经历。
+Use `wordaim-chatgpt-skill.zip` for a supported skill-file upload and `wordaim-plugin.zip` for a supported skills-only plugin import. Old archive names are also generated for migration. Every package uses the same public source, and `package-manifest.json` lists version, file identities, and SHA-256 values.
 
-ChatGPT 发布包则从同一固定公开源构建只读 Markdown 参考，直接附带 40 条及其许可，便于离线读取。社交单技能包含嵌套的 `chinese-writing` 依赖；完整插件只在同级 `skills/chinese-writing/` 放一份，另提供独立 `chinese-writing-chatgpt-skill.zip`。所有副本由同一源码生成，测试比较字节一致性。打包器不读取你的 `.local/`，所以个人资料和本地反馈不会混入发布包。
+The package builder reads a public allowlist. It excludes personal profiles, drafts, feedback, credentials, and private paths. The four existing attributed snippets and licenses remain included. The full pinned 40-text public reference corpus is optional:
 
-另外两项参考中，Humanizer 提供编辑方法；rabden 的回复归档是空模板。本项目没有虚构它们的“真实回复数据”。版本、许可和取舍见 [来源说明](references/sources.md)。
+```sh
+python3 scripts/build_chatgpt.py --output dist --with-reference
+```
 
-## 学成自己的语气
+That explicit option downloads a hash-verified public file. `--reference-file FILE` accepts an already downloaded copy of exactly that pinned source. Core drafting does not need it. [ChatGPT notes](chatgpt/START-HERE.md) explain file access and persistence limits. Upload availability depends on the host and workspace; a ZIP build does not prove account installation or directory publication.
 
-1. 提供自己的回复及父帖，或对当前稿件给出明确语气反馈。
-2. 把记录整理成 [JSONL 格式](assets/sample-record.example.jsonl)，然后运行 `python3 scripts/corpus.py add --file /path/to/my-replies.jsonl`。
-3. 用户明确评价后，用 `python3 scripts/corpus.py feedback --id 样本ID --status approved --note '实际反馈'` 保存认可，或用 rejected 保存否定。写作时检索同类样本，结合 `.local/profile.md` 和 `.local/voice-notes.md`；发过、被点赞或由 AI 写过都不自动算认可。
+For optional local corpus commands, read [learning](references/learning.md). The tools use Python standard library and make no model or social-account calls.
 
-“学习”发生在上下文和本地记录中，不会修改模型权重。没有本人样本时，也能按自然对话方式起草，但不能声称已精准复刻个人风格。完整流程见 [本地学习方法](references/learning.md)。
-
-## English quick start
-
-Install this repository as an Agent Skills directory and invoke `$mob-social-writing` with the original post and relationship context. For example: “Reply casually to this launch post. We haven't met. A short reaction is fine.”
-
-Use `python3 scripts/corpus.py fetch-reference` for the pinned external corpus, `add --file` for your own records, `feedback --id ID --status approved --note 'actual feedback'` to record an explicit judgment, and `search --approved` to retrieve approved examples. Keep local profiles and unpublished writing under `.local/`. The corpus tool makes no calls to X or an LLM service; only `fetch-reference` downloads one public GitHub file.
-
-## 开源范围
-
-公共仓库包含技能、接话方式、署名片段、本地导入/检索工具、格式示例与测试。个人资料、未发布稿件、用户反馈、完整本地语料和账号凭据都不随仓库发布。
-
-ChatGPT 发布包另含固定版本的完整公开参考语料；它与个人本地语料是分开的。打包和使用方法见 [ChatGPT 说明](chatgpt/START-HERE.md)。
-
-本项目采用 [MIT](LICENSE)。参考 Meng To 的真实语料学习方法和 Siqi Chen 的编辑方法，保留 [第三方版权与许可](THIRD_PARTY_NOTICES.md)。外部样本不表示作者代言；项目许可不覆盖你之后自行加入的第三方材料。
-
-## 检查
+## Verify and contribute
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-测试覆盖语料导入、去重、冲突、来源校验与检索隔离。写作质量还需要用户真实反馈；它不承诺互动增长或规避 AI 检测。
+CI tests the public package boundary and isolated installation/upgrade and supplies candidate artifacts. Writing checks use [eight synthetic requests](tests/fixtures/writing-cases.json) with independently recorded outputs; see [evaluation](docs/evaluation.md). Package tests do not establish writing usefulness. Real adoption still needs feedback from people using it on their own tasks.
+
+Stars show interest; release download counts show downloads, including possible repeats; neither measures installed or active users. This project adds no telemetry and promises no engagement growth or AI-detection result.
+
+Contributions should show the original request, applicable scene, observed problem, and a public-safe example. Keep private writing, profiles, and conversations out of issues and patches. This is a drafting method, not a social-account operator.
+
+## License
+
+[MIT](LICENSE). Meng To's public examples and Siqi Chen's editing guidance retain [their notices and licenses](THIRD_PARTY_NOTICES.md). External samples are expression references, not your experiences or endorsements. Your added third-party material requires its own authorization.

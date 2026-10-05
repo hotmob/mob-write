@@ -11,7 +11,7 @@
 - `corpus.jsonl`：本人样本、明确认可或否定的稿件。
 - `reference-corpus.jsonl`：下载的外部作者样本，始终保留外部身份。
 
-`--data-dir` 可以指定其他本地目录。公开仓库源码只包含方法、少量署名片段和模板；完整参考语料在本地按需下载。ChatGPT 发布包另附固定公开源生成的只读 `references/external-examples.md`，不读取或打包个人 `.local/`。`.gitignore` 不是访问控制，分享文件前仍要检查实际打包内容。
+`--data-dir` 可以指定其他本地目录。公开仓库源码只包含方法、少量署名片段和模板；完整参考语料在本地按需下载。ChatGPT 发布包可选附带固定公开源生成的只读 `references/external-examples.md`，不读取或打包个人 `.local/`。`.gitignore` 不是访问控制，分享文件前仍要检查实际打包内容。
 
 ## 下载已有参考语料
 

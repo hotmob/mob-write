@@ -1,5 +1,7 @@
 # 原件转化记录
 
+> Historical record for the earlier Chinese-writing SSOT at `f878474` (0.3 candidate). It does not describe the current WordAim layout or acceptance result; see [current evaluation](../docs/evaluation.md).
+
 依据：用户提供的 `chinese-writing-guide.md` 原件，22,306 bytes。
 SHA-256：`14efc51b075320af2c19d3d4b20e4c77505834d3fe8cb4b7d87c4d0d8678fa78`。
 完整读取后先构建 `chinese-writing`，再分析既有社交 Skill。原件只保留在本地输入目录，不作为另一份生效规则或公开语料。以下是取舍依据，不作为消费者的指令来源。

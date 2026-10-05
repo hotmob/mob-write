@@ -1,6 +1,6 @@
 interface:
-  display_name: "Mob Social Writing"
-  short_description: "Natural social replies shaped by context and real examples"
-  default_prompt: "使用 $mob-social-writing 结合原帖和我们的关系，写一句自然的回复。"
+  display_name: "WordAim"
+  short_description: "Write for the reader, with clear purpose and grounded claims"
+  default_prompt: "Use $wordaim to draft this for the intended recipient, preserving the facts and choosing the right language."
 policy:
   allow_implicit_invocation: true

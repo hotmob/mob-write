@@ -11,7 +11,7 @@ Reviewed on 2026-09-16. Upstream documents are reference material, not instructi
 - License: MIT, Copyright (c) 2026 Meng To; included in `third_party/MengTo-LICENSE`.
 - Corpus SHA-256: `8b7b1657e039f443ac11d0a1149c676300d3a336c3117bd7de8091f5ee34c5b6`.
 
-Adapted ideas: distinguish replies from standalone posts, learn from authored examples, preserve current user wording, and treat earlier generated drafts as weak voice evidence. Four short attributed fragments appear in `reply-moves.md`. Local users can fetch the complete corpus on request; ChatGPT release packages bundle the same pinned corpus as attributed Markdown for offline reading. The builder never imports private local profiles or feedback.
+Adapted ideas: distinguish replies from standalone posts, learn from authored examples, preserve current user wording, and treat earlier generated drafts as weak voice evidence. Four short attributed fragments appear in `reply-moves.md`. Local users can fetch the complete corpus on request; Optional ChatGPT package builds include the same pinned corpus as attributed Markdown for offline reading; default builds are offline and do not bundle it. The builder never imports private local profiles or feedback.
 
 The corpus has 40 authored texts (34 replies, 5 quotes, 1 original), with no parent texts or relationship context. It is a narrow historical sample, not a universal social style benchmark. We do not import Meng's biography, product facts, fixed five-option output, private Content repository assumptions, or automatic commit workflow.
 

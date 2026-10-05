@@ -6,7 +6,7 @@ This project adapts corpus-guided writing methods from Meng To's
 - **MengTo/Skills** — Copyright (c) 2026 Meng To. MIT license reproduced in
   [third_party/MengTo-LICENSE](third_party/MengTo-LICENSE). Four short corpus
   fragments are quoted with source links in `references/reply-moves.md`.
-  Local corpus downloads retain source identity. ChatGPT release packages also
+  Local corpus downloads retain source identity. Optional ChatGPT package builds also
   include the same pinned public corpus, rendered as attributed Markdown in
   `references/external-examples.md`, with this notice and the full MIT license.
   The package builder never reads private `.local/` profiles or feedback.
