@@ -1,6 +1,6 @@
 interface:
   display_name: "Mob Social Writing (compatibility)"
   short_description: "Legacy social calls forwarding to the shared writing method"
-  default_prompt: "Use $mob-social-writing to draft this social reply through WordAim."
+  default_prompt: "Use $mob-social-writing to draft this social reply through Mob Write."
 policy:
   allow_implicit_invocation: false

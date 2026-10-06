@@ -1,6 +1,6 @@
 interface:
   display_name: "Chinese Writing (compatibility)"
   short_description: "Legacy invocation forwarding to the shared writing method"
-  default_prompt: "Use $chinese-writing to revise this Chinese text through WordAim."
+  default_prompt: "Use $chinese-writing to revise this Chinese text through Mob Write."
 policy:
   allow_implicit_invocation: false

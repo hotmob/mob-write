@@ -1,6 +1,6 @@
 interface:
-  display_name: "WordAim"
+  display_name: "Mob Write"
   short_description: "Write for the reader, with clear purpose and grounded claims"
-  default_prompt: "Use $wordaim to draft this for the intended recipient, preserving the facts and choosing the right language."
+  default_prompt: "Use $mob-write to draft this for the intended recipient, preserving the facts and choosing the right language."
 policy:
   allow_implicit_invocation: true

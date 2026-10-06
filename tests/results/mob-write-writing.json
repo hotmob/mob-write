@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "candidate_version": "0.4.0-rc.2",
+  "canonical_content_sha256": "bd097c9b594ee6b306ac9b49b0868d7d74482a434bffd52f28a2f59eab79ec92",
+  "entry_sha256": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+  "method": "One independent eight-request synthetic writing suite. Applicable installed files were opened and hashed before drafting, then reused. Per-case applied_sources do not claim a separate reopen for every case. Exact served model and sampling settings were not established. This is final-name verification, not an A/B experiment.",
+  "read_manifest": [
+    {
+      "source": "tests/fixtures/writing-cases.json",
+      "sha256": "f35f5ba408c80d017290ffffef4a7aca57d1d5e0d79ce86a0aafe81be4109493",
+      "read_scope": "All 8 raw requests and case IDs; schema contains no other fields. The case 6 request/profile was reread after profile.md. JSON decoding was also used when serializing the unchanged inputs."
+    },
+    {
+      "source": "skills/mob-write/SKILL.md",
+      "sha256": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+      "read_scope": "Full entry, before drafting."
+    },
+    {
+      "source": "skills/mob-write/references/chinese.md",
+      "sha256": "df655f2da3f4f343fae429193bec9fb7f78e8eb4ab3b079b315d14ea7147baf2",
+      "read_scope": "Full reference, before drafting; reused across the suite."
+    },
+    {
+      "source": "skills/mob-write/references/social.md",
+      "sha256": "bc3b7311c7e89dd04a1942c1a441322d2035d0bbc3dca5365cd3f5864799a3a6",
+      "read_scope": "Full reference, before drafting; reused for release/public introduction and the English social reply."
+    },
+    {
+      "source": "skills/mob-write/references/work.md",
+      "sha256": "7d33232292ea136f2aa825971a41c32bfa905146e2e398ee9ac4ae4ad94c139b",
+      "read_scope": "Full reference, before drafting; reused for work email, daily update recommendation, and client delay copy."
+    },
+    {
+      "source": "skills/mob-write/references/technical-document.md",
+      "sha256": "70b12270c294cba68b30cf7131e3f62834ec8e3e7d2acb44497e7c3011a342ab",
+      "read_scope": "Full reference, before drafting; used for the report conclusion and exact Markdown paragraph/quotation/command formatting."
+    },
+    {
+      "source": "skills/mob-write/references/profile.md",
+      "sha256": "9043d322428336c7d4980022f513278d4cb378882a14d6d7d2f2f109f637ec67",
+      "read_scope": "Full reference, before drafting; applied only to the explicitly scoped fictional profile in case 6."
+    },
+    {
+      "source": "skills/mob-write/references/reply-moves.md",
+      "sha256": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+      "read_scope": "Full reference, before drafting case 5, as required by social.md for replies."
+    }
+  ],
+  "cases": [
+    {
+      "id": "1",
+      "input": "测试材料均为虚构。我要回邮件给 Jordan，他只读英文。请先用中文给我简短审稿意见，再给一版可以直接发给他的最终邮件，不要发送。草稿：感谢你整理迁移清单。我周四前可以核对接口部分，但安全审查要等 Lea 下周一回来；我不能承诺周五完成全部迁移。请他确认周五截止是否只指接口核对。不要把我审稿使用中文当成收件人语言。",
+      "output": "中文审稿意见：\n将接口核对与安全审查分开表述，保留不能承诺周五完成全部迁移的限制，并请 Jordan 确认周五截止的范围。\n\nEnglish draft:\nHi Jordan,\n\nThanks for putting together the migration checklist. Could you confirm whether the Friday deadline applies only to the interface review?\n\nI can review the interface section by Thursday, but the security review will need to wait until Lea returns next Monday. I can’t commit to completing the full migration by Friday.",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/work.md"
+      ]
+    },
+    {
+      "id": "2",
+      "input": "测试材料均为虚构。帮我写一条给项目群的日进展，语气专业一点。今天仍在思考方案，跟昨天完全一样；没有新增文档，没有测试，没有新的决定，也没有需要其他人配合的事。",
+      "output": "建议今天暂不发送日进展：情况与昨天相同，没有新增结果、决定或需要项目群配合的事项。等有实质变化再同步。",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/work.md"
+      ]
+    },
+    {
+      "id": "3",
+      "input": "测试材料均为虚构。我要给开源工具写一句发布介绍。现有材料：三个朋友试过，其中两人说“界面清楚”，一人说找不到导出按钮；没有效率测试，没有付费，也没有长期使用数据。帮我把“用户都喜欢这个工具，它已经证明能显著提高效率”改得可信、自然一点。只给一版正文。",
+      "output": "这款开源工具已有三位朋友试用：两人觉得“界面清楚”，一人反馈找不到导出按钮；能否提高效率还需测试。",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/social.md"
+      ]
+    },
+    {
+      "id": "4",
+      "input": "测试材料均为虚构。请把下面内容整理成不超过 100 个汉字的技术报告结论，面向同事。我们只在一台 16 GB 内存的机器上，对同一份 10 万行 CSV 做了 8 次串行测试。旧版中位耗时 70 ms，新版 52 ms。并发、内存峰值、其他文件大小和生产环境没有测。请保留这些限制，不要写成所有场景都更快。",
+      "output": "仅测一台 16 GB 内存机器、同一份 10 万行 CSV，共 8 次串行测试：旧版中位耗时 70 ms，新版 52 ms。并发、内存峰值、其他文件大小和生产环境未测。",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/technical-document.md"
+      ]
+    },
+    {
+      "id": "5",
+      "input": "测试材料均为虚构。朋友在评论区帮我解释了为什么配置不起作用：“That option only applies to the CLI. For the API, set it in the request body.” 我看懂了，但还没运行。请给一句自然的英文回复，感谢一下就好，不要再问问题，也别写得像客服。",
+      "output": "Thanks, that clears it up!",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/social.md",
+        "skills/mob-write/references/reply-moves.md"
+      ]
+    },
+    {
+      "id": "6",
+      "input": "测试材料均为虚构。这是本次测试给出的虚构 profile：短消息默认全小写、爱开玩笑、通常不超过五个词。现在我要给中文客户正式说明延期，用户当前要求是礼貌、清楚，不用玩笑，保留所有条件。材料：导出功能预计下周二可供测试，但前提是周一的数据核对通过；周二只是测试版，不是正式上线。帮我写一版正文，不用解释。",
+      "output": "很抱歉，导出功能需要延期。若周一的数据核对通过，预计下周二可供您测试。届时提供的是测试版，并非正式上线。",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/work.md",
+        "skills/mob-write/references/profile.md"
+      ]
+    },
+    {
+      "id": "7",
+      "input": "测试材料均为虚构。下面是一段用户提供的原文。只调整 Markdown 段落排版，让引用和命令各占一行；不要改字、大小写、标点或内容，也不要补作者、链接或释义。\n\n原文：“结果尚未验证... 请勿用于生产。” 命令：`tool export --dry-run=false --output ./out_v1.csv` 英文原句：\"Results are preliminary... Do not use in production.\"",
+      "output": "原文：“结果尚未验证... 请勿用于生产。”\n\n命令：`tool export --dry-run=false --output ./out_v1.csv`\n\n英文原句：\"Results are preliminary... Do not use in production.\"",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/technical-document.md"
+      ]
+    },
+    {
+      "id": "8",
+      "input": "测试材料均为虚构。请润色一段开源项目介绍。仅有的事实是：仓库有 120 个 star，最新版本的发布包累计下载 400 次；我们不知道下载者是否重复，不知道是否安装或使用，也没有使用人数统计。原稿：“第一批几百位用户已经每天使用我们的工具，社区增长证明了产品价值。”请给可以公开发布的一版，别新增数据。",
+      "output": "这个开源项目的仓库有 120 个 star，最新版本发布包累计下载 400 次。我们尚不清楚下载者是否重复、是否安装或使用，也没有实际使用人数统计。",
+      "applied_sources": [
+        "tests/fixtures/writing-cases.json",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/social.md"
+      ]
+    }
+  ],
+  "checks": {
+    "case_count": 8,
+    "case_4_total_unicode_characters": 84,
+    "case_4_han_characters": 46,
+    "case_7_only_layout_changes": true,
+    "public_file_has_no_absolute_users_path": true
+  },
+  "limitations": "These are eight synthetic writing outputs from one suite. No pass rate, causal improvement, general benefit, adoption, or usage claim is made. Review belongs to the root agent."
+}

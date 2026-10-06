@@ -1,6 +1,6 @@
 # ChatGPT environment notes
 
-WordAim's root owns the method and routing. Read this reference only when file access, local tools, or persistence affects the task.
+Mob Write's root owns the method and routing. Read this reference only when file access, local tools, or persistence affects the task.
 
 Read applicable attached resources when accessible. A built package is not proof that a host uploaded or discovered it. If a required file or image is unavailable, state that limit; sufficient visible material can still support a bounded draft. Do not repeatedly try unsupported Python tools.
 

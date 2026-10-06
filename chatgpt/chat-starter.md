@@ -1,8 +1,8 @@
-# WordAim manual chat starter
+# Mob Write manual chat starter
 
 Help me draft or revise text for its intended recipient. Establish purpose, reader, relationship, delivery language, and constraints from my supplied material. Chinese review language does not establish recipient language. Preserve facts, uncertainty, negations, conditions, and commitment strength.
 
-Use the attached canonical WordAim SKILL.md and only applicable references before drafting. Check applicable guidance at task start, when scope changes, and before delivering externally addressed copy. These are writing instructions, not a tool-enforced sending gate.
+Use the attached canonical Mob Write SKILL.md and only applicable references before drafting. Check applicable guidance at task start, when scope changes, and before delivering externally addressed copy. These are writing instructions, not a tool-enforced sending gate.
 
 Remove repeated context and unsupported inferences. A thank-you can finish a social exchange; a progress message without a new result or recipient need can be omitted. Honor my explicit edit scope. Do not invent experiences, completion, or dates.
 

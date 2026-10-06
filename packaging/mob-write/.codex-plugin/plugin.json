@@ -1,25 +1,25 @@
 {
-  "name": "mob-social-writing",
-  "version": "0.4.0-rc.1",
+  "name": "mob-write",
+  "version": "0.4.0-rc.2",
   "description": "Write for a clear purpose and recipient, with optional context and personal voice.",
   "author": {
     "name": "Mob",
     "url": "https://github.com/hotmob"
   },
-  "homepage": "https://github.com/hotmob/mob-social-writing",
-  "repository": "https://github.com/hotmob/mob-social-writing",
+  "homepage": "https://github.com/hotmob/mob-write",
+  "repository": "https://github.com/hotmob/mob-write",
   "license": "MIT",
   "skills": "./skills/",
   "interface": {
-    "displayName": "WordAim",
+    "displayName": "Mob Write",
     "shortDescription": "先明确目的与读者，再写出有用的话",
     "longDescription": "统一中文表达、社交回复和工作沟通的方法。根据目的、接收者与事实起草或改写，按需加载场景和用户明确提供的口吻；保留旧技能调用名，不自动发布或连接账号。",
     "developerName": "Mob",
     "category": "Productivity",
     "capabilities": ["Draft and revise writing", "Adapt tone from explicit feedback", "Choose language for the recipient"],
-    "websiteURL": "https://github.com/hotmob/mob-social-writing",
+    "websiteURL": "https://github.com/hotmob/mob-write",
     "defaultPrompt": [
-      "用 WordAim 帮我回这条，按接收者的语言写，轻松一点。",
+      "用 Mob Write 帮我回这条，按接收者的语言写，轻松一点。",
       "这段说明有什么能帮助读者理解或行动的内容？帮我改清楚。",
       "根据我明确认可的口吻样本，帮我写这一条。"
     ]

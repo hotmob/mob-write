@@ -1,9 +1,9 @@
 ---
-name: wordaim
+name: mob-write
 description: Draft, revise, or review messages, social replies, articles, and technical explanations for their intended readers. Use when actual writing is requested, including Chinese copy and English messages reviewed in Chinese. A question asked in Chinese alone does not trigger this skill. Optional personal voice stays local.
 ---
 
-# WordAim
+# Mob Write
 
 Write something the recipient can use: to understand, judge, act, or connect with another person. Preserve the author's intent and facts. Start with the current request and source material, then load only the guidance the task needs.
 

@@ -16,9 +16,12 @@ import corpus
 
 
 ROOT = Path(__file__).resolve().parents[1]
-NAME = "wordaim"
-PLUGIN_NAME = "mob-social-writing"  # Keep the existing plugin upgrade identity.
-SOURCE = "https://github.com/hotmob/mob-social-writing"
+NAME = "mob-write"
+PLUGIN_NAME = NAME
+LEGACY_PLUGIN_NAME = "mob-social-writing"
+LEGACY_NAME = "wordaim"
+SOURCE = "https://github.com/hotmob/mob-write"
+LEGACY_SOURCE = "https://github.com/hotmob/mob-social-writing"
 SKILL_FILES = (
     "SKILL.md", ".gitignore", "agents/openai.yaml", "scripts/corpus.py",
     "assets/sample-record.example.jsonl", "assets/voice-profile.example.md",
@@ -35,6 +38,7 @@ ALIAS_EXTRA_FILES = {"chinese-writing": ("references/technical-document.md",)}
 ALIAS_SOURCES = {
     "chinese-writing": "chinese-writing",
     "mob-social-writing": "compat/mob-social-writing",
+    "wordaim": "compat/wordaim",
 }
 
 
@@ -168,10 +172,16 @@ def build_packages(root: Path, raw_reference: bytes | None = None) -> dict[str, 
     source_files["chatgpt/START-HERE.md"] = plugin["README.md"]
     source_files["chatgpt/chat-starter.md"] = plugin["chat-starter.md"]
     plugin_zip = archive(plugin)
+    # Preserve the real historical identity without a second authored manifest.
+    # WordAim was a display name; its plugin identity was mob-social-writing.
+    legacy_manifest = dict(manifest, name=LEGACY_PLUGIN_NAME)
+    legacy_manifest_bytes = (json.dumps(legacy_manifest, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    legacy_plugin_zip = archive({**plugin, ".codex-plugin/plugin.json": legacy_manifest_bytes})
     files = {
         f"{NAME}-chatgpt-skill.zip": archive(canonical),
         f"{NAME}-plugin.zip": plugin_zip,
-        f"{PLUGIN_NAME}-plugin.zip": plugin_zip,
+        f"{LEGACY_PLUGIN_NAME}-plugin.zip": legacy_plugin_zip,
+        f"{LEGACY_NAME}-plugin.zip": legacy_plugin_zip,
         "START-HERE.md": read_public(root, "chatgpt/START-HERE.md"),
         "chat-starter.md": read_public(root, "chatgpt/chat-starter.md"),
     }
@@ -182,6 +192,12 @@ def build_packages(root: Path, raw_reference: bytes | None = None) -> dict[str, 
         files[f"{alias}-chatgpt-skill.zip"] = archive({**skills[alias], **nested})
     report = {
         "name": NAME, "plugin_identity": PLUGIN_NAME, "version": manifest["version"],
+        "legacy_plugin_identity": LEGACY_PLUGIN_NAME,
+        "plugin_artifacts": {f"{NAME}-plugin.zip": PLUGIN_NAME,
+                             f"{LEGACY_PLUGIN_NAME}-plugin.zip": LEGACY_PLUGIN_NAME,
+                             f"{LEGACY_NAME}-plugin.zip": LEGACY_PLUGIN_NAME},
+        "plugin_manifest_sha256": file_sha256({PLUGIN_NAME: manifest_bytes,
+                                              LEGACY_PLUGIN_NAME: legacy_manifest_bytes}),
         "source": SOURCE, "external_reference_count": len(records),
         "reference_revision": corpus.REFERENCE_REVISION if raw_reference is not None else None,
         "reference_sha256": corpus.REFERENCE_SHA256 if raw_reference is not None else None,

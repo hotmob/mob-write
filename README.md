@@ -1,27 +1,29 @@
-# WordAim
+# Mob Write
 
-Writing for a purpose, a reader, and a useful outcome.
+Write with purpose, for your reader.
 
 先看目的和读者，让文字帮助理解、判断与行动。适用于消息、邮件、社交回复、文章和技术说明，支持中文表达与英文文案的中文审稿。
 
-**Project:** WordAim · **Invocation:** `$wordaim` · **Repository:** `hotmob/mob-social-writing` (retained for existing links). Former calls `$chinese-writing` and `$mob-social-writing` remain explicit compatibility aliases. No repository rename is required to use the new name.
+**Project:** Mob Write · **Invocation:** `$mob-write` · **Repository:** [`hotmob/mob-write`](https://github.com/hotmob/mob-write). The existing repository was renamed in place, retaining its history and PRs. Former calls `$wordaim`, `$chinese-writing`, and `$mob-social-writing` remain explicit compatibility aliases. Mob Write is a project name, not a default personal voice.
+
+Read the [project constitution](docs/constitution.md) and [four-stage roadmap](docs/roadmap.md) for the purpose, scope, acceptance criteria, and remaining work.
 
 ## Install the candidate
 
-This branch is **0.4.0-rc.1**, a review candidate. The latest published release, **v0.2.0**, has the earlier social-writing behavior. Downloading that release or cloning main before this change is merged does not install WordAim.
+This branch is **0.4.0-rc.2**, a review candidate. The latest published release, **v0.2.0**, has the earlier social-writing behavior. Downloading that release or cloning main before this change is merged does not install Mob Write.
 
 Python 3.10+ is needed for packaging and installation; writing itself uses Markdown only.
 
 ```sh
-git clone --branch feat/unified-writing https://github.com/hotmob/mob-social-writing.git wordaim-source
-cd wordaim-source
+git clone --branch feat/unified-writing https://github.com/hotmob/mob-write.git mob-write-source
+cd mob-write-source
 git rev-parse HEAD
 python3 scripts/install.py --skills-dir /path/to/client/skills
 ```
 
 Use an **empty target directory** for the first trial. For a Codex project, `--skills-dir /path/to/project/.agents/skills` is a suitable project-local location. Choose the actual discoverable skill directory of your client; opening a source checkout alone does not register a skill.
 
-The installer writes `wordaim/`, `chinese-writing/`, and `mob-social-writing/`. Within this installed set, only WordAim has implicit invocation enabled. The other two contain thin forwarding instructions; rules live once in WordAim. Older skills enabled elsewhere can still be loaded by the host; see [coexistence](docs/migration.md#coexisting-legacy-skills). Installation receipts record version and public file hashes. Read the result in a fresh client session and confirm that WordAim appears; filesystem installation and automatic discovery are different checks.
+The installer writes `mob-write/` plus the three compatibility directories `wordaim/`, `chinese-writing/`, and `mob-social-writing/`. Within this installed set, only Mob Write has implicit invocation enabled. The others contain thin forwarding instructions; rules live once in Mob Write. Older skills enabled elsewhere can still be loaded by the host; see [coexistence](docs/migration.md#coexisting-legacy-skills). Installation receipts record version and public file hashes. Read the result in a fresh client session and confirm that Mob Write appears; filesystem installation and automatic discovery are different checks.
 
 For an existing installation or an upgrade, read [migration](docs/migration.md). The installer updates its own unchanged files, preserves `.local/` without reading it, and refuses unknown installations or edited public files. It has no global target default. Do not overwrite an old clone or private profile.
 
@@ -29,17 +31,17 @@ For an existing installation or an upgrade, read [migration](docs/migration.md).
 
 Give the intended recipient, purpose, and material you already have:
 
-> Use $wordaim to reply to this English comment. We haven't met. A brief thank-you is enough: “That option only applies to the CLI; for the API, set it in the request body.” I understand, but haven't tested it.
+> Use $mob-write to reply to this English comment. We haven't met. A brief thank-you is enough: “That option only applies to the CLI; for the API, set it in the request body.” I understand, but haven't tested it.
 
 Example draft: **“Thanks, that clears it up!”** It does not claim the fix worked.
 
-> 使用 $wordaim 帮我给英文收件人写邮件。请先给中文释义，再给英文正文。接口部分周四前能核对；安全审查需等同事下周一回来。请对方确认周五截止是否只指接口核对。
+> 使用 $mob-write 帮我给英文收件人写邮件。请先给中文释义，再给英文正文。接口部分周四前能核对；安全审查需等同事下周一回来。请对方确认周五截止是否只指接口核对。
 
-WordAim separates the Chinese review gloss from the English recipient draft. User interface language alone does not establish recipient language.
+Mob Write separates the Chinese review gloss from the English recipient draft. User interface language alone does not establish recipient language.
 
-> 使用 $wordaim 改这条群进度：今天没有新文档、测试、决定或协作需求，与昨天相同。
+> 使用 $mob-write 改这条群进度：今天没有新文档、测试、决定或协作需求，与昨天相同。
 
-WordAim can recommend waiting instead of polishing a message with no new information. If you still need wording, it follows that scope and keeps the facts accurate.
+Mob Write can recommend waiting instead of polishing a message with no new information. If you still need wording, it follows that scope and keeps the facts accurate.
 
 At task start, a scope change, and before externally addressed copy is handed off, the method checks applicable guidance and recipient constraints. These Markdown instructions help judgment; they are not an enforced sending gate and do not grant account permissions.
 
@@ -64,7 +66,7 @@ Build from this same checkout, **offline by default**:
 python3 scripts/build_chatgpt.py --output dist
 ```
 
-Use `wordaim-chatgpt-skill.zip` for a supported skill-file upload and `wordaim-plugin.zip` for a supported skills-only plugin import. Old archive names are also generated for migration. Every package uses the same public source, and `package-manifest.json` lists version, file identities, and SHA-256 values.
+Use `mob-write-chatgpt-skill.zip` for a supported skill-file upload and `mob-write-plugin.zip` for a supported skills-only plugin import. Old standalone archive names contain a thin alias and nested Mob Write. `wordaim-plugin.zip` and `mob-social-writing-plugin.zip` retain the actual old plugin identity `mob-social-writing`; their generated manifest differs from the new plugin's `mob-write` identity. Every package uses the same public writing source, and `package-manifest.json` lists version, file identities, and SHA-256 values.
 
 The package builder reads a public allowlist. It excludes personal profiles, drafts, feedback, credentials, and private paths. The four existing attributed snippets and licenses remain included. The full pinned 40-text public reference corpus is optional:
 
@@ -82,7 +84,7 @@ For optional local corpus commands, read [learning](references/learning.md). The
 python3 -m unittest discover -s tests -v
 ```
 
-CI tests the public package boundary and isolated installation/upgrade and supplies candidate artifacts. Writing checks use [eight synthetic requests](tests/fixtures/writing-cases.json) with independently recorded outputs; see [evaluation](docs/evaluation.md). Package tests do not establish writing usefulness. Real adoption still needs feedback from people using it on their own tasks.
+CI tests the public package boundary and isolated installation/upgrade and supplies candidate artifacts. Writing checks use [eight synthetic requests](tests/fixtures/writing-cases.json) with independently recorded outputs. See [final-name validation](docs/mob-write-validation.md) and the preserved [WordAim baseline evaluation](docs/evaluation.md). Package tests do not establish writing usefulness. Real adoption still needs feedback from people using it on their own tasks.
 
 Stars show interest; release download counts show downloads, including possible repeats; neither measures installed or active users. This project adds no telemetry and promises no engagement growth or AI-detection result.
 

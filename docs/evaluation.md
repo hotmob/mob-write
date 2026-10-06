@@ -1,5 +1,7 @@
 # Writing comparison for 0.4.0-rc.1
 
+> Historical WordAim candidate evidence. Names, outputs and fingerprints below are preserved as recorded; they are not a rerun under Mob Write. See [Mob Write validation](mob-write-validation.md) for the current candidate.
+
 Most drafts produced without the additional writing skill already preserved the checked language and factual boundaries. The clearest observed change was the progress-update case: WordAim recommended skipping a routine group message with no new information or coordination need. The other cases mainly showed preserved behavior or wording differences.
 
 This is one manual comparison of eight synthetic requests, with one recorded output per request in each arm. It does not establish a causal effect, general improvement, repeated-run reliability, or performance for real users.
