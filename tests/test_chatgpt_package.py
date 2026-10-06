@@ -19,32 +19,11 @@ import corpus
 
 def copy_public_sources(root):
     paths = (*builder.SKILL_FILES, builder.MANIFEST,
-             *(f"{directory}/{path}" for name, directory in builder.ALIAS_SOURCES.items()
-               for path in builder.alias_files(name)),
              "chatgpt/START-HERE.md", "chatgpt/chat-starter.md")
     for relative in paths:
         target = root / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(builder.ROOT / relative, target)
-
-
-def resolve_canonical_directory(directory):
-    alias = directory / "SKILL.md"
-    if f"name: {builder.NAME}\n" in alias.read_text():
-        return directory
-    for path in re.findall(r"`([^`]*SKILL\.md)`", alias.read_text()):
-        candidate = alias.parent / path
-        if candidate.is_file() and f"name: {builder.NAME}\n" in candidate.read_text():
-            return candidate.parent
-    raise ValueError("Canonical entry could not be resolved")
-
-
-def resolve_technical_pointer(directory):
-    """Follow the published pointer through its alias to a canonical reference."""
-    pointer = directory / "references/technical-document.md"
-    if "../SKILL.md" not in pointer.read_text():
-        raise ValueError("Compatibility pointer must route through its alias SKILL.md")
-    return (resolve_canonical_directory(pointer.parent / "..") / "references/technical-document.md").read_bytes()
 
 
 class PackageTests(unittest.TestCase):
@@ -63,7 +42,7 @@ class PackageTests(unittest.TestCase):
                 self.assertEqual(builder.main(["--output", str(self.root / "dist")]), 0)
         report = json.loads(files["package-manifest.json"])
         self.assertEqual(report["name"], "mob-write")
-        self.assertEqual(report["version"], "0.4.0-rc.2")
+        self.assertEqual(report["version"], "0.4.0-rc.3")
         self.assertEqual(report["source"], builder.SOURCE)
         self.assertEqual(report["external_reference_count"], 0)
         self.assertIsNone(report["reference_sha256"])
@@ -93,10 +72,10 @@ class PackageTests(unittest.TestCase):
                         self.assertNotIn("..", Path(member).parts)
                         self.assertNotIn(".local", Path(member).parts)
 
-    def test_single_canonical_plugin_and_standalone_alias_dependencies(self):
+    def test_single_canonical_plugin_and_standalone_use_identical_public_files(self):
         files = builder.build_packages(self.root)
-        self.assertEqual(files["wordaim-plugin.zip"], files["mob-social-writing-plugin.zip"])
-        self.assertNotEqual(files["mob-write-plugin.zip"], files["mob-social-writing-plugin.zip"])
+        self.assertEqual({name for name in files if name.endswith(".zip")},
+                         {"mob-write-chatgpt-skill.zip", "mob-write-plugin.zip"})
         with zipfile.ZipFile(io.BytesIO(files["mob-write-chatgpt-skill.zip"])) as canonical:
             canonical_names = set(canonical.namelist())
             self.assertIn("SKILL.md", canonical_names)
@@ -104,50 +83,15 @@ class PackageTests(unittest.TestCase):
             with zipfile.ZipFile(io.BytesIO(files["mob-write-plugin.zip"])) as plugin:
                 plugin_names = set(plugin.namelist())
                 self.assertIn(".codex-plugin/plugin.json", plugin_names)
-                self.assertEqual([name for name in plugin_names if name.endswith("/mob-write/SKILL.md")],
+                self.assertEqual([name for name in plugin_names if name.endswith("/SKILL.md")],
                                  ["skills/mob-write/SKILL.md"])
                 primary_manifest = json.loads(plugin.read(".codex-plugin/plugin.json"))
                 self.assertEqual(primary_manifest["name"], "mob-write")
-                with zipfile.ZipFile(io.BytesIO(files["mob-social-writing-plugin.zip"])) as legacy:
-                    legacy_manifest = json.loads(legacy.read(".codex-plugin/plugin.json"))
-                    self.assertEqual(legacy_manifest, dict(primary_manifest, name="mob-social-writing"))
-                    self.assertEqual(set(legacy.namelist()), plugin_names)
-                    for path in plugin_names - {".codex-plugin/plugin.json"}:
-                        self.assertEqual(legacy.read(path), plugin.read(path))
                 for path in canonical_names:
                     self.assertEqual(canonical.read(path), plugin.read(f"skills/mob-write/{path}"))
-                for alias in builder.ALIAS_SOURCES:
-                    with zipfile.ZipFile(io.BytesIO(files[f"{alias}-chatgpt-skill.zip"])) as standalone:
-                        self.assertEqual(standalone.read(".gitignore"), canonical.read(".gitignore"))
-                        self.assertEqual(plugin.read(f"skills/{alias}/.gitignore"), canonical.read(".gitignore"))
-                        for path in canonical_names:
-                            self.assertEqual(canonical.read(path), standalone.read(f"mob-write/{path}"))
-                        self.assertIn("mob-write/SKILL.md", standalone.read("SKILL.md").decode())
-                        self.assertIn("../mob-write/SKILL.md", plugin.read(f"skills/{alias}/SKILL.md").decode())
-                        for path in builder.alias_files(alias):
-                            self.assertEqual(standalone.read(path), plugin.read(f"skills/{alias}/{path}"))
-                    self.assertNotIn(f"skills/{alias}/references/chinese.md", plugin_names)
-
-    def test_legacy_technical_pointer_resolves_source_and_all_package_layouts(self):
-        canonical = (self.root / "references/technical-document.md").read_bytes()
-        self.assertEqual(resolve_technical_pointer(self.root / "chinese-writing"), canonical)
-        self.assertNotEqual((self.root / "chinese-writing/references/technical-document.md").read_bytes(), canonical)
-        files = builder.build_packages(self.root)
-        for filename, alias_directory in (("mob-write-plugin.zip", "skills/chinese-writing"),
-                                           ("wordaim-plugin.zip", "skills/chinese-writing"),
-                                           ("mob-social-writing-plugin.zip", "skills/chinese-writing"),
-                                           ("chinese-writing-chatgpt-skill.zip", ".")):
-            destination = self.root.parent / filename.removesuffix(".zip")
-            with zipfile.ZipFile(io.BytesIO(files[filename])) as archive:
-                archive.extractall(destination)
-            self.assertEqual(resolve_technical_pointer(destination / alias_directory), canonical)
-
-    def test_four_entries_resolve_in_source_and_every_distribution_layout(self):
+    def test_only_one_entry_in_every_distribution_layout(self):
         canonical = (self.root / "SKILL.md").read_bytes()
-        self.assertEqual(resolve_canonical_directory(self.root), self.root)
-        for alias, directory in builder.ALIAS_SOURCES.items():
-            resolved = resolve_canonical_directory(self.root / directory)
-            self.assertEqual((resolved / "SKILL.md").read_bytes(), canonical)
+        self.assertEqual(list(builder.public_skills(self.root)), ["mob-write"])
         for filename, data in builder.build_packages(self.root).items():
             if not filename.endswith(".zip"):
                 continue
@@ -155,11 +99,12 @@ class PackageTests(unittest.TestCase):
             with zipfile.ZipFile(io.BytesIO(data)) as archive:
                 archive.extractall(destination)
             if filename.endswith("-plugin.zip"):
-                directories = [destination / "skills" / name for name in (builder.NAME, *builder.ALIAS_SOURCES)]
+                directories = [destination / "skills" / builder.NAME]
             else:
                 directories = [destination]
             for directory in directories:
-                self.assertEqual((resolve_canonical_directory(directory) / "SKILL.md").read_bytes(), canonical)
+                self.assertEqual((directory / "SKILL.md").read_bytes(), canonical)
+            self.assertEqual(list(destination.rglob("SKILL.md")), [directories[0] / "SKILL.md"])
 
     def test_relative_markdown_links_resolve_in_every_archive(self):
         for filename, data in builder.build_packages(self.root).items():
@@ -208,10 +153,20 @@ class PackageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "symlink"):
             builder.read_public(link / "references", "sources.md")
 
-    def test_alias_and_canonical_sources_required(self):
-        (self.root / "compat/mob-social-writing/SKILL.md").unlink()
+    def test_canonical_sources_required(self):
+        (self.root / "references/technical-document.md").unlink()
         with self.assertRaisesRegex(ValueError, "Missing package source"):
             builder.build_packages(self.root)
+
+    def test_retired_output_artifacts_refused_before_new_files_are_written(self):
+        output = self.root.parent / "dist"
+        output.mkdir()
+        retired = output / "wordaim-plugin.zip"
+        retired.write_bytes(b"historical public artifact")
+        with patch.object(builder, "ROOT", self.root), self.assertRaisesRegex(ValueError, "Retired artifact"):
+            builder.main(["--output", str(output)])
+        self.assertEqual(retired.read_bytes(), b"historical public artifact")
+        self.assertFalse((output / "mob-write-plugin.zip").exists())
 
     def test_paths_and_symlink_output_rejected(self):
         for path in ("../private", "/private", "references/../../private", ".local/profile.md", ".env", ".git/config", "x\\private"):

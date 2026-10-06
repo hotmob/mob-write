@@ -4,13 +4,15 @@ Write with purpose, for your reader.
 
 先看目的和读者，让文字帮助理解、判断与行动。适用于消息、邮件、社交回复、文章和技术说明，支持中文表达与英文文案的中文审稿。
 
-**Project:** Mob Write · **Invocation:** `$mob-write` · **Repository:** [`hotmob/mob-write`](https://github.com/hotmob/mob-write). The existing repository was renamed in place, retaining its history and PRs. Former calls `$wordaim`, `$chinese-writing`, and `$mob-social-writing` remain explicit compatibility aliases. Mob Write is a project name, not a default personal voice.
+**Project:** Mob Write · **Invocation:** `$mob-write` · **Repository:** [`hotmob/mob-write`](https://github.com/hotmob/mob-write). The existing repository was renamed in place, retaining its history and PRs. Mob Write is a project name, not a default personal voice.
+
+**Breaking change in this candidate:** `$wordaim`, `$chinese-writing`, and `$mob-social-writing` no longer have forwarding entries or packages. Use `$mob-write` and update active writing routes. Older releases and evaluation records retain their original names.
 
 Read the [project constitution](docs/constitution.md) and [four-stage roadmap](docs/roadmap.md) for the purpose, scope, acceptance criteria, and remaining work.
 
 ## Install the candidate
 
-This branch is **0.4.0-rc.2**, a review candidate. The latest published release, **v0.2.0**, has the earlier social-writing behavior. Downloading that release or cloning main before this change is merged does not install Mob Write.
+This branch is **0.4.0-rc.3**, a review candidate. The published **v0.2.0** release has the earlier social-writing behavior. Downloading that release or cloning main before this change is merged does not install this candidate. A candidate build does not establish a merge or formal release.
 
 Python 3.10+ is needed for packaging and installation; writing itself uses Markdown only.
 
@@ -23,9 +25,9 @@ python3 scripts/install.py --skills-dir /path/to/client/skills
 
 Use an **empty target directory** for the first trial. For a Codex project, `--skills-dir /path/to/project/.agents/skills` is a suitable project-local location. Choose the actual discoverable skill directory of your client; opening a source checkout alone does not register a skill.
 
-The installer writes `mob-write/` plus the three compatibility directories `wordaim/`, `chinese-writing/`, and `mob-social-writing/`. Within this installed set, only Mob Write has implicit invocation enabled. The others contain thin forwarding instructions; rules live once in Mob Write. Older skills enabled elsewhere can still be loaded by the host; see [coexistence](docs/migration.md#coexisting-legacy-skills). Installation receipts record version and public file hashes. Read the result in a fresh client session and confirm that Mob Write appears; filesystem installation and automatic discovery are different checks.
+The installer writes only `mob-write/`. Older skills enabled elsewhere can still be loaded by the host; see [legacy discovery paths](docs/migration.md#legacy-discovery-paths). Installation receipts record version and public file hashes. Read the result in a fresh client session and confirm that Mob Write appears and retired names do not; filesystem installation and automatic discovery are different checks. An already running session may retain an earlier catalog.
 
-For an existing installation or an upgrade, read [migration](docs/migration.md). The installer updates its own unchanged files, preserves `.local/` without reading it, and refuses unknown installations or edited public files. It has no global target default. Do not overwrite an old clone or private profile.
+For an existing installation or an upgrade, read [migration](docs/migration.md). Retiring verified installer-managed old entries requires an explicit `--backup-dir` outside the skills directory. The installer backs up only receipt-managed public files and the receipt, preserves `.local/` and unknown files at their original paths without reading them, and refuses unknown installations or edited public files. It has no global target default. A remaining old directory without `SKILL.md` is not an active skill entry.
 
 ## Use it
 
@@ -66,7 +68,7 @@ Build from this same checkout, **offline by default**:
 python3 scripts/build_chatgpt.py --output dist
 ```
 
-Use `mob-write-chatgpt-skill.zip` for a supported skill-file upload and `mob-write-plugin.zip` for a supported skills-only plugin import. Old standalone archive names contain a thin alias and nested Mob Write. `wordaim-plugin.zip` and `mob-social-writing-plugin.zip` retain the actual old plugin identity `mob-social-writing`; their generated manifest differs from the new plugin's `mob-write` identity. Every package uses the same public writing source, and `package-manifest.json` lists version, file identities, and SHA-256 values.
+Use `mob-write-chatgpt-skill.zip` for a supported skill-file upload and `mob-write-plugin.zip` for a supported skills-only plugin import. These are the only generated ZIPs; the plugin identity is `mob-write`. Both packages use the same public writing source, and `package-manifest.json` lists version, file identities, and SHA-256 values. Use an empty output directory to avoid mixing versions. The builder refuses an output containing retired alias archive names; move any archives you want to retain to a separate archive directory before rebuilding.
 
 The package builder reads a public allowlist. It excludes personal profiles, drafts, feedback, credentials, and private paths. The four existing attributed snippets and licenses remain included. The full pinned 40-text public reference corpus is optional:
 

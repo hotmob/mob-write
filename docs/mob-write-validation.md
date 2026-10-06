@@ -1,5 +1,15 @@
 # Mob Write candidate validation
 
+## Current single-entry candidate: 0.4.0-rc.3
+
+The current candidate installs only `mob-write` and produces only `mob-write-chatgpt-skill.zip` and `mob-write-plugin.zip`. The three former entrypoint sources and alias packages were removed from this candidate; historical commits, releases and evaluations are retained. The canonical writing bytes and entry hash below are unchanged, so the earlier writing comparisons remain evidence for that method, rather than a new writing trial of this packaging change.
+
+All **48 automated checks** passed locally. The checks cover one entry in every package and fresh install, private-path protection, old receipt verification and public backups, changes made during backup, and a late first-install failure that removes only this attempt's unchanged public files. Retired-entry `.gitignore` files remain to protect private data at its original path. Fresh failure cleanup does not read or remove private or unknown data. Updating an existing canonical installation is not a full transaction; keep its prior public version for recovery.
+
+Separate isolated trials exported the actual rc.1 commit `7a1f8b47052639b03a0261c5e68c685a48f2b86a` and rc.2 commit `46a741c6d0651486e308a83851c6fa4570514dba`, installed each with its original installer, and upgraded each to rc.3. Both ended with one active `mob-write` entry. All retired public files and receipts matched their backups byte for byte, a synthetic private marker stayed at its old path, and a second installation succeeded without creating aliases. These trials inspected no real profile and made no external delivery. [Single-entry results](../tests/results/mob-write-single-entry.json) record the scope and limitations.
+
+## Preserved 0.4.0-rc.2 evidence
+
 Candidate version: **0.4.0-rc.2**. The entry SHA-256 is `1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635`; offline canonical content hash is `bd097c9b594ee6b306ac9b49b0868d7d74482a434bffd52f28a2f59eab79ec92`. Source, package files, fresh installation and the upgraded installation were compared separately and agree. This is a review candidate, not a formal release.
 
 ## Installation and naming

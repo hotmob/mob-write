@@ -12,7 +12,7 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import build_chatgpt as builder
 import install as installer
-from test_chatgpt_package import copy_public_sources, resolve_canonical_directory, resolve_technical_pointer
+from test_chatgpt_package import copy_public_sources
 
 
 class InstallTests(unittest.TestCase):
@@ -24,6 +24,7 @@ class InstallTests(unittest.TestCase):
         self.root.mkdir()
         copy_public_sources(self.root)
         self.target = self.base / "isolated-skills"
+        self.backups = self.base / "backups"
 
     def legacy_install_fixture(self):
         """Model the published rc.1 protocol with public synthetic content only.
@@ -35,10 +36,12 @@ class InstallTests(unittest.TestCase):
                      for path in builder.SKILL_FILES}
         canonical["SKILL.md"] = b"---\nname: wordaim\ndescription: Synthetic legacy fixture.\n---\n"
         canonical[".gitignore"] = (self.root / ".gitignore").read_bytes()
-        legacy = {builder.LEGACY_NAME: canonical}
+        legacy = {installer.LEGACY_NAME: canonical}
         for name in ("chinese-writing", "mob-social-writing"):
-            files = {path: f"Synthetic legacy alias file: {path}\n".encode()
-                     for path in builder.alias_files(name)}
+            paths = ["SKILL.md", "agents/openai.yaml"]
+            if name == "chinese-writing":
+                paths.append("references/technical-document.md")
+            files = {path: f"Synthetic legacy alias file: {path}\n".encode() for path in paths}
             files["SKILL.md"] = f"---\nname: {name}\ndescription: Synthetic legacy alias.\n---\nRead ../wordaim/SKILL.md.\n".encode()
             files[".gitignore"] = canonical[".gitignore"]
             files["LICENSE"] = canonical["LICENSE"]
@@ -49,7 +52,7 @@ class InstallTests(unittest.TestCase):
                 path = directory / relative
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(data)
-            receipt = {"schema": 1, "source": builder.LEGACY_SOURCE,
+            receipt = {"schema": 1, "source": installer.LEGACY_SOURCE,
                        "skill": name, "canonical": "wordaim", "version": "0.4.0-rc.1",
                        "files": builder.file_sha256(files),
                        "canonical_content_sha256": builder.content_sha256(canonical),
@@ -57,11 +60,10 @@ class InstallTests(unittest.TestCase):
             (directory / installer.LEGACY_INSTALL_MANIFEST).write_text(json.dumps(receipt))
         return legacy
 
-    def test_actual_install_upgrade_hashes_aliases_and_private_preservation(self):
+    def test_actual_single_install_upgrade_hashes_and_private_preservation(self):
         report = installer.install(self.root, self.target)
-        self.assertEqual(report["skills"], ["mob-write", "chinese-writing", "mob-social-writing", "wordaim"])
-        self.assertEqual(resolve_technical_pointer(self.target / "chinese-writing"),
-                         (self.root / "references/technical-document.md").read_bytes())
+        self.assertEqual(report["skills"], ["mob-write"])
+        self.assertEqual(list(self.target.glob("*/SKILL.md")), [self.target / "mob-write/SKILL.md"])
         for name, files in builder.public_skills(self.root).items():
             directory = self.target / name
             manifest = json.loads((directory / installer.INSTALL_MANIFEST).read_bytes())
@@ -84,20 +86,16 @@ class InstallTests(unittest.TestCase):
         (self.root / "references/work.md").write_text("new public version\n", encoding="utf-8")
         manifest_path = self.root / builder.MANIFEST
         manifest = json.loads(manifest_path.read_bytes())
-        manifest["version"] = "0.4.0-rc.3"
+        manifest["version"] = "0.4.0-rc.4"
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
         with patch.object(Path, "read_bytes", public_reads_only):
             report = installer.install(self.root, self.target)
-        self.assertEqual(report["version"], "0.4.0-rc.3")
+        self.assertEqual(report["version"], "0.4.0-rc.4")
         self.assertEqual((self.target / "mob-write/references/work.md").read_text(), "new public version\n")
         for name in report["skills"]:
-            self.assertEqual((resolve_canonical_directory(self.target / name) / "SKILL.md").read_bytes(),
+            self.assertEqual((self.target / name / "SKILL.md").read_bytes(),
                              (self.root / "SKILL.md").read_bytes())
             self.assertEqual((self.target / name / ".local/profile.md").read_text(), "PRIVATE_SENTINEL")
-            alias = self.target / name / "SKILL.md"
-            if name != "mob-write":
-                self.assertIn("../mob-write/SKILL.md", alias.read_text())
-                self.assertTrue((alias.parent / "../mob-write/SKILL.md").is_file())
         self.assertEqual(unknown.read_text(), "user-owned notes")
 
     def test_cli_requires_explicit_target_and_actual_repository_install(self):
@@ -107,10 +105,10 @@ class InstallTests(unittest.TestCase):
         self.assertIn("--skills-dir", missing.stderr)
         completed = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)
-        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0-rc.2")
+        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0-rc.3")
         second = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(second.returncode, 0, second.stderr)
-        for name in (builder.NAME, *builder.ALIAS_SOURCES):
+        for name in (builder.NAME,):
             self.assertTrue((self.target / name / "SKILL.md").is_file())
 
     def test_unknown_legacy_directory_refused_before_any_install(self):
@@ -127,9 +125,9 @@ class InstallTests(unittest.TestCase):
 
     def test_user_public_changes_block_all_upgrades(self):
         installer.install(self.root, self.target)
-        changed = self.target / "mob-social-writing/SKILL.md"
+        changed = self.target / "mob-write/SKILL.md"
         changed.write_text("user public edits", encoding="utf-8")
-        original = (self.target / "mob-write/SKILL.md").read_bytes()
+        original = changed.read_bytes()
         (self.root / "SKILL.md").write_text("new upstream content", encoding="utf-8")
         with self.assertRaisesRegex(installer.InstallError, "Public file changed"):
             installer.install(self.root, self.target)
@@ -228,7 +226,7 @@ class InstallTests(unittest.TestCase):
         target = project / ".agents/skills"
         installer.install(self.root, target)
         private_paths = []
-        for name in (builder.NAME, *builder.ALIAS_SOURCES):
+        for name in (builder.NAME,):
             directory = target / name
             self.assertEqual((directory / ".gitignore").read_bytes(), (self.root / ".gitignore").read_bytes())
             for relative in (".local/profile.md", ".env"):
@@ -273,30 +271,37 @@ class InstallTests(unittest.TestCase):
             self.assertNotIn(".local", path.parts)
             return original_iterdir(path)
         with patch.object(Path, "read_bytes", read_public), patch.object(Path, "iterdir", enumerate_public):
-            report = installer.install(self.root, self.target)
+            report = installer.install(self.root, self.target, self.backups)
         self.assertEqual(set(report["migrated_skills"]), set(old))
         self.assertFalse(report["private_data_migrated"])
         new = builder.public_skills(self.root)
         for name, files in new.items():
             directory = self.target / name
-            self.assertEqual((resolve_canonical_directory(directory) / "SKILL.md").read_bytes(), new[builder.NAME]["SKILL.md"])
+            self.assertEqual((directory / "SKILL.md").read_bytes(), new[builder.NAME]["SKILL.md"])
             receipt = json.loads((directory / installer.INSTALL_MANIFEST).read_bytes())
             self.assertEqual(receipt["source"], builder.SOURCE)
             self.assertEqual(receipt["canonical"], "mob-write")
             for relative, data in files.items():
                 self.assertEqual((directory / relative).read_bytes(), data)
-            if name in old:
-                self.assertEqual((directory / ".local/profile.md").read_text(), "SYNTHETIC_PRIVATE_SENTINEL")
-                self.assertEqual(receipt["migrated_from"], {"source": builder.LEGACY_SOURCE,
-                                 "canonical": "wordaim", "version": "0.4.0-rc.1"})
-                self.assertFalse((directory / installer.LEGACY_INSTALL_MANIFEST).exists())
-                for relative in old[name].keys() - files.keys():
+        backup = Path(report["backup_dir"])
+        self.assertEqual(set(report["retired_skills"]), set(old))
+        for name, files in old.items():
+            directory = self.target / name
+            self.assertEqual((directory / ".local/profile.md").read_text(), "SYNTHETIC_PRIVATE_SENTINEL")
+            self.assertFalse((directory / "SKILL.md").exists())
+            self.assertFalse((directory / installer.LEGACY_INSTALL_MANIFEST).exists())
+            self.assertEqual((directory / ".gitignore").read_bytes(), files[".gitignore"])
+            for relative, data in files.items():
+                self.assertEqual((backup / name / relative).read_bytes(), data)
+                if relative != ".gitignore":
                     self.assertFalse((directory / relative).exists())
+            self.assertFalse((backup / name / ".local").exists())
+            self.assertFalse((backup / name / ".env").exists())
         self.assertEqual(notes.read_text(), "user-owned notes")
         self.assertEqual(env.read_text(), "SYNTHETIC_ENV_SENTINEL")
-        receipts = {(self.target / name / installer.INSTALL_MANIFEST).read_bytes() for name in old}
-        self.assertEqual(installer.install(self.root, self.target)["migrated_skills"], [])
-        self.assertEqual(receipts, {(self.target / name / installer.INSTALL_MANIFEST).read_bytes() for name in old})
+        repeated = installer.install(self.root, self.target)
+        self.assertEqual(repeated["retired_skills"], [])
+        self.assertIsNone(repeated["backup_dir"])
 
     def test_changed_rc1_public_file_blocks_the_whole_migration(self):
         old = self.legacy_install_fixture()
@@ -307,6 +312,104 @@ class InstallTests(unittest.TestCase):
         self.assertFalse((self.target / "mob-write").exists())
         self.assertEqual((self.target / "mob-social-writing/SKILL.md").read_bytes(), old["mob-social-writing"]["SKILL.md"])
         self.assertEqual(changed.read_text(), "user edits")
+
+    def test_retirement_requires_backup_outside_discovery_before_writing(self):
+        old = self.legacy_install_fixture()
+        with self.assertRaisesRegex(installer.InstallError, "--backup-dir"):
+            installer.install(self.root, self.target)
+        for destination in (self.target, self.target / "nested-backup"):
+            with self.assertRaisesRegex(installer.InstallError, "outside"):
+                installer.install(self.root, self.target, destination)
+        self.assertFalse((self.target / "mob-write").exists())
+        for name, files in old.items():
+            self.assertEqual((self.target / name / "SKILL.md").read_bytes(), files["SKILL.md"])
+
+    def test_backup_failure_preserves_all_active_public_entries(self):
+        old = self.legacy_install_fixture()
+        with patch.object(installer, "atomic_write", side_effect=OSError("synthetic backup failure")):
+            with self.assertRaisesRegex(OSError, "backup failure"):
+                installer.install(self.root, self.target, self.backups)
+        self.assertFalse((self.target / "mob-write").exists())
+        for name, files in old.items():
+            self.assertEqual((self.target / name / "SKILL.md").read_bytes(), files["SKILL.md"])
+
+    def test_edit_during_backup_is_preserved_before_any_discovery_change(self):
+        self.legacy_install_fixture()
+        changed = self.target / "wordaim/SKILL.md"
+        write = installer.atomic_write
+        def write_and_edit(path, data):
+            write(path, data)
+            if path.name == installer.LEGACY_INSTALL_MANIFEST:
+                changed.write_bytes(b"concurrent user edit")
+        with patch.object(installer, "atomic_write", write_and_edit):
+            with self.assertRaisesRegex(installer.InstallError, "changed.*backup"):
+                installer.install(self.root, self.target, self.backups)
+        self.assertEqual(changed.read_bytes(), b"concurrent user edit")
+        self.assertFalse((self.target / "mob-write/SKILL.md").exists())
+
+    def test_late_fresh_write_failure_leaves_no_active_half_install(self):
+        write = installer.atomic_write
+        private = self.target / "mob-write/.local/profile.md"
+        notes = self.target / "mob-write/unknown.txt"
+        def late_failure(path, data):
+            if path.name == installer.INSTALL_MANIFEST:
+                private.parent.mkdir()
+                private.write_bytes(b"synthetic private marker")
+                notes.write_bytes(b"unknown user file")
+                raise OSError("synthetic receipt write failure")
+            write(path, data)
+        read = Path.read_bytes
+        def public_read(path):
+            self.assertNotIn(".local", path.parts)
+            return read(path)
+        with patch.object(installer, "atomic_write", late_failure), patch.object(Path, "read_bytes", public_read):
+            with self.assertRaisesRegex(OSError, "receipt write failure"):
+                installer.install(self.root, self.target)
+        self.assertFalse((self.target / "mob-write/SKILL.md").exists())
+        self.assertFalse((self.target / "mob-write" / installer.INSTALL_MANIFEST).exists())
+        self.assertEqual(private.read_bytes(), b"synthetic private marker")
+        self.assertEqual(notes.read_bytes(), b"unknown user file")
+
+    def test_rc2_managed_aliases_retire_without_private_symlink_reads(self):
+        installer.install(self.root, self.target)
+        old = self.legacy_install_fixture()
+        for name in old:
+            directory = self.target / name
+            receipt = directory / installer.LEGACY_INSTALL_MANIFEST
+            data = json.loads(receipt.read_bytes())
+            data.update(source=builder.SOURCE, canonical=builder.NAME, version="0.4.0-rc.2")
+            (directory / installer.INSTALL_MANIFEST).write_text(json.dumps(data))
+            receipt.unlink()
+        private = self.base / "private"
+        private.mkdir()
+        link = self.target / "wordaim/.local"
+        link.symlink_to(private, target_is_directory=True)
+        original_read = Path.read_bytes
+        def public_reads_only(path):
+            self.assertNotIn(".local", path.parts)
+            self.assertFalse(path == private or private in path.parents)
+            return original_read(path)
+        with patch.object(Path, "read_bytes", public_reads_only):
+            report = installer.install(self.root, self.target, self.backups)
+        self.assertEqual(set(report["retired_skills"]), set(old))
+        self.assertEqual(report["migrated_skills"], [])
+        self.assertTrue(link.is_symlink())
+        self.assertEqual(list(self.target.glob("*/SKILL.md")), [self.target / "mob-write/SKILL.md"])
+        backup = Path(report["backup_dir"])
+        for name in old:
+            self.assertTrue((backup / name / installer.INSTALL_MANIFEST).is_file())
+            self.assertFalse((self.target / name / installer.INSTALL_MANIFEST).exists())
+        self.assertFalse((backup / "wordaim/.local").exists())
+
+    def test_retired_inert_directories_are_left_untouched(self):
+        directory = self.target / "wordaim"
+        directory.mkdir(parents=True)
+        notes = directory / "unknown.txt"
+        notes.write_text("user-owned notes")
+        report = installer.install(self.root, self.target)
+        self.assertEqual(report["retired_skills"], [])
+        self.assertEqual(notes.read_text(), "user-owned notes")
+        self.assertFalse((directory / "SKILL.md").exists())
 
     def test_legacy_receipt_identity_is_an_exact_allowlist(self):
         self.legacy_install_fixture()

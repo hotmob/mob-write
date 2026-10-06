@@ -1,6 +1,0 @@
-interface:
-  display_name: "WordAim (compatibility)"
-  short_description: "Forward old WordAim calls to Mob Write"
-  default_prompt: "Use $wordaim to draft this through Mob Write."
-policy:
-  allow_implicit_invocation: false

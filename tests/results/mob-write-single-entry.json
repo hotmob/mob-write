@@ -1,0 +1,52 @@
+{
+  "candidate_version": "0.4.0-rc.3",
+  "scope": "Single entry packaging and isolated installation; historical writing evaluations remain unchanged.",
+  "automated_tests": 48,
+  "canonical_content_sha256": "bd097c9b594ee6b306ac9b49b0868d7d74482a434bffd52f28a2f59eab79ec92",
+  "entry_sha256": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+  "artifacts": [
+    "mob-write-chatgpt-skill.zip",
+    "mob-write-plugin.zip"
+  ],
+  "historical_upgrade_trials": [
+    {
+      "source_commit": "7a1f8b47052639b03a0261c5e68c685a48f2b86a",
+      "from_version": "0.4.0-rc.1",
+      "to_version": "0.4.0-rc.3",
+      "retired_entries": [
+        "wordaim",
+        "chinese-writing",
+        "mob-social-writing"
+      ],
+      "active_entries": [
+        "mob-write"
+      ],
+      "retired_public_backup_byte_match": true,
+      "synthetic_private_marker_preserved": true,
+      "private_data_migrated": false,
+      "repeated_install_succeeded": true
+    },
+    {
+      "source_commit": "46a741c6d0651486e308a83851c6fa4570514dba",
+      "from_version": "0.4.0-rc.2",
+      "to_version": "0.4.0-rc.3",
+      "retired_entries": [
+        "wordaim",
+        "chinese-writing",
+        "mob-social-writing"
+      ],
+      "active_entries": [
+        "mob-write"
+      ],
+      "retired_public_backup_byte_match": true,
+      "synthetic_private_marker_preserved": true,
+      "private_data_migrated": false,
+      "repeated_install_succeeded": true
+    }
+  ],
+  "limitations": [
+    "This is not a formal release or evidence of current account installation.",
+    "No real profile or external recipient was used.",
+    "Existing managed canonical upgrade is not a full transaction; I/O failure can leave partial public updates. Retired-entry backups exclude previous canonical mob-write content."
+  ]
+}

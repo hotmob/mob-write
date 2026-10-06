@@ -18,10 +18,7 @@ import corpus
 ROOT = Path(__file__).resolve().parents[1]
 NAME = "mob-write"
 PLUGIN_NAME = NAME
-LEGACY_PLUGIN_NAME = "mob-social-writing"
-LEGACY_NAME = "wordaim"
 SOURCE = "https://github.com/hotmob/mob-write"
-LEGACY_SOURCE = "https://github.com/hotmob/mob-social-writing"
 SKILL_FILES = (
     "SKILL.md", ".gitignore", "agents/openai.yaml", "scripts/corpus.py",
     "assets/sample-record.example.jsonl", "assets/voice-profile.example.md",
@@ -33,13 +30,11 @@ SKILL_FILES = (
     "third_party/Humanizer-LICENSE",
 )
 MANIFEST = f"packaging/{PLUGIN_NAME}/.codex-plugin/plugin.json"
-ALIAS_FILES = ("SKILL.md", "agents/openai.yaml")
-ALIAS_EXTRA_FILES = {"chinese-writing": ("references/technical-document.md",)}
-ALIAS_SOURCES = {
-    "chinese-writing": "chinese-writing",
-    "mob-social-writing": "compat/mob-social-writing",
-    "wordaim": "compat/wordaim",
-}
+RETIRED_ARTIFACTS = (
+    "wordaim-plugin.zip", "mob-social-writing-plugin.zip",
+    "wordaim-chatgpt-skill.zip", "chinese-writing-chatgpt-skill.zip",
+    "mob-social-writing-chatgpt-skill.zip",
+)
 
 
 def safe_relative(relative: str) -> PurePosixPath:
@@ -91,17 +86,8 @@ def plugin_manifest(root: Path) -> tuple[dict, bytes]:
 
 
 def public_skills(root: Path) -> dict[str, dict[str, bytes]]:
-    """One canonical source plus aliases; also used by the isolated installer."""
-    skills = {NAME: {name: read_public(root, name) for name in SKILL_FILES}}
-    for name, directory in ALIAS_SOURCES.items():
-        skills[name] = {path: read_public(root, f"{directory}/{path}") for path in alias_files(name)}
-        skills[name]["LICENSE"] = skills[NAME]["LICENSE"]
-        skills[name][".gitignore"] = skills[NAME][".gitignore"]
-    return skills
-
-
-def alias_files(name: str) -> tuple[str, ...]:
-    return ALIAS_FILES + ALIAS_EXTRA_FILES.get(name, ())
+    """The sole active entry; also used by the isolated installer."""
+    return {NAME: {name: read_public(root, name) for name in SKILL_FILES}}
 
 
 def file_sha256(files: dict[str, bytes]) -> dict[str, str]:
@@ -157,8 +143,6 @@ def build_packages(root: Path, raw_reference: bytes | None = None) -> dict[str, 
     skills = public_skills(root)
     canonical = skills[NAME]
     source_files = dict(canonical)
-    source_files.update({f"{directory}/{path}": skills[alias][path]
-                         for alias, directory in ALIAS_SOURCES.items() for path in alias_files(alias)})
     if raw_reference is not None:
         canonical["references/external-examples.md"] = render_examples(records)
     manifest, manifest_bytes = plugin_manifest(root)
@@ -172,32 +156,16 @@ def build_packages(root: Path, raw_reference: bytes | None = None) -> dict[str, 
     source_files["chatgpt/START-HERE.md"] = plugin["README.md"]
     source_files["chatgpt/chat-starter.md"] = plugin["chat-starter.md"]
     plugin_zip = archive(plugin)
-    # Preserve the real historical identity without a second authored manifest.
-    # WordAim was a display name; its plugin identity was mob-social-writing.
-    legacy_manifest = dict(manifest, name=LEGACY_PLUGIN_NAME)
-    legacy_manifest_bytes = (json.dumps(legacy_manifest, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
-    legacy_plugin_zip = archive({**plugin, ".codex-plugin/plugin.json": legacy_manifest_bytes})
     files = {
         f"{NAME}-chatgpt-skill.zip": archive(canonical),
         f"{NAME}-plugin.zip": plugin_zip,
-        f"{LEGACY_PLUGIN_NAME}-plugin.zip": legacy_plugin_zip,
-        f"{LEGACY_NAME}-plugin.zip": legacy_plugin_zip,
         "START-HERE.md": read_public(root, "chatgpt/START-HERE.md"),
         "chat-starter.md": read_public(root, "chatgpt/chat-starter.md"),
     }
-    for alias in ALIAS_SOURCES:
-        # Single-skill uploads need the dependency nested within their own ZIP.
-        # These are generated copies, never another source of writing rules.
-        nested = {f"{NAME}/{path}": data for path, data in canonical.items()}
-        files[f"{alias}-chatgpt-skill.zip"] = archive({**skills[alias], **nested})
     report = {
         "name": NAME, "plugin_identity": PLUGIN_NAME, "version": manifest["version"],
-        "legacy_plugin_identity": LEGACY_PLUGIN_NAME,
-        "plugin_artifacts": {f"{NAME}-plugin.zip": PLUGIN_NAME,
-                             f"{LEGACY_PLUGIN_NAME}-plugin.zip": LEGACY_PLUGIN_NAME,
-                             f"{LEGACY_NAME}-plugin.zip": LEGACY_PLUGIN_NAME},
-        "plugin_manifest_sha256": file_sha256({PLUGIN_NAME: manifest_bytes,
-                                              LEGACY_PLUGIN_NAME: legacy_manifest_bytes}),
+        "plugin_artifacts": {f"{NAME}-plugin.zip": PLUGIN_NAME},
+        "plugin_manifest_sha256": file_sha256({PLUGIN_NAME: manifest_bytes}),
         "source": SOURCE, "external_reference_count": len(records),
         "reference_revision": corpus.REFERENCE_REVISION if raw_reference is not None else None,
         "reference_sha256": corpus.REFERENCE_SHA256 if raw_reference is not None else None,
@@ -228,6 +196,11 @@ def main(argv: list[str] | None = None) -> int:
         raw = corpus.download_reference()
     files = build_packages(ROOT, raw)
     reject_symlinks(args.output)
+    for name in RETIRED_ARTIFACTS:
+        retired = args.output / name
+        reject_symlinks(retired)
+        if retired.exists():
+            raise ValueError(f"Retired artifact remains in output: {retired}. Move the old output aside or use an empty directory.")
     for name in files:
         reject_symlinks(args.output / name)
     args.output.mkdir(parents=True, exist_ok=True)
