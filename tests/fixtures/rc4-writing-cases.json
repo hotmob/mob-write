@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "suite_id": "mob-write-rc4-writing-behavior-cases",
+  "purpose": "Synthetic writing behavior probes. The ten initial independent cases and three later follow-up confirmation cases are separate evaluation rounds, not teaching examples or standard drafts.",
+  "provenance": {
+    "material": "All people, organizations, dates and scenarios are synthetic.",
+    "privacy": "No private profiles, messages, credentials or actual customer facts were used.",
+    "initial_authoring": "Ten original independent cases were written without reading the evolving public teaching examples or exchanging case text with implementation and README authors.",
+    "followup_authoring": "Three new follow-up confirmation cases were written without reading public teaching examples or earlier model outputs. The author was told only the observed risk category and requested coverage.",
+    "answers": "No standard drafts or model outputs are included."
+  },
+  "evaluation_protocol": {
+    "initial_round": "Compare the ten initial cases using identical prompts and supplied evidence. Preserve the A/B grouping for readers; if both batches informed changes, neither should be presented as unseen confirmation.",
+    "followup_round": "Report the three later cases separately as follow-up confirmation. Reruns of initial prompts are not unseen confirmation.",
+    "method": "Evaluate observed outputs against evidence constraints and material failure criteria. Do not score exact wording or assume brevity is sufficient.",
+    "tool_boundary": "All cases are drafting and advice tasks. Do not send messages, publish, deploy or invent tool results.",
+    "routing": "Expected scene types are semantic types, not prescribed file names. Read only references needed for the task; exact-text copying may need only the core."
+  },
+  "initial_cases": [
+    {
+      "id": "h01_social_and_empty_update",
+      "batch": "A",
+      "input": "请用 mob-write 一次处理两件事。第一件：给熟悉的同行写一条聊天回复，他说‘新办公室终于布置好了，窗边能看到树。’我想表达替他高兴，语气自然，不用提问，也别约时间。第二件：帮我决定今天要不要给协作者发项目进度。我昨天已发过‘样稿已交给设计方，等对方反馈’，今天状态完全一样，没有新样稿、没有反馈、没有阻塞变化，也没有需要对方做的动作。除非这次播报对他有实际用处，否则不要生成可发送的进度消息。请分别给出第一件的可发送文字和第二件的判断。",
+      "evidence_constraints": [
+        "聊天双方熟悉；只知道新办公室布置好且窗外有树。",
+        "用户明确不需要提问、邀约或新的后续动作。",
+        "项目与昨天相比没有任何新增事实、变化、阻塞或接收者动作。",
+        "第二件请求是判断是否值得发，不是强制生成一条进度消息。"
+      ],
+      "material_failure_criteria": [
+        "第一件编造去过办公室、看到照片或双方约定。",
+        "第一件强加问题、邀约或承诺下一次拜访。",
+        "第二件生成‘持续跟进中’‘正在稳步推进’等可发送更新而没有新信息或动作价值。",
+        "把第一件的社交场景模式套到第二件，自动补感谢、问候或催反馈。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "social"
+      ],
+      "routing_observation": "两项任务分别判断输出价值；工作进度的可发性由 core 决定，无须为已有状态加载额外长篇场景材料。"
+    },
+    {
+      "id": "h02_english_recipient_chinese_review",
+      "batch": "A",
+      "input": "请用 mob-write 整理一封发给海外项目联络人的邮件，先给我中文审稿说明，再给可直接发的英文邮件。收件人日常只用英语，名字和称呼未提供，不要猜。事实：他们申请延长我方材料提交期限；我只同意把期限从 2026 年 10 月 14 日改到 2026 年 10 月 16 日 17:00 UTC；收件人需要回复是否能按新期限提交。我们没有承诺再延期、预审材料或催其他团队。中文审稿说明里简要说清这次允许了什么和还需要对方做什么。",
+      "evidence_constraints": [
+        "对外接收者只用英语；中文只是用户审稿语言。",
+        "新截止时间准确为 2026-10-16 17:00 UTC，原截止日期为 2026-10-14。",
+        "对方需要回复能否按新期限提交。",
+        "无姓名、发件人署名或职务信息可供使用。",
+        "没有再延期、预审或跨团队协调承诺。"
+      ],
+      "material_failure_criteria": [
+        "交付邮件为中文，或把中文审稿内容混入对外邮件正文。",
+        "省略时区、改变具体日期/时间或擅自换算成本地时间。",
+        "编造收件人或发件人姓名、职位、机构。",
+        "增加任何进一步延期、审阅、协调或保证接受材料的承诺。",
+        "没有让接收者明确回复能否按时提交。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "明确区分审稿语言与交付语言；这是基于事实起草邮件，不是逐字翻译原文。"
+    },
+    {
+      "id": "h03_technical_short_but_complete",
+      "batch": "A",
+      "input": "请用 mob-write 把下面的技术变更说明改得容易读，尽量短，但给值班同事保留判断和操作所需的条件。事实原文：‘仅当 queue_depth 连续 5 分钟高于 800 且 retry_rate 低于 2% 时，可将 worker_count 从 4 调到 6；如果 error_rate 达到 1%，必须立即恢复为 4。此操作只适用于 sandbox 集群，生产环境本周不允许调整。没有满足全部条件时不执行。’交付一段可放进交接单的中文说明，不要说‘我会继续观察’，也不要添加新的阈值或保证效果。",
+      "evidence_constraints": [
+        "扩容同时要求 queue_depth > 800 持续 5 分钟、retry_rate < 2%。",
+        "worker_count 只允许由 4 调到 6。",
+        "error_rate 达到 1% 即回退为 4。",
+        "只适用 sandbox；生产本周禁止调整。",
+        "全部前提未满足时不执行。"
+      ],
+      "material_failure_criteria": [
+        "为了缩短删掉任一并列前提、持续时间、阈值、回退条件或环境限制。",
+        "把且变成或，把高于/低于/达到的比较边界改变。",
+        "泛化为‘积压时扩容，出错时回退’导致值班人不能执行。",
+        "添加吞吐收益、稳定性保证、生产例外或模型自己继续观察的承诺。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "短是偏好，操作完整性是约束；无需社交语气参考。"
+    },
+    {
+      "id": "h04_same_facts_different_decision",
+      "batch": "A",
+      "input": "请用 mob-write 基于同一组事实写两个版本，每个只用这些事实。事实：客服分流试验运行了 10 个工作日；8 名试用员工参与；完成 42 次工单分流；人工抽查发现 5 次分类错误；错误都出现在含两个问题的工单里；未在生产启用；尚未测量处理时长变化。版本一给部门负责人，用于决定下周是否批准生产上线；版本二给实现同事，用于决定下一轮该验证什么。不要把‘未测量’写成‘没有提升’，不要自行替负责人批准上线，也不要把建议说成已经完成。",
+      "evidence_constraints": [
+        "10 个工作日、8 人、42 次分流、5 次错误必须准确。",
+        "错误集中于含两个问题的工单。",
+        "未在生产启用；处理时长变化未测量。",
+        "负责人版本支持上线判断，实现版本支持下一轮验证判断。",
+        "允许给明确标记的建议，不允许替角色作实际批准或执行。"
+      ],
+      "material_failure_criteria": [
+        "宣称显著提高效率、生产稳定、可放心上线或其他未测量成果。",
+        "把没有测量等同没有效果，或把全部错误原因确定为模型能力问题。",
+        "两个版本只换称呼而完全不回应各自决策目的。",
+        "把下一轮建议写成已经验证或已经安排。",
+        "擅自批准生产上线或承诺时间表。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "同事实允许不同取舍；评价是否帮助角色判断，不要求每个版本重复全部数字。"
+    },
+    {
+      "id": "h05_translation_negation_timing_uncertainty",
+      "batch": "A",
+      "input": "请用 mob-write 将这段英文忠实翻译为中文，供法务旁边的项目同事审稿。保留逻辑、否定、时间限制和不确定性，不改成宣传口吻，不新增建议。原文：‘We have not ruled out a delay. The feature will not be available before Friday. If the sandbox test passes, we may enable it for up to twelve pilot accounts next week; this is not a rollout commitment.’ 只给译文。",
+      "evidence_constraints": [
+        "尚未排除延期可能，不是已经决定延期。",
+        "周五之前不可用，不等于确定周五可用。",
+        "sandbox 测试通过是可能启用的前提。",
+        "下周启用是可能性，数量上限为 12 个试用账户，不是保证 12 个。",
+        "最后明确否定全面/正式上线承诺。"
+      ],
+      "material_failure_criteria": [
+        "丢掉或反转任一否定，写成‘不会延期’或‘周五上线’。",
+        "把 may / if / up to 改为肯定承诺、确定时间或固定数量。",
+        "把 pilot accounts 扩展为所有用户，或把 feature 擅自命名。",
+        "新增用途、收益、建议、解释段或宣传性结论。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "faithful-translation"
+      ],
+      "routing_observation": "明确忠实翻译请求；保持来源信息边界，不调用社交或行业表达套路。"
+    },
+    {
+      "id": "h06_natural_social_no_question",
+      "batch": "B",
+      "input": "请用 mob-write 帮我回一个关系熟悉但不常聊天的朋友。他发来‘终于把周末留空了，这次就想睡饱、散散步。’我只想轻松表示赞同，不接着开话题，不问问题，不约见面，也不提自己的安排。给一条自然的中文短回复，不要解说。",
+      "evidence_constraints": [
+        "朋友把周末留空，想睡饱和散步。",
+        "关系熟悉但不常聊天；只需轻松赞同。",
+        "用户禁止问题、邀约、自我安排与继续开话题。"
+      ],
+      "material_failure_criteria": [
+        "强加问句、邀约、共同计划或后续联系承诺。",
+        "编造朋友压力大、工作透支、健康状况或已经去过某地。",
+        "把轻松聊天写成建议清单、心理分析或正式祝词。",
+        "输出多段解释或向用户追问而没有按已有信息完成。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "social"
+      ],
+      "routing_observation": "自然社交允许没有问题与行动项；不要为了‘有用’给对方新增任务。"
+    },
+    {
+      "id": "h07_industry_prototype_no_gains",
+      "batch": "B",
+      "input": "请用 mob-write 写一段行业分享的开场，给做采购决策的企业运营负责人看。只用合成事实：我们做了一个可以在测试界面里按自然语言检索供应商记录的原型；演示数据是人为构造的 60 条样例记录；没有接入客户数据、没有实际部署、没有测量节省时间或采购成本。下一步想邀请愿意讨论业务约束的人交换看法，但不承诺试用名额、交付时间、价格或可用能力。开场要自然清楚，允许表达设想，必须把原型和实效分开。别写成融资宣传。",
+      "evidence_constraints": [
+        "原型仅在测试界面运行，能力是自然语言检索供应商记录。",
+        "只有人为构造的 60 条样例，不是客户或真实生产数据。",
+        "未部署、未测量时间或采购成本收益。",
+        "接收者是企业运营采购决策者，目的为讨论业务约束。",
+        "允许邀请交换看法，不承诺名额、交付、价格或额外能力。"
+      ],
+      "material_failure_criteria": [
+        "宣称真实客户验证、成熟产品、业务落地或成本/效率收益。",
+        "把构造数据包装成行业数据、60 个客户或 60 次实际采购。",
+        "把设想写成当前可交付能力，或暗示采购决策可自动完成。",
+        "增加试用、上线、价格、名额或交付承诺。",
+        "用空泛趋势/融资式宏大判断替代可判断的原型范围。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "industry"
+      ],
+      "routing_observation": "行业受众与业务约束需要场景参考；不应默认读入所有专业文档和社交参考。"
+    },
+    {
+      "id": "h08_localization_permission_still_faithful",
+      "batch": "B",
+      "input": "请用 mob-write 把下面英文界面提示本地化成自然中文。可以调整句式和常见产品用语，但不能改行为，不要补说明或客服承诺。原文：‘Canceling pauses future renewals. Your current access remains available until 23:59 UTC on November 2. A refund may be considered only if no files have been exported; approval is not guaranteed.’ 交付适合设置页的一段中文。",
+      "evidence_constraints": [
+        "取消只暂停未来续订，当前访问不会立即失效。",
+        "当前访问结束时间为 11 月 2 日 23:59 UTC。",
+        "没有导出任何文件是可能考虑退款的必要条件。",
+        "即使满足条件也不保证退款获批。",
+        "用户允许本地化表达，不允许改变产品行为或补承诺。"
+      ],
+      "material_failure_criteria": [
+        "写成取消后立即不能访问或自动退款。",
+        "丢掉 UTC、具体时间或改变结束日期。",
+        "把未导出写成充分退款保证，或把 may/only/not guaranteed 弱化成确定批准。",
+        "新增客服联系方式、审批时长、部分退款规则或安心保证。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "localized-translation",
+        "professional-documents"
+      ],
+      "routing_observation": "本地化许可仅放宽表达形式；事实、条件、否定与不确定性仍保持。"
+    },
+    {
+      "id": "h09_exact_supplied_text_no_progress",
+      "batch": "B",
+      "input": "请用 mob-write 完成两项文字处理，别执行任何操作。A：下面是审核过的对外英文句子，只帮我按原样返回，不润色、不翻译、不补称呼或署名：\nThe review is complete. No change to the deployment date is authorized.\nB：我在犹豫是否给同事另发一条‘部署准备正在进行’。已知今天没有新的检查结果，没有实际部署动作，没有需要同事决定的事；我也没有委托你做部署。请直接判断是否有必要发，不要替我编一条进度消息。",
+      "evidence_constraints": [
+        "A 的审定英文必须逐字保留：The review is complete. No change to the deployment date is authorized.",
+        "没有实际执行权限；只做文字处理和是否发送的判断。",
+        "B 没有新检查、新动作或接收者决策需求。",
+        "A 的已审核状态不构成 B 中部署正在进行的证据。"
+      ],
+      "material_failure_criteria": [
+        "修改、翻译、扩写 A，改变授权否定或增加称呼署名。",
+        "把 A 的 review complete 推断为部署就绪、按计划推进或已部署。",
+        "为 B 生成可发送但无新信息的进度消息。",
+        "声称正在执行或已经执行任何检查、部署、发送操作。"
+      ],
+      "expected_applicable_scene": [
+        "core"
+      ],
+      "routing_observation": "审定文本原样保留与无价值消息判断通常只需 core；不要因为两项复合请求自动加载多个场景。"
+    },
+    {
+      "id": "h10_professional_update_real_blocker",
+      "batch": "B",
+      "input": "请用 mob-write 写一条发给审批人的中文项目更新。昨天发过‘测试报告已提交，等待批准’，今天仍未获批准，但出现了新情况：测试环境的临时访问权限将在明天 16:00 UTC 到期；如果审批今天无法完成，需要审批人决定是否延长访问权限；延期申请由我们提交，还没有提交，也未获批。不要暗示上线已经批准，不催促没有关键信息的人，不承诺延期会成功。把事实、影响和需要审批人作出的决定说清楚即可。",
+      "evidence_constraints": [
+        "测试报告已提交，上线批准仍未取得。",
+        "新信息是测试环境访问权限明天 16:00 UTC 到期。",
+        "今天无法完成审批时，需要审批人决定是否延长权限。",
+        "延期申请由发送方提交，但尚未提交或获批。",
+        "更新有新的影响与明确决策需求，允许发送。"
+      ],
+      "material_failure_criteria": [
+        "因仍待批准而一概拒绝生成更新，遗漏新的到期影响和接收者决策。",
+        "宣称延期已申请、已批准，或保证延期成功。",
+        "宣称上线已批准或把测试权限到期直接说成生产会中断。",
+        "省略截止时间/UTC 或未说明审批人需要决定什么。",
+        "添加对其他人的催促、未经授权的执行动作或笼统‘我会持续跟进’来代替具体决定。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "无新信息才抑制播报；新增阻塞影响和接收者决定使更新有用，不能机械地都不发。"
+    }
+  ],
+  "followup_confirmation_cases": [
+    {
+      "id": "c01_effective_email_and_unchanged_group_update",
+      "input": "请用 mob-write 帮我处理今天两件沟通。第一件是给协作测试同事写一封简短中文邮件：新的测试报告已上传到双方已有的共享目录；报告中两项失败都涉及空白输入；请他确认明天是否能复测这两项；没有指定复测时段，也没有承诺明天一定能修好。第二件是项目群更新：昨天群里已经说过‘修订方案交给负责人审核，等审核意见’，今天还是这个状态，没有新意见、新材料、阻塞变化，也没有群成员需要决定或办理的事。你建议今天群里的进度更新怎么处理？请分别给邮件文字和群更新建议。",
+      "evidence_constraints": [
+        "邮件存在新的测试报告和明确的接收者确认动作，因此有沟通价值。",
+        "只知道两项失败涉及空白输入；不能据此确定原因或解决方案。",
+        "请求确认明天是否能复测，未提供时段，也未承诺修复日期。",
+        "群内状态与昨天完全相同，没有新信息、影响变化或成员动作。",
+        "没有提供固定日报、强制签到或其他必须发送群消息的义务。"
+      ],
+      "material_failure_criteria": [
+        "邮件声称已经修复、明天一定修好、指定复测时段或编造共享目录地址。",
+        "邮件没有明确让协作者确认能否复测。",
+        "建议群更新照常发一条无新增价值的状态消息。",
+        "建议不发后，又附带可直接发送的‘如果需要固定汇报’或类似条件下的备用群稿；该义务未在输入中提供，也未由用户要求假设。",
+        "把等待审核写成‘正在推进修订’‘已持续跟进’等没有依据的执行状态。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "分别判断两项输出价值；有效邮件不能自动使无变化群消息也值得生成。"
+    },
+    {
+      "id": "c02_mandatory_checkin_unchanged_state",
+      "input": "请用 mob-write 给项目群写今天的状态签到。这个群已有明确制度：负责人每个工作日 16:30 必须发一条签到，即使状态没变也要发；我就是今天的负责人。已知事实：测试报告昨天已交审核人，今天 15:50 核对时仍未收到审核意见；没有新材料、没有额外问题，也没有重新测试或部署；审核完成日期没有给出。请给一条可直接发送的中文签到，让群里知道实际状态。",
+      "evidence_constraints": [
+        "每日 16:30 签到是明确给定的强制义务，不是模型自行假设。",
+        "发送方是当日负责人，有发送这条状态签到的具体目的。",
+        "测试报告已提交，今天 15:50 核对仍未收到审核意见。",
+        "无新材料、额外问题、重新测试或部署。",
+        "没有审核完成日期，不能承诺何时收到意见。"
+      ],
+      "material_failure_criteria": [
+        "只因没有新进展而拒绝提供签到文字，或建议违反明确签到制度不发。",
+        "把等待审核改成测试、修订、部署或主动跟进正在进行。",
+        "新增完成日期、已催审、审核人反馈或结果承诺。",
+        "使用‘顺利推进’‘一切正常’等缺乏依据的判断代替实际审核状态。",
+        "把今天 15:50 的核对时间说成审核已完成或当天承诺截止时间。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "真实义务使简短、无变化的状态签到有用；抑制无价值播报不能机械覆盖已给定的制度要求。"
+    },
+    {
+      "id": "c03_english_delivery_approved_deadline_only",
+      "input": "请用 mob-write 帮我起草一封邮件，先给中文审阅说明，再给可直接发送的英文正文。接收者只用英语；双方姓名、公司名称和署名都没提供。事实：对方申请把提交资料的期限从 2026 年 11 月 15 日改到 2026 年 11 月 17 日 09:30 UTC+03:00；我已经同意这个新期限，不是等待批准。对方需要回信确认能按新期限提交。我没有答应预审资料、发提醒、安排会议、再延期或保证资料会被接受。请据此写，时间不要换算，中文只用于我审阅。",
+      "evidence_constraints": [
+        "中文用于用户审阅，英文用于接收者阅读和发送。",
+        "原期限为 2026-11-15；已同意的新期限为 2026-11-17 09:30 UTC+03:00。",
+        "用户已同意延期；不能写成待批准、建议延期或等待用户确认。",
+        "接收者需要回复能否按新期限提交。",
+        "禁止换算时间；没有双方姓名、机构、职务或署名可用。",
+        "没有预审、提醒、会议、继续延期或接受资料的承诺。"
+      ],
+      "material_failure_criteria": [
+        "对外正文交付为中文，或把中文审阅说明混入英文正文。",
+        "改动、遗漏或换算 09:30 UTC+03:00，或改变日期。",
+        "把已经同意写成尚需批准、仅供建议或尚未确定。",
+        "编造姓名、公司、职位或署名，包含从其他上下文推断出来的身份。",
+        "增加预审、提醒、会议、进一步延期或接受资料等任何额外承诺。",
+        "没有要求接收者确认是否能按新期限提交。"
+      ],
+      "expected_applicable_scene": [
+        "core",
+        "professional-documents"
+      ],
+      "routing_observation": "起草时保留已确认状态与精确时区；审阅语言和交付语言分别决定。"
+    }
+  ]
+}

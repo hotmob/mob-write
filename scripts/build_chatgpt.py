@@ -26,6 +26,7 @@ SKILL_FILES = (
     "references/profile.md", "references/technical-document.md",
     "references/reply-moves.md", "references/learning.md",
     "references/chatgpt.md", "references/sources.md", "LICENSE",
+    "examples/work.md", "examples/social.md", "examples/documents.md",
     "THIRD_PARTY_NOTICES.md", "third_party/MengTo-LICENSE",
     "third_party/Humanizer-LICENSE",
 )

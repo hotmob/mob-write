@@ -42,7 +42,7 @@ class PackageTests(unittest.TestCase):
                 self.assertEqual(builder.main(["--output", str(self.root / "dist")]), 0)
         report = json.loads(files["package-manifest.json"])
         self.assertEqual(report["name"], "mob-write")
-        self.assertEqual(report["version"], "0.4.0-rc.3")
+        self.assertEqual(report["version"], "0.4.0-rc.4")
         self.assertEqual(report["source"], builder.SOURCE)
         self.assertEqual(report["external_reference_count"], 0)
         self.assertIsNone(report["reference_sha256"])
@@ -59,6 +59,7 @@ class PackageTests(unittest.TestCase):
         for relative in (".local/profile.md", "chinese-writing/.local/profile.md",
                          "compat/mob-social-writing/.local/profile.md", ".env",
                          "references/private-notes.md", "agents/private.json",
+                         "examples/private-feedback.md", "tests/fixtures/held-out-cases.json",
                          "scripts/private.py", ".git/config"):
             path = self.root / relative
             path.parent.mkdir(parents=True, exist_ok=True)

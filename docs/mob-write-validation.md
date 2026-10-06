@@ -1,8 +1,10 @@
 # Mob Write candidate validation
 
-## Current single-entry candidate: 0.4.0-rc.3
+The current **0.4.0-rc.4** candidate has its own [validation record](rc4-validation.md), including revised writing rules, twelve synthetic teaching cases, independent behavior trials, remaining failures, and source/package/install verification. The evidence below is preserved for its original versions.
 
-The current candidate installs only `mob-write` and produces only `mob-write-chatgpt-skill.zip` and `mob-write-plugin.zip`. The three former entrypoint sources and alias packages were removed from this candidate; historical commits, releases and evaluations are retained. The canonical writing bytes and entry hash below are unchanged, so the earlier writing comparisons remain evidence for that method, rather than a new writing trial of this packaging change.
+## Preserved single-entry candidate: 0.4.0-rc.3
+
+The rc.3 candidate installed only `mob-write` and produced only `mob-write-chatgpt-skill.zip` and `mob-write-plugin.zip`. The three former entrypoint sources and alias packages were removed from that candidate; historical commits, releases and evaluations were retained. Its canonical writing bytes and entry hash were unchanged from rc.2, so the earlier writing comparisons remain evidence for that method, rather than a new writing trial of the packaging change.
 
 All **48 automated checks** passed locally. The checks cover one entry in every package and fresh install, private-path protection, old receipt verification and public backups, changes made during backup, and a late first-install failure that removes only this attempt's unchanged public files. Retired-entry `.gitignore` files remain to protect private data at its original path. Fresh failure cleanup does not read or remove private or unknown data. Updating an existing canonical installation is not a full transaction; keep its prior public version for recovery.
 

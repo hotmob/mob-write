@@ -105,7 +105,7 @@ class InstallTests(unittest.TestCase):
         self.assertIn("--skills-dir", missing.stderr)
         completed = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)
-        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0-rc.3")
+        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0-rc.4")
         second = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(second.returncode, 0, second.stderr)
         for name in (builder.NAME,):
@@ -249,10 +249,9 @@ class InstallTests(unittest.TestCase):
         for private in private_paths:
             self.assertNotIn(private, staged.stdout)
 
-    def test_recognized_rc1_upgrade_preserves_private_paths_and_replaces_only_managed_public_files(self):
+    def test_supported_legacy_receipt_upgrade_preserves_private_paths_and_replaces_only_managed_public_files(self):
         old = self.legacy_install_fixture()
-        self.assertEqual({name: len(files) for name, files in old.items()},
-                         {"wordaim": 19, "chinese-writing": 5, "mob-social-writing": 4})
+        self.assertEqual(set(old), {"wordaim", "chinese-writing", "mob-social-writing"})
         for name in old:
             private = self.target / name / ".local/profile.md"
             private.parent.mkdir()

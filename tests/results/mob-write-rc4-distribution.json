@@ -1,0 +1,56 @@
+{
+  "version": "0.4.0-rc.4",
+  "previous_commit": "1fcffc78edd73305899f926b1f74626e94988ef5",
+  "previous_version": "0.4.0-rc.3",
+  "entry_sha256": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+  "canonical_content_sha256": "52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3",
+  "public_file_sha256": {
+    ".gitignore": "e99b4d7697e0e5d137b3146cee595df809b0cf3f0d6ebb17f628ea640a049206",
+    "LICENSE": "de849b31872753dbbe6c8f1dea783ae6c48935c4fdc30dc5208a9e0bcff00073",
+    "SKILL.md": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+    "THIRD_PARTY_NOTICES.md": "ad43f5d8d7c98bc27bde0086a96069c89ad5acfac6cf43af661f197d4673ba79",
+    "agents/openai.yaml": "7a05633bf255a3ece5fa0d72e9a4550496d6da576124271c708746181270f59f",
+    "assets/sample-record.example.jsonl": "df9af389665521db7386186853fd946b2986165939e91ccfcf70ac2bc1d303f6",
+    "assets/voice-profile.example.md": "2d8d6a6dcd0bb5885cdeb0dd4e99da0d971c0b7947c5e3fec5e15f7c1ca692fa",
+    "examples/documents.md": "334698d1ac3b2696fada89bdb8a6673f3348d78752d4d7127a99f243f9e37f7f",
+    "examples/social.md": "f32208cc4e45943694924aa931ef1b0404d208358f621dad0643392635d6c220",
+    "examples/work.md": "6c635e2c342511a28365540369d44ae5528350b06965206f2ddb398915670d14",
+    "references/chatgpt.md": "4ce2230000ec0f50d68742db06825164ef13dfd56cf52728031896afb6680b2a",
+    "references/chinese.md": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074",
+    "references/learning.md": "9aa1d65a56e7515ed2e7187cebf0e7415050562143acb2e6d0b7d550e74e3a21",
+    "references/profile.md": "bdebf3cd1ebfcddc0cc6b8636e905dbc257bb287bd4be2dbcea14578e5bcf5f7",
+    "references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+    "references/social.md": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc",
+    "references/sources.md": "d6cd35cccf762ae0fe459734dbf4dea03e9140b69914142fb67c0c77bcb076a3",
+    "references/technical-document.md": "1768b3ead8a8cda463d1257b8863751435a41d12791689e6625250edc34363ab",
+    "references/work.md": "e3f3f12fa940a04e49f7787f178f5e62a6d377ab49a724dcae0a515a5cc7772d",
+    "scripts/corpus.py": "b8707196180276ab940e5382ff5433ca2939206c121b53d20848e8c3574a94fc",
+    "third_party/Humanizer-LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+    "third_party/MengTo-LICENSE": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+  },
+  "package_sha256": {
+    "START-HERE.md": "71d3306ac40b9f69d9a4dd014bb7e9e1c99d0ad4ec1031be2f3343ee3646d9bd",
+    "chat-starter.md": "1ab9c1b66e6c28eca0c4bc22004dc5bdd1ea32366445a125d9e43e43d68726ba",
+    "mob-write-chatgpt-skill.zip": "e0429bde7c0a1a2a3ed64d9dd04261ea6193b29f8ca4bf06212e04bf87d60bdf",
+    "mob-write-plugin.zip": "815ce243db6c6caae7189bdec90239fd24cb53aeeadb08a6900b7b072b4bceb2"
+  },
+  "checks": {
+    "source_matches_final_behavior_freeze": true,
+    "chatgpt_zip_matches_source": true,
+    "plugin_zip_matches_source": true,
+    "isolated_fresh_behavior_install_matches_source": true,
+    "actual_rc3_original_installer_then_rc4_upgrade": true,
+    "upgraded_install_matches_source": true,
+    "synthetic_private_marker_preserved": true,
+    "single_active_entry": "mob-write",
+    "repeated_install_succeeded": true,
+    "automated_structural_checks": 48
+  },
+  "scope": "Offline, explicit-target isolated public packages and installation only; no global, Personal, WorkOS or host-generated plugin changes.",
+  "limits": [
+    "Structure and file identity do not establish writing quality.",
+    "Synthetic marker preservation is not a read or migration of any real private profile.",
+    "No ChatGPT account upload or formal release was performed.",
+    "Updating an existing canonical installation is not a full transaction on I/O failure."
+  ]
+}
