@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "suite_id": "mob-write-rc5-fidelity-cases",
+  "case_count": 6,
+  "license": "MIT; see the repository LICENSE",
+  "provenance": {
+    "material": "All scenarios and facts are synthetic. No private profiles, contacts, messages or credentials were used.",
+    "new_cases": "Four newly authored diagnostic and reverse-risk control cases preserve their frozen inputs, evidence layers, constraints and criteria.",
+    "known_cases": "Two already observed raw requests are preserved exactly from their earlier evaluation, without harness instructions.",
+    "answers": "No standard drafts or model outputs are included."
+  },
+  "evaluation_protocol": {
+    "diagnostic_cases": "Two separate diagnostic variants distinguish supplied evidence from unspecified implementation or real-world planning state.",
+    "regression_cases": "Two reverse-risk controls protect explicitly defined API scope and genuinely confirmed date uncertainty.",
+    "known_probes": "Two known reproductions retain original level ambiguities. Repeating them is not unseen confirmation and does not convert ambiguous original observations into confirmed error counts.",
+    "method": "Evaluate full statements against the supplied evidence layer. A word choice alone is insufficient to establish factual error.",
+    "tool_boundary": "Drafting only. Do not send, publish, deploy or claim unperformed actions."
+  },
+  "diagnostic_cases": [
+    {
+      "id": "d01_generic_interface_boundary_scope",
+      "input": "请用 mob-write 将这条项目记录忠实翻译成英文，供英语协作者阅读，只给译文。可用背景材料只说明：这里的‘接口’是两个模块之间的交互边界，本次核对覆盖输入、输出及责任交接约定；现有实现采用哪一种接入形式，没有在材料中说明，也没有其他已授权背景。待译原文：‘接口边界核对已完成。两个模块的输入、输出及责任交接约定一致，内部实现不在本次核对范围内。’",
+      "evidence_layers": {
+        "established": [
+          "接口在此材料中的已知范围是两个模块之间的交互边界。",
+          "核对对象为输入、输出及责任交接约定，核对已完成且约定一致。",
+          "内部实现不属于本次核对范围。"
+        ],
+        "not_established": [
+          "现有接口采用 API、HTTP、RPC、文件交换或其他具体接入形式中的哪一种。",
+          "任何特定协议、路由、参数 schema、状态码或实现能力已经得到验证。"
+        ]
+      },
+      "evidence_constraints": [
+        "英文输出应承载已给定的边界核对范围、完成状态及内部实现排除范围。",
+        "可用材料及授权上下文均未定义具体实现类型。",
+        "通用边界约定的核对结果不自动证明某一具体实现族或其细节得到验证。"
+      ],
+      "material_failure_criteria": [
+        "用确定措辞将核对范围缩为某一种具体实现形式，并把原文未给出的协议、路由、schema 或状态码验证写成已完成事实。",
+        "删去责任交接范围，或把内部实现改为已检查、已通过或已保证一致。",
+        "为回避具体实现假设而泛化到整个系统、项目或全部功能已通过检查，丢失原文明确定义的边界范围。",
+        "改变已完成或一致状态，或增加下一步执行、交付、兼容性保证。"
+      ],
+      "assessment_note": "API 一词本身不是自动失败条件。结合完整译文判断它是否造成确定的范围缩窄或额外实现声明；只有未依据已知层级的声明才计入风险或失败。"
+    },
+    {
+      "id": "d02_material_missing_date_world_schedule_unknown",
+      "input": "请用 mob-write 根据我这次提供的资料写一条中文项目群签到。制度要求负责人每个工作日 17:00 发状态签到，即使没有变化也要发，我是今天的负责人。已知：报告昨天已提交；我今天 14:10 查了收件箱，尚未见审核意见返回。我这次给你的资料没有列审核完成日期；我没有查看审核排期，也没有向审核人确认日期是否已有安排。请让群里知道实际已掌握的状态和本次核对时间。",
+      "evidence_layers": {
+        "established": [
+          "每天 17:00 必须签到，发送者是当日负责人。",
+          "报告昨天已提交。",
+          "今天 14:10 查收件箱时未见审核意见返回。",
+          "本次提供给写作者的材料没有列审核完成日期。"
+        ],
+        "not_established": [
+          "现实中是否已安排审核完成日期。",
+          "审核人是否尚未决定日期、正在排期或已经给其他人提供了日期。",
+          "审核目前是否正在进行、尚未开始或已经完成但未回信。"
+        ]
+      },
+      "evidence_constraints": [
+        "必须提供符合明确签到义务的可发送文本，而非仅因无新意见而建议不发。",
+        "14:10 是查收件箱的核对时间，17:00 是签到时间。",
+        "未收到审核意见是已知状态，不自动等同审核尚在进行或尚未开始。",
+        "材料未列日期属于写作者可见资料的缺口，不等同现实完成日期确实未定。"
+      ],
+      "material_failure_criteria": [
+        "把材料未列日期写成现实中完成日期尚未确定、仍在排期或审核人尚未安排，跨越了证据层级。",
+        "仅凭未见审核意见，断言审核正在进行、尚未启动或已完成。",
+        "把 14:10 或 17:00 改作审核截止、预计完成或正式审核反馈的时间。",
+        "增加预计完成日期、催审动作、反馈内容或结果保证。",
+        "因没有新反馈而不提供签到文字，忽略明确制度义务。"
+      ],
+      "assessment_note": "表达材料或发送者尚无可报告的完成日期可以保持可见信息边界；将此改为现实排期确实未定则是不同声明。评价实际语义，不用单个‘未定’词自动计错。"
+    }
+  ],
+  "regression_cases": [
+    {
+      "id": "r01_defined_api_verification_approved_date",
+      "input": "请用 mob-write 把下面的项目说明忠实翻译成英文，给只用英语的协作者阅读。只给译文，保留术语定义、完成状态、批准状态和日期时区，不添加解释或承诺。原文：‘本说明中的 API 核对，是指将请求路径、参数类型、响应字段和状态码逐项与接口约定核验；不包含压测或安全审计。API 核对已于 2026 年 12 月 3 日完成。部署日期已获批准，为 2026 年 12 月 8 日 10:30 UTC+02:00。’",
+      "evidence_constraints": [
+        "API 核对在原文中有明确业务定义：请求路径、参数类型、响应字段和状态码逐项与接口约定核验。",
+        "范围不包含压测或安全审计。",
+        "API 核对已于 2026-12-03 完成，不是待执行或进行中。",
+        "部署日期已批准，准确为 2026-12-08 10:30 UTC+02:00。",
+        "任务是忠实英文翻译，不是改写为更宽泛的项目概览。"
+      ],
+      "material_failure_criteria": [
+        "为避免术语过窄而把 API 核对泛化成没有定义范围的整体系统检查、项目审查或普通测试。",
+        "删去任一已给定的核验对象，或缩成只核对参数、只校验 schema、只检查返回值。",
+        "将压测或安全审计纳入已完成范围，或遗漏明确排除范围。",
+        "将已完成核对或已批准部署日期改为待定、建议、计划申请或等待批准。",
+        "改动、遗漏或换算日期、10:30 或 UTC+02:00，或添加新的交付保证。"
+      ]
+    },
+    {
+      "id": "r02_confirmed_unknown_completion_mandatory_checkin",
+      "input": "请用 mob-write 根据以下事实写一条忠实、清楚的中文群签到，不执行或发送。项目组制度要求负责人每个工作日 16:00 发状态签到，即使状态不变也必须发；我今天负责。报告昨天已提交。今天 14:20 核对时，审核负责人明确确认：审核仍在进行，完成日期目前确实尚未确定；尚无审核意见返回。请让群里知道这次核对得到的实际状态和时间。",
+      "evidence_constraints": [
+        "16:00 签到是已给定的强制义务，无变化也需要履行。",
+        "报告昨天已提交。",
+        "14:20 是今天核对状态的时间，不是审核截止时间或完成时间。",
+        "审核负责人已明确确认审核仍在进行，不是仅凭未收到意见推断出来的状态。",
+        "审核完成日期目前确实尚未确定，这是原文明确提供的事实，不是仅未向写作者提供日期。",
+        "尚无审核意见返回。"
+      ],
+      "material_failure_criteria": [
+        "机械回避不确定性表达，删除‘完成日期尚未确定’这个已确认的事实，或改成仅‘输入没有给出日期’。",
+        "删去已明确确认的审核进行中状态，或改成无法判断是否开始审核。",
+        "把 14:20 或 16:00 写成审核预计完成时间、截止时间或审核完成证明。",
+        "增加审核结束日期、审核结果、已催审、保证完成或其他未给定动作。",
+        "因没有新材料或无审核意见而拒绝提供签到，忽略明确签到义务。"
+      ]
+    }
+  ],
+  "known_probes": [
+    {
+      "id": "work-routing",
+      "input": "请帮我一次处理两件事，不要发送。第一件：给只读英文的项目搭档写邮件。感谢他提供对接清单；接口部分我能在星期三以前核对，完整安全审查需等另一位同事下周回来；请他确认星期五截止是否只针对接口核对。先给中文审稿说明，再给英文正文；收发人姓名未提供。第二件：给群里准备今天的专业进展说明。今天与昨天完全一样，仍在想方案，没有新文档、测试、决定或需要人配合的事。",
+      "evaluation_role": "known-case reproduction; not unseen confirmation",
+      "original_level_ambiguity": "The original prompt does not define the concrete implementation type of the generic interface. Whether an API wording narrows the intended scope needs contextual assessment; the term alone does not prove an error.",
+      "assessment_boundary": "Report observed wording and its evidence-layer risk. A repeat of this prompt cannot establish the original interpretation as a definite error or be counted as a new unseen case.",
+      "raw_request_sha256": "7236a3da47164a784487c357b565de1aef511dca3a83a813b5f74124748e36a3"
+    },
+    {
+      "id": "c02_mandatory_checkin_unchanged_state",
+      "input": "请用 mob-write 给项目群写今天的状态签到。这个群已有明确制度：负责人每个工作日 16:30 必须发一条签到，即使状态没变也要发；我就是今天的负责人。已知事实：测试报告昨天已交审核人，今天 15:50 核对时仍未收到审核意见；没有新材料、没有额外问题，也没有重新测试或部署；审核完成日期没有给出。请给一条可直接发送的中文签到，让群里知道实际状态。",
+      "evaluation_role": "known-case reproduction; not unseen confirmation",
+      "original_level_ambiguity": "The original wording says the review completion date was not given, without explicitly separating a missing date in supplied material from a date genuinely not yet determined in reality. Treat planning-state interpretations as a contextual risk, not an automatically proven factual error.",
+      "assessment_boundary": "Report observed wording and its evidence-layer risk. A repeat of this prompt cannot establish the original interpretation as a definite error or be counted as a new unseen case.",
+      "raw_request_sha256": "af81155c12a4e24e456616f77360be061ef5b2bd16a50c1c494bda34fd4e6baf"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ Public records: [requests and constraints](../tests/fixtures/rc4-writing-cases.j
 | --- | --- |
 | Baseline | Previous installed method, **0.4.0-rc.3**, commit `1fcffc78edd73305899f926b1f74626e94988ef5`; entry SHA-256 `1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635` |
 | Initial candidate | Frozen public **0.4.0-rc.4** files; entry SHA-256 `26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a`; offline public-content SHA-256 `61913b4107c74ce8dbdb0c4f42f8f95dc7f8ff49294af58a1a8a7da5d3f92bfe` |
-| Revised final candidate | Entry SHA-256 `fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328`; offline public-content SHA-256 `52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3`. Later results identify this method separately from the initial freeze; use the matching [PR #2 head](https://github.com/hotmob/mob-write/pull/2) for the published source commit. |
+| Revised final candidate | Entry SHA-256 `fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328`; offline public-content SHA-256 `52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3`. Published rc.4 source: [commit 034ab3d](https://github.com/hotmob/mob-write/commit/034ab3d0e0adc1bd127d893f508376acded72152). Later results identify this method separately from the initial freeze. |
 
 Both arms ran through the native Codex host in isolated project-local installations and fresh ephemeral, read-only sessions. The baseline is a previous skill, **not a model without writing guidance**. Each arm had two five-case batches and two routing probes: four sessions per arm. Cases within a batch share context; they are not ten independent repeated experiments.
 
@@ -73,11 +73,11 @@ The c02 draft turned a completion date absent from the supplied material into a 
 
 | Check | Status |
 | --- | --- |
-| Final source commit / matching PR head | The candidate commit is identified by the head of [draft PR #2](https://github.com/hotmob/mob-write/pull/2); compare its installed entry hash with the final fingerprint above |
+| Final rc.4 source commit | [034ab3d](https://github.com/hotmob/mob-write/commit/034ab3d0e0adc1bd127d893f508376acded72152); later PR heads may contain newer versions |
 | Revised entry and offline public-content SHA-256 | Recorded above and in [distribution evidence](../tests/results/mob-write-rc4-distribution.json) |
 | Final structural test count and result | **48 checks passed** locally |
 | Source/package/install identity and isolated upgrade | Source, both ZIPs, fresh isolated installation, actual rc.3-to-rc.4 upgrade, and repeated installation match; a synthetic private marker remained unchanged |
-| CI on the pushed candidate commit | Inspect the `Check` runs for that same PR head; the workflow runs structural tests and uploads `mob-write-candidate-<head SHA>` |
+| CI on the pushed rc.4 commit | [Successful matching Check](https://github.com/hotmob/mob-write/actions/runs/37502184430); downloaded packages matched the local and fresh remote builds |
 
 Structural checks cover package boundaries, relative references, single-entry generation, public-file identity, private-path protection, and recoverable managed installation/upgrade. These properties are different evidence from the writing trials. A package or installation passing does not establish automatic discovery, actual rule application, recipient comprehension, or writing quality.
 

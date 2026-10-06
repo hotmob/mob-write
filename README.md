@@ -43,7 +43,7 @@ Scene guidance and teaching explanations are mainly in Chinese; this does not re
 
 ## Install the candidate
 
-This branch is **0.4.0-rc.4**, a review candidate in [draft PR #2](https://github.com/hotmob/mob-write/pull/2). The published **v0.2.0** release contains the earlier social-writing method. Cloning main or downloading v0.2.0 does not install this candidate. Merge and formal release are separate decisions.
+This branch is **0.4.0-rc.5**, a review candidate in [draft PR #2](https://github.com/hotmob/mob-write/pull/2). The published **v0.2.0** release contains the earlier social-writing method. Cloning main or downloading v0.2.0 does not install this candidate. Merge and formal release are separate decisions.
 
 Python 3.10+ is needed for installation and packaging. The writing instructions are Markdown; the optional Python tools make no model or social-account calls.
 
@@ -111,9 +111,9 @@ The builder uses a public allowlist and excludes private profiles, drafts, feedb
 python3 -m unittest discover -s tests -v
 ```
 
-All **48 structural checks** pass. They cover public package boundaries, source/package identity, and isolated installation and upgrade. **Passing them does not establish writing quality.** Model trials separately record actual outputs and source reads. In the initial ten-case comparison, neither rc.3 nor the frozen initial rc.4 method had a material failure. A simple thank-you read three files with rc.3 and two with rc.4, producing the same suitable reply.
+All **48 structural checks** pass. They cover public package boundaries, source/package identity, and isolated installation and upgrade. **Passing them does not establish writing quality.** Model trials separately record actual outputs and source reads. [rc.4 validation](docs/rc4-validation.md) preserves the initial ten-case comparison, targeted confirmations, and observed risks; its results were not rerun or rewritten as rc.5 results.
 
-After a targeted rule revision, three new confirmation requests preserved the useful email, omitted the empty update, honored a mandatory check-in, and separated Chinese review from English delivery. A repeated work probe still changed “interface” to “API”: factual fidelity remains a limitation. No trial opened the teaching library, so these results do not demonstrate an example-library benefit. [rc.4 validation](docs/rc4-validation.md) preserves both successes and failures, separately from [earlier evidence](docs/mob-write-validation.md). These small synthetic trials do not prove reliable behavior, general improvement, reader understanding, or real-task usefulness.
+The [bounded rc.5 fidelity check](docs/rc5-validation.md) compares the two earlier ambiguous requests and four new explicit-boundary requests. The candidate retained the broader “interface” wording in one work run, but its date wording remained ambiguous. Both methods met the four new requests' criteria. The clearer rules therefore do not establish repeatable improvement or resolution of either risk. No trial opened the teaching library, so an example-library benefit remains unmeasured. Small synthetic trials do not prove reliable behavior, general improvement, reader understanding, or real-task usefulness.
 
 Contributions should show the original request, scene, observed problem, public-safe example, and applicable boundary. Use synthetic or authorized public material; keep private writing, profiles, and conversations out of issues and patches. Project principles are in the [constitution](docs/constitution.md); planned work is in the [roadmap](docs/roadmap.md).
 

@@ -1,6 +1,6 @@
 # Mob Write in ChatGPT
 
-This is the 0.4.0-rc.4 candidate built from the integration branch. The published v0.2.0 release contains the earlier social method. Building this candidate does not establish a merge or formal release.
+This is the 0.4.0-rc.5 candidate built from the integration branch. The published v0.2.0 release contains the earlier social method. Building this candidate does not establish a merge or formal release.
 
 When your host offers skill file upload, use `mob-write-chatgpt-skill.zip`. When it supports a skills-only plugin import, use `mob-write-plugin.zip`, with identity `mob-write`. These are the only generated ZIPs and use the same canonical writing rules. Availability depends on the host/account/workspace. This project does not promise a specific current UI route.
 

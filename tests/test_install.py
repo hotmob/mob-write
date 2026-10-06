@@ -86,11 +86,11 @@ class InstallTests(unittest.TestCase):
         (self.root / "references/work.md").write_text("new public version\n", encoding="utf-8")
         manifest_path = self.root / builder.MANIFEST
         manifest = json.loads(manifest_path.read_bytes())
-        manifest["version"] = "0.4.0-rc.4"
+        manifest["version"] = "0.4.0-rc.5"
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
         with patch.object(Path, "read_bytes", public_reads_only):
             report = installer.install(self.root, self.target)
-        self.assertEqual(report["version"], "0.4.0-rc.4")
+        self.assertEqual(report["version"], "0.4.0-rc.5")
         self.assertEqual((self.target / "mob-write/references/work.md").read_text(), "new public version\n")
         for name in report["skills"]:
             self.assertEqual((self.target / name / "SKILL.md").read_bytes(),
@@ -105,7 +105,7 @@ class InstallTests(unittest.TestCase):
         self.assertIn("--skills-dir", missing.stderr)
         completed = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)
-        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0-rc.4")
+        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0-rc.5")
         second = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(second.returncode, 0, second.stderr)
         for name in (builder.NAME,):

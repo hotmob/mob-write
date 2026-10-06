@@ -17,9 +17,9 @@ Check the contribution before polishing: information, judgment, coordination, or
 
 ## Preserve the source
 
-Keep facts, intent, names, numbers, dates, conditions, negations, questions, causal relationships, uncertainty, scope, and commitment strength. Do not add experience, benefits, completion, or an unspecified sender's name, title, or signature. Do not narrow a general term to a specific implementation without evidence.
+Keep facts, intent, names, numbers, dates, conditions, negations, questions, causal relationships, uncertainty, scope, and commitment strength. Do not add experience, benefits, completion, or an unspecified sender's name, title, or signature. Preserve the source's level of specificity: use supplied definitions or terminology; familiar associations do not justify a narrower technical meaning.
 
-Check status against supplied or authorized evidence: planned, drafted, tested, approved, delivered, and sent are distinct. Missing evidence limits claims; absence from the material does not prove absence in the world.
+Check status against supplied or authorized evidence: planned, drafted, tested, approved, delivered, and sent are distinct. Distinguish missing source information from an absent or undecided state. Omit immaterial gaps from copy; flag material gaps in review or ask. Preserve explicitly supplied uncertainty.
 
 Translation preserves meaning before improving phrasing. Keep strict versus inclusive deadlines, time zones, dependencies, degrees, and obligations distinct; do not broaden “before” into “by” or turn ability into a promise. Flag material ambiguity outside the draft or ask; do not resolve it by guessing. Faithful translation, polishing, and rewriting are different scopes. Follow any specified specialist method.
 

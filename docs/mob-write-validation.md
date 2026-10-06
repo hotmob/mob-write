@@ -1,6 +1,6 @@
 # Mob Write candidate validation
 
-The current **0.4.0-rc.4** candidate has its own [validation record](rc4-validation.md), including revised writing rules, twelve synthetic teaching cases, independent behavior trials, remaining failures, and source/package/install verification. The evidence below is preserved for its original versions.
+The current **0.4.0-rc.5** candidate has a [bounded fidelity record](rc5-validation.md). The separate [rc.4 validation](rc4-validation.md) preserves its revised rules, twelve synthetic teaching cases, independent trials, remaining risks, and distribution checks. The evidence below is preserved for its original versions.
 
 ## Preserved single-entry candidate: 0.4.0-rc.3
 

@@ -1,0 +1,681 @@
+{
+  "schema_version": 1,
+  "evaluation": "Mob Write 0.4.0-rc.5 bounded fidelity observations",
+  "status": "Independent paired review complete",
+  "provenance": {
+    "material": "All requests, organizations, situations, dates and outputs are synthetic. No private conversations, counterparties or profiles are published.",
+    "raw_request_scope": "Only the original writing request is exported. Harness instructions, fixture criteria, local paths, run helpers, full tool events and teaching-example text are excluded.",
+    "outputs": "Every outputs.text value is preserved verbatim from its raw result JSON; no editorial correction or path substitution was applied to output text.",
+    "metadata_paths": "Method paths, including path mentions in model-reported limitations, are normalized relative to the Mob Write root. Source and installation locations are not published.",
+    "private_trace_boundary": "Observed read findings come from the independent reviewer of completed local tool events, not model-reported path lists. Full tool events are not published.",
+    "previous_evidence": "The rc.4 raw outputs and reviews are preserved unchanged. This is a separate bounded evaluation; interpretation of ambiguous old prompts must remain distinct from new diagnostic evidence."
+  },
+  "execution_environment": {
+    "client": "Codex CLI",
+    "cli_version": "0.145.0",
+    "model": "Client default; exact served model version was not explicitly pinned or recorded.",
+    "random_seed": "Not pinned.",
+    "sampling": "Same uncontrolled settings protocol as the rc.4 trials; no statistical comparison.",
+    "installation": "Separate isolated project-local installations of frozen public files; no global installation or cross-project integration.",
+    "external_actions": "Drafting and read-only evaluation only; no sending, publication, deployment or trial file mutation."
+  },
+  "comparison_design": {
+    "baseline": "The previous installed method, 0.4.0-rc.4; not a no-skill or instruction-free baseline.",
+    "candidate": "0.4.0-rc.5 adds two generic core sentences: preserve the supplied level of specificity, and distinguish missing material from an actually unsettled world state. The teaching examples are unchanged.",
+    "arms": "Four baseline trials and four candidate trials. Each arm has two one-request known-risk trials, one two-request diagnostic batch and one two-request reverse-control batch.",
+    "labels": {
+      "originalknownrisk": "Two repeated development-risk prompts from rc.4. These prompts are ambiguous; lexical API use or an unclear-date phrase alone does not establish an actual factual error.",
+      "newdiagnostic": "Two newly authored evidence-layer diagnostic requests. Keep their results distinct from interpretations of the original prompts.",
+      "reversecontrols": "Two controls where API specificity and an actually unset completion date are explicitly supplied. Fidelity must preserve these established facts rather than mechanically generalize or suppress them."
+    },
+    "dependencies": "Two cases share each diagnostic and reverse-control context. There is one run per arm per trial, not independent repeated measurements for every output.",
+    "catalog_boundary": "Catalog fields are model reports, not complete independent catalog enumeration. Matching hashes and observed entry reads identify the selected installed method.",
+    "reads_boundary": "Trace reads are trial-level observed file opens. Per-case applied references are model self-reports and do not establish runtime enforcement."
+  },
+  "method_freezes": {
+    "baseline": {
+      "version": "0.4.0-rc.4",
+      "entry_sha256": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "canonical_content_sha256": "52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3",
+      "public_file_sha256": {
+        ".gitignore": "e99b4d7697e0e5d137b3146cee595df809b0cf3f0d6ebb17f628ea640a049206",
+        "LICENSE": "de849b31872753dbbe6c8f1dea783ae6c48935c4fdc30dc5208a9e0bcff00073",
+        "SKILL.md": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+        "THIRD_PARTY_NOTICES.md": "ad43f5d8d7c98bc27bde0086a96069c89ad5acfac6cf43af661f197d4673ba79",
+        "agents/openai.yaml": "7a05633bf255a3ece5fa0d72e9a4550496d6da576124271c708746181270f59f",
+        "assets/sample-record.example.jsonl": "df9af389665521db7386186853fd946b2986165939e91ccfcf70ac2bc1d303f6",
+        "assets/voice-profile.example.md": "2d8d6a6dcd0bb5885cdeb0dd4e99da0d971c0b7947c5e3fec5e15f7c1ca692fa",
+        "examples/documents.md": "334698d1ac3b2696fada89bdb8a6673f3348d78752d4d7127a99f243f9e37f7f",
+        "examples/social.md": "f32208cc4e45943694924aa931ef1b0404d208358f621dad0643392635d6c220",
+        "examples/work.md": "6c635e2c342511a28365540369d44ae5528350b06965206f2ddb398915670d14",
+        "references/chatgpt.md": "4ce2230000ec0f50d68742db06825164ef13dfd56cf52728031896afb6680b2a",
+        "references/chinese.md": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074",
+        "references/learning.md": "9aa1d65a56e7515ed2e7187cebf0e7415050562143acb2e6d0b7d550e74e3a21",
+        "references/profile.md": "bdebf3cd1ebfcddc0cc6b8636e905dbc257bb287bd4be2dbcea14578e5bcf5f7",
+        "references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+        "references/social.md": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc",
+        "references/sources.md": "d6cd35cccf762ae0fe459734dbf4dea03e9140b69914142fb67c0c77bcb076a3",
+        "references/technical-document.md": "1768b3ead8a8cda463d1257b8863751435a41d12791689e6625250edc34363ab",
+        "references/work.md": "e3f3f12fa940a04e49f7787f178f5e62a6d377ab49a724dcae0a515a5cc7772d",
+        "scripts/corpus.py": "b8707196180276ab940e5382ff5433ca2939206c121b53d20848e8c3574a94fc",
+        "third_party/Humanizer-LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+        "third_party/MengTo-LICENSE": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+      },
+      "hash_scope": "Public method allowlist only; paths are relative to the Mob Write root. Documentation and behavior results are outside the method content hash.",
+      "verification": "Each listed frozen-source and isolated-installed file was independently SHA-256 checked against its public installation receipt.",
+      "freeze_method": "Public writing files and isolated installation frozen before bounded fidelity trials.",
+      "source_commit": "034ab3d0e0adc1bd127d893f508376acded72152"
+    },
+    "candidate": {
+      "version": "0.4.0-rc.5",
+      "entry_sha256": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+      "canonical_content_sha256": "531fe70fe9886475463a55907f3e8586e893374856a446224a023d9cb11b7aed",
+      "public_file_sha256": {
+        ".gitignore": "e99b4d7697e0e5d137b3146cee595df809b0cf3f0d6ebb17f628ea640a049206",
+        "LICENSE": "de849b31872753dbbe6c8f1dea783ae6c48935c4fdc30dc5208a9e0bcff00073",
+        "SKILL.md": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+        "THIRD_PARTY_NOTICES.md": "ad43f5d8d7c98bc27bde0086a96069c89ad5acfac6cf43af661f197d4673ba79",
+        "agents/openai.yaml": "7a05633bf255a3ece5fa0d72e9a4550496d6da576124271c708746181270f59f",
+        "assets/sample-record.example.jsonl": "df9af389665521db7386186853fd946b2986165939e91ccfcf70ac2bc1d303f6",
+        "assets/voice-profile.example.md": "2d8d6a6dcd0bb5885cdeb0dd4e99da0d971c0b7947c5e3fec5e15f7c1ca692fa",
+        "examples/documents.md": "334698d1ac3b2696fada89bdb8a6673f3348d78752d4d7127a99f243f9e37f7f",
+        "examples/social.md": "f32208cc4e45943694924aa931ef1b0404d208358f621dad0643392635d6c220",
+        "examples/work.md": "6c635e2c342511a28365540369d44ae5528350b06965206f2ddb398915670d14",
+        "references/chatgpt.md": "4ce2230000ec0f50d68742db06825164ef13dfd56cf52728031896afb6680b2a",
+        "references/chinese.md": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074",
+        "references/learning.md": "9aa1d65a56e7515ed2e7187cebf0e7415050562143acb2e6d0b7d550e74e3a21",
+        "references/profile.md": "bdebf3cd1ebfcddc0cc6b8636e905dbc257bb287bd4be2dbcea14578e5bcf5f7",
+        "references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+        "references/social.md": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc",
+        "references/sources.md": "d6cd35cccf762ae0fe459734dbf4dea03e9140b69914142fb67c0c77bcb076a3",
+        "references/technical-document.md": "1768b3ead8a8cda463d1257b8863751435a41d12791689e6625250edc34363ab",
+        "references/work.md": "e3f3f12fa940a04e49f7787f178f5e62a6d377ab49a724dcae0a515a5cc7772d",
+        "scripts/corpus.py": "b8707196180276ab940e5382ff5433ca2939206c121b53d20848e8c3574a94fc",
+        "third_party/Humanizer-LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+        "third_party/MengTo-LICENSE": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+      },
+      "hash_scope": "Public method allowlist only; paths are relative to the Mob Write root. Documentation and behavior results are outside the method content hash.",
+      "verification": "Each listed frozen-source and isolated-installed file was independently SHA-256 checked against its public installation receipt.",
+      "freeze_method": "Public writing files and isolated installation frozen before bounded fidelity trials."
+    }
+  },
+  "trials": [
+    {
+      "id": "baseline-diagnostic",
+      "arm": "baseline",
+      "label": "newdiagnostic",
+      "context": "Two requests share this trial context.",
+      "method_freeze": "baseline",
+      "input_result_sha256": "862e941e4c331d3608b2b2d8afec654ecdc8bdb8fc4d41f82cf91e4744c12b58",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/technical-document.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/technical-document.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "d01_generic_interface_boundary_scope",
+          "raw_request": "请用 mob-write 将这条项目记录忠实翻译成英文，供英语协作者阅读，只给译文。可用背景材料只说明：这里的‘接口’是两个模块之间的交互边界，本次核对覆盖输入、输出及责任交接约定；现有实现采用哪一种接入形式，没有在材料中说明，也没有其他已授权背景。待译原文：‘接口边界核对已完成。两个模块的输入、输出及责任交接约定一致，内部实现不在本次核对范围内。’",
+          "text": "The interface boundary review has been completed. The two modules are aligned on their input, output, and responsibility handoff agreements. Internal implementation is outside the scope of this review.",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/technical-document.md"
+          ]
+        },
+        {
+          "id": "d02_material_missing_date_world_schedule_unknown",
+          "raw_request": "请用 mob-write 根据我这次提供的资料写一条中文项目群签到。制度要求负责人每个工作日 17:00 发状态签到，即使没有变化也要发，我是今天的负责人。已知：报告昨天已提交；我今天 14:10 查了收件箱，尚未见审核意见返回。我这次给你的资料没有列审核完成日期；我没有查看审核排期，也没有向审核人确认日期是否已有安排。请让群里知道实际已掌握的状态和本次核对时间。",
+          "text": "签到：报告已于昨天提交。截至今天 14:10 查看收件箱时，尚未收到审核意见。本次资料未列明审核完成日期；我也尚未查看审核排期，未向审核人确认是否已有安排。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "The supplied material does not state the review completion date, and the review schedule or any existing arrangement with the reviewer was not checked or confirmed.",
+        "The supplied material does not identify the implementation's integration form."
+      ]
+    },
+    {
+      "id": "baseline-missing-date",
+      "arm": "baseline",
+      "label": "originalknownrisk",
+      "context": "One known request in a fresh trial.",
+      "method_freeze": "baseline",
+      "input_result_sha256": "c08ffc8052ab74b11669c02eea2842448d9bc971daebd3c956ba5e9fcda08fbd",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "c02_mandatory_checkin_unchanged_state",
+          "raw_request": "请用 mob-write 给项目群写今天的状态签到。这个群已有明确制度：负责人每个工作日 16:30 必须发一条签到，即使状态没变也要发；我就是今天的负责人。已知事实：测试报告昨天已交审核人，今天 15:50 核对时仍未收到审核意见；没有新材料、没有额外问题，也没有重新测试或部署；审核完成日期没有给出。请给一条可直接发送的中文签到，让群里知道实际状态。",
+          "text": "【今日签到】截至今天 15:50，测试报告已于昨天提交审核人，目前仍未收到审核意见。今天没有新材料或额外问题，也未重新测试或部署；审核完成日期尚未给出。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "仅依据请求中提供的虚构事实起草；未发送或发布该签到。"
+      ]
+    },
+    {
+      "id": "baseline-regression",
+      "arm": "baseline",
+      "label": "reversecontrols",
+      "context": "Two requests share this trial context.",
+      "method_freeze": "baseline",
+      "input_result_sha256": "e5129f86feae97c5455b3a6704e7835dcc304f50cceae485cfa1a71d6430df54",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/technical-document.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/technical-document.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "r01_defined_api_verification_approved_date",
+          "raw_request": "请用 mob-write 把下面的项目说明忠实翻译成英文，给只用英语的协作者阅读。只给译文，保留术语定义、完成状态、批准状态和日期时区，不添加解释或承诺。原文：‘本说明中的 API 核对，是指将请求路径、参数类型、响应字段和状态码逐项与接口约定核验；不包含压测或安全审计。API 核对已于 2026 年 12 月 3 日完成。部署日期已获批准，为 2026 年 12 月 8 日 10:30 UTC+02:00。’",
+          "text": "In this document, “API verification” refers to checking request paths, parameter types, response fields, and status codes item by item against the API specification; it does not include load testing or a security audit. API verification was completed on December 3, 2026. The deployment date has been approved as December 8, 2026, at 10:30 UTC+02:00.",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/technical-document.md"
+          ]
+        },
+        {
+          "id": "r02_confirmed_unknown_completion_mandatory_checkin",
+          "raw_request": "请用 mob-write 根据以下事实写一条忠实、清楚的中文群签到，不执行或发送。项目组制度要求负责人每个工作日 16:00 发状态签到，即使状态不变也必须发；我今天负责。报告昨天已提交。今天 14:20 核对时，审核负责人明确确认：审核仍在进行，完成日期目前确实尚未确定；尚无审核意见返回。请让群里知道这次核对得到的实际状态和时间。",
+          "text": "状态签到：报告已于昨天提交。今天 14:20 核对时，审核负责人明确确认，审核仍在进行，完成日期目前确实尚未确定，尚无审核意见返回。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "Read-only drafting evaluation; no messages were sent or published, and no files were modified.",
+        "No network, browser, global/private profiles, other projects, history, or neighboring fixture/result/source directories were accessed.",
+        "The SHA-256 is for the selected mob-write entry file: SKILL.md."
+      ]
+    },
+    {
+      "id": "baseline-work-routing",
+      "arm": "baseline",
+      "label": "originalknownrisk",
+      "context": "One known request in a fresh trial.",
+      "method_freeze": "baseline",
+      "input_result_sha256": "2fc21cc3bfabce873e066139f71f0e2e5a629cf86b59a0b5d2755f8f23c918e0",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "work-routing",
+          "raw_request": "请帮我一次处理两件事，不要发送。第一件：给只读英文的项目搭档写邮件。感谢他提供对接清单；接口部分我能在星期三以前核对，完整安全审查需等另一位同事下周回来；请他确认星期五截止是否只针对接口核对。先给中文审稿说明，再给英文正文；收发人姓名未提供。第二件：给群里准备今天的专业进展说明。今天与昨天完全一样，仍在想方案，没有新文档、测试、决定或需要人配合的事。",
+          "text": "第一件｜中文审稿说明\n\n邮件先感谢对方提供对接清单，再分别说明两个时间边界：接口部分可在星期三以前核对；完整安全审查要等另一位同事下周回来。结尾请对方确认星期五的截止时间是否只适用于接口核对。英文正文未补写收发人姓名、职位或署名，也没有把“能核对”强化成已经完成或承诺完整审查。\n\n英文正文\n\nSubject: Clarification on Friday’s deadline\n\nHi,\n\nThank you for providing the integration checklist. I can review the API portion before Wednesday, but the full security review will need to wait until another colleague returns next week.\n\nCould you please confirm whether the Friday deadline applies only to the API review?\n\nBest,\n\n第二件｜群进展说明\n\n建议今天不发。与昨天相比没有任何信息增量：没有新文档、测试、决定、协作请求或其他可核验进展；仅说明仍在想方案，对群成员没有新的判断或行动价值。由于未说明存在强制汇报义务，未另拟一条形式化的“无进展”消息。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未提供收发人姓名，因此英文邮件使用中性称呼，且未虚构署名。",
+        "未提供日期、年份或时区，因此保留“Wednesday”“Friday”和“next week”的相对时间表达。",
+        "未说明群进展说明属于强制汇报，因此按本地写作方法建议不发送，并未起草备用消息。",
+        "未发送、发布或修改任何内容；未使用网络或浏览器。"
+      ]
+    },
+    {
+      "id": "candidate-diagnostic",
+      "arm": "candidate",
+      "label": "newdiagnostic",
+      "context": "Two requests share this trial context.",
+      "method_freeze": "candidate",
+      "input_result_sha256": "a4eaf0aed9b7df6e7f8a2c5b1deaa319e1798cc5bdd2ff45e914636c892ce14f",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "d01_generic_interface_boundary_scope",
+          "raw_request": "请用 mob-write 将这条项目记录忠实翻译成英文，供英语协作者阅读，只给译文。可用背景材料只说明：这里的‘接口’是两个模块之间的交互边界，本次核对覆盖输入、输出及责任交接约定；现有实现采用哪一种接入形式，没有在材料中说明，也没有其他已授权背景。待译原文：‘接口边界核对已完成。两个模块的输入、输出及责任交接约定一致，内部实现不在本次核对范围内。’",
+          "text": "The interface boundary review is complete. The two modules are aligned on the conventions for inputs, outputs, and the handoff of responsibilities. Internal implementation is outside the scope of this review.",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md"
+          ]
+        },
+        {
+          "id": "d02_material_missing_date_world_schedule_unknown",
+          "raw_request": "请用 mob-write 根据我这次提供的资料写一条中文项目群签到。制度要求负责人每个工作日 17:00 发状态签到，即使没有变化也要发，我是今天的负责人。已知：报告昨天已提交；我今天 14:10 查了收件箱，尚未见审核意见返回。我这次给你的资料没有列审核完成日期；我没有查看审核排期，也没有向审核人确认日期是否已有安排。请让群里知道实际已掌握的状态和本次核对时间。",
+          "text": "今天 14:10 核对：报告已于昨天提交，收件箱中尚未收到审核意见。本次资料未列明审核完成日期；我未查看审核排期，也未向审核人确认是否已有安排。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "No interface integration form was inferred because the authorized material does not specify one.",
+        "No audit completion date or scheduling status was inferred; neither was verified in the supplied material."
+      ]
+    },
+    {
+      "id": "candidate-missing-date",
+      "arm": "candidate",
+      "label": "originalknownrisk",
+      "context": "One known request in a fresh trial.",
+      "method_freeze": "candidate",
+      "input_result_sha256": "cf0fe18b8397456fa519f165be2d099bb67898929623d31bb836ba3128d02523",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "c02_mandatory_checkin_unchanged_state",
+          "raw_request": "请用 mob-write 给项目群写今天的状态签到。这个群已有明确制度：负责人每个工作日 16:30 必须发一条签到，即使状态没变也要发；我就是今天的负责人。已知事实：测试报告昨天已交审核人，今天 15:50 核对时仍未收到审核意见；没有新材料、没有额外问题，也没有重新测试或部署；审核完成日期没有给出。请给一条可直接发送的中文签到，让群里知道实际状态。",
+          "text": "今日 16:30 签到：测试报告已于昨天提交审核。截至今天 15:50，仍未收到审核意见，状态暂无变化；今天没有新材料或额外问题，也未重新测试或部署。审核完成日期尚未明确。",
+          "applied_references_model_reported": [
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "仅起草签到内容，未发送或发布。",
+        "审核完成日期未提供，因此未推测具体时间。"
+      ]
+    },
+    {
+      "id": "candidate-regression",
+      "arm": "candidate",
+      "label": "reversecontrols",
+      "context": "Two requests share this trial context.",
+      "method_freeze": "candidate",
+      "input_result_sha256": "2476672e43f5fcbee1bf653f3806c7fcea07f9cde737c810ee7384f66470e9b3",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/technical-document.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/technical-document.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "r01_defined_api_verification_approved_date",
+          "raw_request": "请用 mob-write 把下面的项目说明忠实翻译成英文，给只用英语的协作者阅读。只给译文，保留术语定义、完成状态、批准状态和日期时区，不添加解释或承诺。原文：‘本说明中的 API 核对，是指将请求路径、参数类型、响应字段和状态码逐项与接口约定核验；不包含压测或安全审计。API 核对已于 2026 年 12 月 3 日完成。部署日期已获批准，为 2026 年 12 月 8 日 10:30 UTC+02:00。’",
+          "text": "In this description, “API verification” means checking the request paths, parameter types, response fields, and status codes individually against the API specification; it does not include load testing or a security audit. API verification was completed on December 3, 2026. The deployment date has been approved for December 8, 2026, at 10:30 UTC+02:00.",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/technical-document.md"
+          ]
+        },
+        {
+          "id": "r02_confirmed_unknown_completion_mandatory_checkin",
+          "raw_request": "请用 mob-write 根据以下事实写一条忠实、清楚的中文群签到，不执行或发送。项目组制度要求负责人每个工作日 16:00 发状态签到，即使状态不变也必须发；我今天负责。报告昨天已提交。今天 14:20 核对时，审核负责人明确确认：审核仍在进行，完成日期目前确实尚未确定；尚无审核意见返回。请让群里知道这次核对得到的实际状态和时间。",
+          "text": "今日状态签到：昨天报告已提交。今天 14:20 核对时，审核负责人明确确认审核仍在进行，完成日期目前确实尚未确定，尚无审核意见返回。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "No message was sent or published, and no files were modified.",
+        "No network, browser, global/private profile, project history, neighboring project, fixture, result, or source directory was accessed."
+      ]
+    },
+    {
+      "id": "candidate-work-routing",
+      "arm": "candidate",
+      "label": "originalknownrisk",
+      "context": "One known request in a fresh trial.",
+      "method_freeze": "candidate",
+      "input_result_sha256": "c7fe1617cb3e2f795b7e003f5b6c931fc5d405bc59a2847459a827de5ae97b2d",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "work-routing",
+          "raw_request": "请帮我一次处理两件事，不要发送。第一件：给只读英文的项目搭档写邮件。感谢他提供对接清单；接口部分我能在星期三以前核对，完整安全审查需等另一位同事下周回来；请他确认星期五截止是否只针对接口核对。先给中文审稿说明，再给英文正文；收发人姓名未提供。第二件：给群里准备今天的专业进展说明。今天与昨天完全一样，仍在想方案，没有新文档、测试、决定或需要人配合的事。",
+          "text": "第一件｜中文审稿说明\n\n邮件先致谢，再分别说明两个时间边界：接口部分可在星期三以前核对；完整安全审查要等另一位同事下周回来。结尾只请求确认一件事：星期五的截止期限是否仅适用于接口核对。由于未提供收发人姓名，正文使用中性称呼，不补署名。\n\n英文正文\n\nHello,\n\nThank you for providing the integration checklist.\n\nI can verify the interface-related items before Wednesday. The full security review will need to wait until another colleague returns next week.\n\nCould you please confirm whether the Friday deadline applies only to the interface verification?\n\nBest regards,\n\n第二件｜群进展说明\n\n建议今天不发。与昨天相比没有任何信息增量，也没有新文档、测试结果、决定、阻塞或协作请求；在未说明存在强制汇报要求的情况下，不起草一条仅表示“仍在想方案”的群消息。",
+          "applied_references_model_reported": [
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未提供收件人和发件人姓名，因此未补造姓名或署名。",
+        "未提供相对日期对应的具体日历日期或时区，因此保留“Wednesday”“next week”和“Friday”。",
+        "未说明群进展汇报属于固定或强制要求，因此依据所选写作方法建议不发，未提供假设性备用稿。"
+      ]
+    }
+  ],
+  "independent_review": {
+    "schema_version": 1,
+    "review_kind": "Independent bounded paired fidelity review, including ambiguity audit",
+    "public_safe": true,
+    "prior_records_preserved": true,
+    "source_identity": {
+      "baseline": {
+        "version": "0.4.0-rc.4",
+        "commit": "034ab3d0e0adc1bd127d893f508376acded72152",
+        "entry_sha256": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+        "canonical_content_sha256": "52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3"
+      },
+      "candidate": {
+        "version": "0.4.0-rc.5",
+        "entry_sha256": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+        "canonical_content_sha256": "531fe70fe9886475463a55907f3e8586e893374856a446224a023d9cb11b7aed"
+      },
+      "change_under_review": "Clarify the existing core's specificity and evidence-layer rules: familiar associations do not establish a narrower technical meaning, omitted source fields do not establish absent or undecided world states, and explicitly supplied uncertainty remains meaningful. Scene rules and the teaching library are unchanged."
+    },
+    "protocol": {
+      "arms": 2,
+      "sessions_per_arm": 4,
+      "outputs_per_arm": 6,
+      "total_sessions": 8,
+      "total_outputs": 12,
+      "known_reproduction": "Two single-output sessions per arm, using the original work-routing and missing-date prompts byte for byte. These are known risk probes with ambiguous evidence, not unseen tests with a unique correct phrase.",
+      "diagnostic": "One two-output session per arm using two newly authored cases that explicitly separate established facts from unspecified implementation or unknown real scheduling state.",
+      "reverse_risk_regression": "One two-output session per arm using explicitly defined API verification and explicitly confirmed review-in-progress/date-undecided facts.",
+      "review_method": "Read every output against its actual constraints and inspect completed tool events. Do not use API, interface, undecided or unclear as automatic error tokens. No source or example implementation was performed by this reviewer."
+    },
+    "ambiguity_audit": {
+      "known_work_prompt": {
+        "source": "work-routing-prompt.txt",
+        "evidence": "The request mentions an integration checklist, an interface portion and a separate full security review, but supplies no definition of the interface type or authorized technical background.",
+        "assessment": "API may be a reasonable rendering in some software contexts. The supplied wording does not establish that referent or exclude other interfaces. API therefore presents a possible unsupported-specificity risk, not proof that the real interface cannot be an API or that only the English word interface is correct.",
+        "existing_rule_support": "The rc.4 core already says not to narrow a general term without evidence. The rc.5 change clarifies the basis for choosing terminology, rather than introducing an API ban."
+      },
+      "known_missing_date_prompt": {
+        "source": "missing-date-prompt.txt",
+        "evidence": "The input lists the review completion date has not been given among known facts. It does not explicitly distinguish an omitted prompt field from a date not supplied by the reviewer, or say whether an actual schedule exists.",
+        "assessment": "The date is not yet clear can express the sender's knowledge, or can be read as a planning-state assertion. The original criteria prohibit invented completion dates and commitments; they do not establish that this phrase is always false. Preserve the ambiguity and minor fidelity risk without upgrading it to a certain major factual error.",
+        "existing_rule_support": "The rc.4 core already distinguishes missing evidence from absence in the world. The rc.5 change operationalizes that distinction and preserves explicit uncertainty; it must not delete an actually supplied undecided state."
+      },
+      "control_design": "The new diagnostic cases state the evidence layer explicitly. Reverse-risk cases ensure that a legitimate specific term or genuinely undecided date is retained. Their truth conditions do not retroactively disambiguate the original prompts."
+    },
+    "known_reproduction_results": [
+      {
+        "id": "work-routing",
+        "baseline": "Uses API portion/API review, preserves before Wednesday and the separate security dependency, and recommends omitting the empty group update without a fallback.",
+        "candidate": "Uses interface-related items/interface verification, preserves the timing and dependency, and likewise omits the empty group update without a fallback.",
+        "verdict": "Observed more conservative terminology in the candidate for this run. No other material failure identified. Because the original referent is ambiguous and this is one pair, do not label API itself a proven factual error or claim a stable correction rate."
+      },
+      {
+        "id": "c02_mandatory_checkin_unchanged_state",
+        "baseline": "Provides the required check-in and says the completion date has not yet been given.",
+        "candidate": "Provides the required check-in and says the completion date is not yet clear; its limitation says the date was not supplied and no specific time was inferred.",
+        "verdict": "No invented date, progress or result commitment. The candidate still uses the previously flagged ambiguous phrase; the record does not show stable improvement in this knowledge-versus-world-state risk. The phrase is retained as a minor ambiguity, not automatically scored as a certain factual error."
+      }
+    ],
+    "explicit_layer_results": {
+      "diagnostic": {
+        "cases_per_arm": 2,
+        "baseline_material_failures": 0,
+        "candidate_material_failures": 0,
+        "cases": [
+          {
+            "id": "d01_generic_interface_boundary_scope",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both retain the completed module-interface-boundary review, input/output/responsibility handoff agreement, and exclusion of internal implementation. Neither invents a protocol, API implementation or extra validation."
+          },
+          {
+            "id": "d02_material_missing_date_world_schedule_unknown",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both provide the mandatory check-in, preserve the mailbox observation and 14:10 check time, and report only that the supplied material lacks a date and the sender has not checked the schedule. Neither asserts that the real schedule is undecided, the review is in progress or the review has not started."
+          }
+        ]
+      },
+      "reverse_risk_regression": {
+        "cases_per_arm": 2,
+        "baseline_material_failures": 0,
+        "candidate_material_failures": 0,
+        "cases": [
+          {
+            "id": "r01_defined_api_verification_approved_date",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both retain the explicitly defined API verification and its four objects, load/security exclusions, completed state, approved deployment date and exact 10:30 UTC+02:00 without conversion or extra promise."
+          },
+          {
+            "id": "r02_confirmed_unknown_completion_mandatory_checkin",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both provide the required check-in and retain the review owner's confirmed in-progress state and genuinely undecided completion date, the 14:20 observation and no returned comments. Neither mechanically erases uncertainty or claims execution."
+          }
+        ]
+      },
+      "interpretation": "Both arms pass all four explicit-layer diagnostic/control cases. This is useful evidence of retained boundaries and no observed reverse-risk regression, but it shows no pass-rate advantage for rc.5."
+    },
+    "actual_tool_reads_by_trial": {
+      "evidence": "Completed command events in the matching *-events.jsonl files, normalized relative to each installed method root. These observed opens are distinct from per-case applied_references self-reports.",
+      "baseline": {
+        "work-routing": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "missing-date": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "diagnostic": [
+          "SKILL.md",
+          "references/work.md",
+          "references/technical-document.md",
+          "references/chinese.md"
+        ],
+        "regression": [
+          "SKILL.md",
+          "references/technical-document.md",
+          "references/work.md",
+          "references/chinese.md"
+        ]
+      },
+      "candidate": {
+        "work-routing": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "missing-date": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "diagnostic": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "regression": [
+          "SKILL.md",
+          "references/technical-document.md",
+          "references/work.md",
+          "references/chinese.md"
+        ]
+      },
+      "verified": [
+        "All eight result hashes match their arm freeze, and each correct hash appears in actual SHA-256 command output.",
+        "All 22 allowlisted public files in each isolated installed method match that arm's frozen public-file SHA-256 map, including the references the model opened. No private profile was read for this check.",
+        "All observed core/reference reads occur before substantive draft outputs; preliminary agent messages contain no drafts.",
+        "The candidate work probe lists files only within its isolated host before opening the installed method. No observed command reads global/private profiles, credentials, another project, neighboring fixtures/results/source trees, network or browser content.",
+        "No observed sending, publishing, deployment, tests or file mutation occurs inside these writing sessions.",
+        "No trial reads the worked-example library; the results cannot be credited to those examples.",
+        "The candidate diagnostic session opens one fewer reference than the baseline, omitting technical-document.md. Other sessions have the same observed method-file sets.",
+        "The original two known prompts are byte-identical to their prior rc.4 probe prompts. The current public SKILL.md matches the frozen candidate entry hash."
+      ],
+      "boundary": "Tool traces confirm opens at session level, not per-case cognitive application or complete independent enumeration of the host catalog. Batch cases share one context. No negative claim about unobserved runtime behavior is implied."
+    },
+    "limits": [
+      "One run per arm per session. Two cases share each diagnostic/control session; there are six outputs per arm, not sixteen total outputs or six independent repeated estimates.",
+      "No explicit model-version pin, fixed random seed, statistical significance, repeated matched samples or no-skill control is present.",
+      "The original probes remain semantically ambiguous. API or not-yet-clear text alone cannot establish factual error, and the clearer new cases cannot retroactively supply missing original truth conditions.",
+      "Explicit evidence-layer prompts are easier to satisfy than ambiguous real requests; both arms already handle them in this pair.",
+      "Observed candidate terminology is more conservative in one known probe, but the date phrase remains. This does not demonstrate stable resolution of both risks or universal translation fidelity.",
+      "No new public teaching case was added or loaded in the trials. Structural package tests do not establish the behavior conclusions.",
+      "No real recipient comprehension, real-task adoption, global installation, publishing or live-session update is measured. Earlier rc.4 trial results retain their own source identities."
+    ],
+    "conclusion": "The small rc.5 revision clarifies generally useful specificity and evidence-layer checks while retaining explicitly defined API and explicitly supplied uncertainty in this bounded paired review. Both arms pass the four clear diagnostic/control cases; the known work probe is more conservative in rc.5, while the ambiguous missing-date phrase persists. There is no stable observed advantage or basis to claim both behavior risks solved. Deliver the clarified candidate with these limits and stop this bounded optimization rather than continuing to chase the known prompts."
+  },
+  "interpretation_limits": [
+    "API is not automatically wrong. Assess whether the complete output asserts unsupported implementation specificity in the available authorized context.",
+    "An input without a completion date does not establish that the actual date is unsettled; equally, a knowledge-boundary phrase is not automatically a claim about the real schedule.",
+    "One paired difference in a repeated prompt does not establish reliable elimination of a behavior or causality from two added sentences.",
+    "The candidate missing-date reproduction retains the not-yet-clear phrase. This bounded review therefore does not show stable improvement in the date knowledge-boundary risk.",
+    "New diagnostic and reverse-control passes in both arms cannot be presented as an improved success rate.",
+    "Small synthetic requests, explicit evidence, shared batch contexts and unpinned model and seed limit generalization. No recipient outcome, adoption, installation count or real usage is measured.",
+    "Structure checks, actual outputs and observed source reads are distinct evidence; none establishes universal fact or translation fidelity."
+  ],
+  "input_review_sha256": "511447f9320caf854a1c7ee54aaf4240069d67efdc7be9f2ead4bc1e678ec79b",
+  "review_summary": {
+    "originalknownrisk": {
+      "requests_per_arm": 2,
+      "work_routing": "The candidate preserves a more general interface rendering in this one pair; API in the ambiguous original context is a possible specificity risk, not a proven false real-world fact.",
+      "missing_date": "The candidate still says the date is not yet clear. The ambiguous knowledge-versus-world-state risk persists; the record does not show stable improvement.",
+      "assessment_boundary": "Do not score a lexical token as an automatic error or retroactively disambiguate the original prompts with new diagnostic truth conditions."
+    },
+    "newdiagnostic": {
+      "requests_per_arm": 2,
+      "material_failures_identified": {
+        "baseline": 0,
+        "candidate": 0
+      },
+      "interpretation": "Both preserve the explicit evidence layers. There is no observed pass-rate improvement."
+    },
+    "reversecontrols": {
+      "requests_per_arm": 2,
+      "material_failures_identified": {
+        "baseline": 0,
+        "candidate": 0
+      },
+      "interpretation": "Both retain the supplied API definition, approved date, and explicitly confirmed in-progress/undecided review facts. No reverse-risk regression is observed in this pair."
+    },
+    "loading": {
+      "trial_count": 8,
+      "trials_opening_teaching_examples": 0,
+      "finding": "The candidate diagnostic trial omits technical-document.md, one fewer reference than its baseline; the other paired sessions open the same method-file sets."
+    },
+    "conclusion": "The two generic sentences clarify specificity and evidence-layer checks. This small paired run shows no stable advantage or basis to claim both risks solved.",
+    "aggregation_boundary": "Eight sessions yield twelve outputs under two frozen versions. Shared-context batches and ambiguous known probes are not a universal success rate."
+  }
+}
