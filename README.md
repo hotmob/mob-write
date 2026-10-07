@@ -119,6 +119,22 @@ Contributions should show the original request, scene, observed problem, public-
 
 Stars show interest; download counts include possible repeats. Neither measures installed or active users. The project adds no telemetry and promises no engagement growth or AI-detection result.
 
+## Acknowledgements / 参考来源
+
+These Skills informed the writing method:
+
+| Skill and GitHub repository | What we borrowed | Use in Mob Write |
+| --- | --- | --- |
+| Meng To's **write-like-meng-on-x** — [MengTo/Skills](https://github.com/MengTo/Skills) | Distinguish replies from standalone posts, learn from authored examples, preserve current wording, and treat generated drafts as weak voice evidence. | Adapted methods; four attributed short excerpts and an optional pinned public corpus, under MIT. |
+| Siqi Chen's **Humanizer** — [blader/humanizer](https://github.com/blader/humanizer) | Preserve facts and the author's voice, notice repetitive structures, and make a light final edit. | Adapted editing guidance, under MIT. |
+| rabden's **X Social Media Manager** — [rabden/X-twitter-social-manager-skill](https://github.com/rabden/X-twitter-social-manager-skill) | Preserve exact replies as records for later review. | Reference only; no upstream text is bundled. Its reviewed reply archive was an empty template. |
+
+For structure, we consulted the locally installed Codex **skill-creator** and its UI-metadata reference: a small entry, supporting resources loaded as needed, and `agents/openai.yaml`. Its [public counterpart in openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) documents these conventions; the consulted local copy was not pinned to an upstream revision. This was an authoring reference, not a source of writing examples or bundled code.
+
+The historical **chinese-writing** Skill came from a user-supplied local guide and was added to [this repository's history](https://github.com/hotmob/mob-write/tree/f878474706754aed0878efc562d3a93c9557a919/chinese-writing); no separate public upstream was established. **mob-social-writing** is this project's former name, not an independent upstream. Private profiles, drafts, and conversations are excluded.
+
+Reviewed versions and adaptation limits are in [source notes](references/sources.md); copied material retains [third-party attribution and licenses](THIRD_PARTY_NOTICES.md). Projects considered only for naming are not content sources. No upstream endorsement is implied.
+
 ## License
 
 [MIT](LICENSE). Meng To's public examples and Siqi Chen's editing guidance retain [their notices and licenses](THIRD_PARTY_NOTICES.md). External samples show expression; they do not supply your experiences or endorsements. Added third-party material needs its own authorization.
