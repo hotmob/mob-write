@@ -1,0 +1,187 @@
+{
+  "synthetic_only": true,
+  "sessions": 3,
+  "outputs": 4,
+  "cli": "0.145.0",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "low",
+  "entry_sha256": "52cad773e86332d1b69a2db5ebfacc0d95ca12ff3d34c5e8f022092bb6a1b8aa",
+  "source": {
+    "catalog": "Session self-report of initial available Skills, separate from on-disk existence",
+    "loading": "Actual completed read-only tool calls and SHA256 checked against frozen host files",
+    "effect": "Manual reading of 4 real outputs; no statistical or real-user voice claim"
+  },
+  "checks": [
+    {
+      "arm": "generic",
+      "returncode": 0,
+      "catalog_reported_entry": "mob-write",
+      "catalog_reported_local_path_matches_host": true,
+      "entry_sha256_matches": true,
+      "host_bytes_unchanged": true,
+      "read_hash_mismatches": [],
+      "actual_reads": [
+        {
+          "path": ".agents/skills/mob-write/SKILL.md",
+          "sha256": "52cad773e86332d1b69a2db5ebfacc0d95ca12ff3d34c5e8f022092bb6a1b8aa"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/social.md",
+          "sha256": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/chinese.md",
+          "sha256": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/profile.md",
+          "sha256": "92c7fac3fe1fc0f7f11a37b5792b82022469cdb155fc3637a7974a715866d88d"
+        }
+      ],
+      "completed_read_commands": 4,
+      "outputs": [
+        {
+          "id": "reply",
+          "review_zh": "回复直接说明了周四可提供的是基准测试草稿，并保留“验证先完成”这一条件；同时明确发布批准仍在等待、发布日期尚未决定，没有补充姓名、署名或个人经历。",
+          "text": "I can share a draft of the benchmark on Thursday, provided validation is complete by then. Release approval is still pending, and the release date has not yet been decided.",
+          "applied_references": [
+            ".agents/skills/mob-write/references/social.md",
+            ".agents/skills/mob-write/references/chinese.md"
+          ],
+          "profile_applied": false
+        }
+      ]
+    },
+    {
+      "arm": "avery",
+      "returncode": 0,
+      "catalog_reported_entry": "mob-write",
+      "catalog_reported_local_path_matches_host": true,
+      "entry_sha256_matches": true,
+      "host_bytes_unchanged": true,
+      "read_hash_mismatches": [],
+      "actual_reads": [
+        {
+          "path": ".agents/skills/mob-write/SKILL.md",
+          "sha256": "52cad773e86332d1b69a2db5ebfacc0d95ca12ff3d34c5e8f022092bb6a1b8aa"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/social.md",
+          "sha256": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/chinese.md",
+          "sha256": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/profile.md",
+          "sha256": "92c7fac3fe1fc0f7f11a37b5792b82022469cdb155fc3637a7974a715866d88d"
+        },
+        {
+          "path": ".agents/skills/mob-write/.local/config.json",
+          "sha256": "5d74ef82de4d5c26e36951237bc3d2a98da2062b01af756f37b5e60bd25d7bf2"
+        },
+        {
+          "path": "synthetic-private-bundle/bundle.json",
+          "sha256": "77d2e98159a294da3ac74a2d114c9aa32a088b5ffd0b68fbb2db78fe598fd697"
+        },
+        {
+          "path": "synthetic-private-bundle/profile.md",
+          "sha256": "b5db4cbf202221895220f76ec9f807ea034ead8a3fb4a67f330e28b4dd35f81b"
+        }
+      ],
+      "completed_read_commands": 6,
+      "outputs": [
+        {
+          "id": "reply",
+          "review_zh": "回复先礼貌回应，再明确说明周四分享草稿的前提、当前验证状态、发布审批状态及发布日期尚未确定，没有把能力表述成无条件承诺。",
+          "text": "Thanks for checking. I can share a draft of the benchmark on Thursday, provided validation is complete first. Validation is still in progress, and release approval is still pending. We don’t have a release date yet.",
+          "applied_references": [
+            ".agents/skills/mob-write/references/social.md",
+            ".agents/skills/mob-write/references/chinese.md",
+            ".agents/skills/mob-write/references/profile.md",
+            "synthetic-private-bundle/profile.md"
+          ],
+          "profile_applied": true
+        }
+      ]
+    },
+    {
+      "arm": "blair",
+      "returncode": 0,
+      "catalog_reported_entry": "mob-write",
+      "catalog_reported_local_path_matches_host": true,
+      "entry_sha256_matches": true,
+      "host_bytes_unchanged": true,
+      "read_hash_mismatches": [],
+      "actual_reads": [
+        {
+          "path": ".agents/skills/mob-write/SKILL.md",
+          "sha256": "52cad773e86332d1b69a2db5ebfacc0d95ca12ff3d34c5e8f022092bb6a1b8aa"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/social.md",
+          "sha256": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/technical-document.md",
+          "sha256": "1768b3ead8a8cda463d1257b8863751435a41d12791689e6625250edc34363ab"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/chinese.md",
+          "sha256": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074"
+        },
+        {
+          "path": ".agents/skills/mob-write/references/profile.md",
+          "sha256": "92c7fac3fe1fc0f7f11a37b5792b82022469cdb155fc3637a7974a715866d88d"
+        },
+        {
+          "path": ".agents/skills/mob-write/.local/config.json",
+          "sha256": "cf5d2d7eb8e850381c0fa12176c02dfcafed1f51c9605a727f95f518e8497c64"
+        },
+        {
+          "path": "synthetic-private-bundle/bundle.json",
+          "sha256": "853d1d4fbc910d680f2a92e87e40e6630613eeb9610a6f0c89bd0a708226f778"
+        },
+        {
+          "path": "synthetic-private-bundle/profile.md",
+          "sha256": "17de668f1a38b7a1e8205547e101eaccf4228bf683cbe235ecc88869459dce76"
+        }
+      ],
+      "completed_read_commands": 5,
+      "outputs": [
+        {
+          "id": "reply",
+          "review_zh": "审稿说明：回复直接说明周四可提供草稿，同时保留“须先完成验证”的条件，并如实交代批准和发布日期状态。",
+          "text": "I can share a draft of the benchmark on Thursday, provided validation is completed first. Validation is not yet complete. Release approval is still pending, and the release date has not been decided.",
+          "applied_references": [
+            ".agents/skills/mob-write/references/social.md",
+            ".agents/skills/mob-write/references/chinese.md",
+            ".agents/skills/mob-write/references/profile.md",
+            "synthetic-private-bundle/profile.md"
+          ],
+          "profile_applied": true
+        },
+        {
+          "id": "formal-report",
+          "review_zh": "审稿说明：报告按正式状态更新组织，明确验证尚未完成、周四草稿的交付条件，以及批准和发布日期均未确定。",
+          "text": "Validation is not yet complete. A draft of the benchmark can be shared on Thursday, provided validation is completed first. Release approval remains pending, and the release date has not been decided.",
+          "applied_references": [
+            ".agents/skills/mob-write/references/technical-document.md",
+            ".agents/skills/mob-write/references/chinese.md"
+          ],
+          "profile_applied": false
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No real-person corpus, private profile, global installation or project migration was inspected or changed.",
+    "All three sessions read profiles as needed but never opened corpus.jsonl or voice-notes.md; these outputs do not establish sample-learning effects.",
+    "Generic reply omitted the explicitly supplied current fact that validation was not yet complete.",
+    "Avery reply paraphrased validation not complete as validation still in progress, an extra inference about current progress.",
+    "Each style was sampled once. There was no same-session reconnection, statistical comparison, human author acceptance or cross-host validation.",
+    "The formal-report profile exclusion is supported by applicable guidance selection, model output metadata and a formal output; an internal model-use decision cannot be independently observed.",
+    "Raw stderr contains authentication-host identity metadata and must remain private; it is intentionally absent from this public-safe summary."
+  ]
+}
