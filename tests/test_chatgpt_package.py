@@ -42,7 +42,7 @@ class PackageTests(unittest.TestCase):
                 self.assertEqual(builder.main(["--output", str(self.root / "dist")]), 0)
         report = json.loads(files["package-manifest.json"])
         self.assertEqual(report["name"], "mob-write")
-        self.assertEqual(report["version"], "0.4.0-rc.5")
+        self.assertEqual(report["version"], "0.4.0-rc.6")
         self.assertEqual(report["source"], builder.SOURCE)
         self.assertEqual(report["external_reference_count"], 0)
         self.assertIsNone(report["reference_sha256"])

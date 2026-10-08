@@ -35,7 +35,7 @@ Choose a primary scene by purpose, not a keyword or courtesy. If none fits, use 
 | Email, work message, update, or decision request | [Work communication](references/work.md) | Recipient need and useful coordination |
 | Technical explanation, manual, or formal report | [Technical documents](references/technical-document.md) | Reader knowledge and document conventions; not every message mentioning software |
 | Writing or polishing Chinese prose, including review notes | [Chinese expression](references/chinese.md) | Expression; not Chinese instructions alone or an exact layout-only edit |
-| Explicit voice request or accurately scoped supplied profile | [Personal voice](references/profile.md), then relevant profile | Optional tone; no default identity |
+| Explicit voice request, supplied profile, or explicitly connected local bundle | [Personal voice](references/profile.md), then matching bundle scope and relevant profile | Optional tone; no default identity |
 | Import samples, save feedback, or maintain a profile | [Local learning](references/learning.md) | Optional corpus tools and provenance |
 | ChatGPT file access or persistence affects the task | [Environment notes](references/chatgpt.md) | What can actually be read or saved |
 

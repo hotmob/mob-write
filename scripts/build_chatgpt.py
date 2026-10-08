@@ -20,7 +20,10 @@ NAME = "mob-write"
 PLUGIN_NAME = NAME
 SOURCE = "https://github.com/hotmob/mob-write"
 SKILL_FILES = (
-    "SKILL.md", ".gitignore", "agents/openai.yaml", "scripts/corpus.py",
+    "SKILL.md", ".gitignore", "agents/openai.yaml", "scripts/corpus.py", "scripts/private_data.py",
+    "assets/private-bundle-template/README.md", "assets/private-bundle-template/bundle.json",
+    "assets/private-bundle-template/profile.md", "assets/private-bundle-template/voice-notes.md",
+    "assets/private-bundle-template/corpus.jsonl",
     "assets/sample-record.example.jsonl", "assets/voice-profile.example.md",
     "references/chinese.md", "references/social.md", "references/work.md",
     "references/profile.md", "references/technical-document.md",

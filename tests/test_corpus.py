@@ -13,6 +13,7 @@ from unittest import mock
 
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "corpus.py"
+sys.path.insert(0, str(SCRIPT.parent))
 SPEC = importlib.util.spec_from_file_location("corpus", SCRIPT)
 corpus = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(corpus)
@@ -216,6 +217,7 @@ class CorpusTests(unittest.TestCase):
         (installed / "scripts").mkdir(parents=True)
         installed_script = installed / "scripts" / "corpus.py"
         installed_script.write_bytes(SCRIPT.read_bytes())
+        (installed / "scripts/private_data.py").write_bytes((SCRIPT.parent / "private_data.py").read_bytes())
         result = subprocess.run([sys.executable, str(installed_script), "stats"], cwd=self.root,
                                 text=True, capture_output=True, check=True)
         stats = json.loads(result.stdout)

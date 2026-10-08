@@ -1,6 +1,6 @@
 # Installation and migration
 
-The 0.4.0-rc.5 candidate installs only canonical `mob-write`. Former `$wordaim`, `$chinese-writing` and `$mob-social-writing` calls no longer have forwarding entries. Update active writing routes to `$mob-write`; preserve the adopting project's business, source, audience and governance constraints separately.
+The 0.4.0-rc.6 candidate installs only canonical `mob-write`. Former `$wordaim`, `$chinese-writing` and `$mob-social-writing` calls no longer have forwarding entries. Update active writing routes to `$mob-write`; preserve the adopting project's business, source, audience and governance constraints separately.
 
 ## New isolated installation
 
@@ -64,3 +64,11 @@ The historical WordAim trial loaded an enabled old Chinese skill as well. Its co
 ## Four separate version checks
 
 Verify the source commit, package manifest and hashes, installation receipt, and actual host catalog and reads. A successful build, saved directory or release label alone does not establish a usable host installation. Report missing discovery, conflicting sources, omitted guidance and excess reads. Writing checks should also exercise recipient language, factual uncertainty and the adopting project's constraints; package checks alone do not establish writing value.
+
+## Replaceable private bundle
+
+Install the public candidate first. Keep a complete recoverable copy of legacy entries, including private files and symlink identities, outside host discovery before retirement. The public installer deliberately does not migrate private data. For an authorized personal migration, copy the selected legacy private directory to an independently owned private bundle outside the installation; preserve profile, notes, corpus, reference provenance, and history byte-for-byte. Add only `bundle.json` with schema=1, owner and applicable scope, then use the installed `scripts/private_data.py connect --data-dir DIR`. Do not infer approved feedback or convert external reference samples into authored samples. No missing corpus or history should be manufactured.
+
+The binding lives in `mob-write/.local/config.json`, excluded from public hashes and packages. A public upgrade preserves it. `private_data.py init` refuses existing directories; `connect` checks metadata and file presence without reading private prose. `show` reveals local path/owner/scope, so do not paste its output into public issues. To switch authors, connect a different validated bundle; retain the previous one unchanged.
+
+Verify private byte identities, the connected corpus selection, and a scoped writing task. Do not publish real migration records or host paths in this repository. A route in an expected file is only a proposal until the actual target is written and a fresh host discovers/loads it.

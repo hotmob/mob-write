@@ -43,7 +43,7 @@ Scene guidance and teaching explanations are mainly in Chinese; this does not re
 
 ## Install the candidate
 
-This branch is **0.4.0-rc.5**, a review candidate in [draft PR #2](https://github.com/hotmob/mob-write/pull/2). The published **v0.2.0** release contains the earlier social-writing method. Cloning main or downloading v0.2.0 does not install this candidate. Merge and formal release are separate decisions.
+This branch is **0.4.0-rc.6**, a review candidate in [draft PR #2](https://github.com/hotmob/mob-write/pull/2). The published **v0.2.0** release contains the earlier social-writing method. Cloning main or downloading v0.2.0 does not install this candidate. Merge and formal release are separate decisions.
 
 Python 3.10+ is needed for installation and packaging. The writing instructions are Markdown; the optional Python tools make no model or social-account calls.
 
@@ -88,7 +88,16 @@ docs/                     design, migration, evaluation, project principles
 
 A work email does not need social rules just because it is friendly. A short English reply does not need Chinese expression rules unless Chinese prose is also requested. Examples and local learning tools are optional; the method does not load the entire directory for every task. See [design](docs/design.md) for source ownership and routing.
 
-The public default has no private personal voice. A [blank profile template](assets/voice-profile.example.md) is available; a personal profile applies only when selected or accurately scoped. Your samples and feedback stay local. Profile preferences cannot change facts, recipient language, or authorization.
+The public default has no private personal voice. Use a replaceable [private bundle](assets/private-bundle-template/README.md) outside the installation: its owner and scope, profile, feedback notes, and corpus remain separate from public source and packages. For an installed skill:
+
+```sh
+python3 /path/to/skills/mob-write/scripts/private_data.py init --data-dir /path/to/private/my-writing --owner 'Your name' --scope 'Personal developer replies; formal reports excluded'
+# Fill profile.md and import your samples with corpus.py --data-dir DIR add --file FILE.
+python3 /path/to/skills/mob-write/scripts/private_data.py connect --data-dir /path/to/private/my-writing
+python3 /path/to/skills/mob-write/scripts/private_data.py show
+```
+
+`connect` writes only the ignored `.local/config.json` pointer. To replace an author, initialize another private directory and connect it; data are not merged. The installed corpus tool uses the connected directory unless `--data-dir` is explicit. Public upgrades preserve the connection without reading private data. A writing task checks the bundle's scope before loading voice material; without a connection, generic writing works normally. Profile preferences cannot change facts, recipient language, or authorization. Connection, host discovery, source loading, and writing effect require separate checks.
 
 ## Packages and ChatGPT
 
@@ -111,7 +120,7 @@ The builder uses a public allowlist and excludes private profiles, drafts, feedb
 python3 -m unittest discover -s tests -v
 ```
 
-All **48 structural checks** pass. They cover public package boundaries, source/package identity, and isolated installation and upgrade. **Passing them does not establish writing quality.** Model trials separately record actual outputs and source reads. [rc.4 validation](docs/rc4-validation.md) preserves the initial ten-case comparison, targeted confirmations, and observed risks; its results were not rerun or rewritten as rc.5 results.
+All **55 structural checks** pass. They cover public package boundaries, source/package identity, isolated installation and upgrade, private bundle selection, author switching, and preservation of connected data. **Passing them does not establish writing quality.** Model trials separately record actual outputs and source reads. [rc.4 validation](docs/rc4-validation.md) preserves the initial ten-case comparison, targeted confirmations, and observed risks; its results were not rerun or rewritten as rc.5 results.
 
 The [bounded rc.5 fidelity check](docs/rc5-validation.md) compares the two earlier ambiguous requests and four new explicit-boundary requests. The candidate retained the broader “interface” wording in one work run, but its date wording remained ambiguous. Both methods met the four new requests' criteria. The clearer rules therefore do not establish repeatable improvement or resolution of either risk. No trial opened the teaching library, so an example-library benefit remains unmeasured. Small synthetic trials do not prove reliable behavior, general improvement, reader understanding, or real-task usefulness.
 
