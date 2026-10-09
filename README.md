@@ -1,51 +1,38 @@
-# Mob Write
+<h1 align="center">Mob Write</h1>
 
-**Write with purpose, for your reader.**
+<p align="center"><strong>Write with purpose, for your reader.</strong><br>A writing skill in the Mob Skills series.</p>
 
-A lightweight writing skill for messages, social replies, articles, and technical explanations. Decide what the reader needs, preserve the facts, and produce copy they can understand, judge, act on, or naturally respond to.
+<p align="center">
+  <a href="https://github.com/hotmob/mob-write/releases/latest"><img src="https://img.shields.io/github/v/release/hotmob/mob-write" alt="Latest GitHub release"></a>
+  <a href="https://github.com/hotmob/mob-write/actions/workflows/check.yml"><img src="https://github.com/hotmob/mob-write/actions/workflows/check.yml/badge.svg?branch=main&amp;event=push" alt="Tests and package build on main"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/hotmob/mob-write" alt="MIT license"></a>
+</p>
 
-先看目的、读者与事实，再决定写什么、怎样写；中文审稿与收件人语言分别判断。
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
 
-**Project:** Mob Write · **Call:** `$mob-write` · **Repository:** [`hotmob/mob-write`](https://github.com/hotmob/mob-write)
+Draft and review messages, social replies, articles, and technical explanations. Start with what the recipient needs, preserve the supplied facts, and load only the guidance the task needs. Chinese review notes and the recipient's delivery language are separate decisions.
 
-Mob Write helps with the decisions behind the wording: whether an update adds useful information, whether a claim is supported, which language reaches the recipient, and how much detail they need. A thank-you can be enough. A technical conclusion may need its limitations. Shorter is not always better.
+**Series:** Mob Skills · **Project:** Mob Write · **Call:** `$mob-write` · **Repository:** [`hotmob/mob-write`](https://github.com/hotmob/mob-write)
+
+[Examples](#what-changes-in-a-draft) · [Install](#install-v040) · [Usage](#use-it) · [Private voice](#optional-private-voice) · [Validation](#validation-and-contributions) · [Sources](#sources-and-license)
 
 ## What changes in a draft
 
-These are **synthetic teaching examples**, not measured outputs or private conversations.
+These are **synthetic teaching examples**, not measured model outputs or private conversations.
 
 | Supplied facts and purpose | Problematic draft | Useful draft |
 | --- | --- | --- |
 | Someone explained a configuration option. You understand but have not run it; thank them in English. | “Worked perfectly, thanks!” | “Thanks, that clears it up!” |
-| Export tests passed; delivery has not happened. Tell a teammate the actual status. | “导出功能已完成交付。” | “导出功能测试已通过，尚未交付。” |
-| On one 16 GB machine, eight serial tests of a 100,000-row CSV had median times of 70 ms in the old version and 52 ms in the new version. Concurrency and production were not tested. | “新版在所有场景都更快。” | “在这台 16 GB 机器上，对同一份 10 万行 CSV 做八次串行测试，中位耗时从 70 ms 降至 52 ms；并发和生产环境尚未测。” |
+| Export tests passed; delivery has not happened. Tell a teammate the actual status. | “The export feature has been delivered.” | “Export tests passed; it hasn't been delivered yet.” |
+| On one 16 GB machine, eight serial tests of a 100,000-row CSV had median times of 70 ms in the old version and 52 ms in the new version. Concurrency and production were not tested. | “The new version is faster in every scenario.” | “On this 16 GB machine, eight serial tests of the same 100,000-row CSV reduced median time from 70 ms to 52 ms. Concurrency and production remain untested.” |
 
-The first preserves the difference between understanding and verifying. The second reports a result without upgrading it to delivery. The third keeps the evidence beside the conclusion, even though it takes more words. Other tasks may call for a different tone, length, or result.
+A thank-you can be enough. A technical conclusion may need its evidence and limitations. Shorter is useful only when the necessary meaning survives.
 
-There are **12 synthetic worked examples**, each with a problem, an improved draft, an explanation, and a boundary:
-
-- [Work communication](examples/work.md): four examples covering updates, requests, evidence, and commitments.
-- [Social writing](examples/social.md): two examples of natural replies without invented experience or forced questions.
-- [Documents and explanations](examples/documents.md): six examples covering reader needs, factual limits, language, and editing scope.
-
-Scene guidance and teaching explanations are mainly in Chinese; this does not restrict the draft’s delivery language. The examples teach decisions, not sentences to imitate. For a no-change update with no reporting requirement, the useful result may be a recommendation to wait. An explicit reporting requirement still matters. Chinese instructions do not make an English recipient's draft Chinese. Exact-format work and specialized translation keep their own contracts.
-
-## When to use it
-
-| Request | Fit |
-| --- | --- |
-| Draft, revise, or review a message, email, post, reply, article, or technical explanation | Use `$mob-write` with the recipient, purpose, and source material. |
-| Review an English recipient draft in Chinese | Keep the Chinese review gloss separate from the English copy. |
-| Adapt writing to a project's industry or document requirements | Keep the project's evidence and workflow rules; Mob Write supplies expression guidance alongside them. |
-| Ask a general question, query a file, or run a command | A Chinese prompt alone does not call for the writing method. |
-| Translate under a specialized terminology or fidelity contract | Follow that contract; apply wording guidance only within the permitted scope. |
-| Send or publish the draft | Use an independently authorized tool or workflow. This skill drafts and reviews text. |
+There are **12 synthetic worked examples**: [work communication](examples/work.md) (4), [social writing](examples/social.md) (2), and [documents and explanations](examples/documents.md) (6). Each includes the problem, an improved draft, a reason, and a boundary. Scene guidance and teaching explanations are mainly in Chinese; drafts can use the recipient's language. Examples teach decisions, not sentences to imitate.
 
 ## Install v0.4.0
 
-**v0.4.0** is the unified writing release. Install the pinned release below, or download its packages from [GitHub Releases](https://github.com/hotmob/mob-write/releases/tag/v0.4.0). The historical **v0.2.0** release contains the earlier social-writing method; it does not provide this unified entry or private bundle tools.
-
-Python 3.10+ is needed for installation and packaging. The writing instructions are Markdown; the optional Python tools make no model or social-account calls.
+Use the pinned [v0.4.0 release](https://github.com/hotmob/mob-write/releases/tag/v0.4.0). **Python 3.10+** is needed for installation and packaging. The writing instructions are Markdown; the optional tools make no model or social-account calls.
 
 ```sh
 git clone --branch v0.4.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
@@ -54,41 +41,55 @@ git rev-parse HEAD
 python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
 ```
 
-For a first trial, choose an empty, project-local skills directory your client actually discovers. The path above is suitable for a Codex project; other clients have their own discovery locations. Opening the source checkout alone does not register a skill.
+Choose an empty, project-local skills directory your client actually discovers for the first trial. The example path is suitable for a Codex project; other clients have their own discovery locations. Opening the checkout alone does not register a skill.
 
-The installer writes only `mob-write/`, with a receipt recording the version and public file hashes. In a **fresh client session**, confirm Mob Write appears and that the host reads this installed version. A successful installation does not prove automatic discovery; an already running session may retain its earlier catalog.
+A fresh installation writes only `mob-write/`, including a receipt with the version and public file hashes. In a **fresh client session**, confirm the host discovers Mob Write and reads the installed version. Installation success does not prove discovery; a running session can retain an earlier catalog.
 
-**Old names have been retired:** `$wordaim`, `$chinese-writing`, and `$mob-social-writing` have no forwarding entries or packages in v0.4.0. Older installations enabled elsewhere can still be discovered. For upgrades, recoverable backups, manual clones, symlinks, and host-managed plugins, follow [migration](docs/migration.md). The installer has no global target default, preserves private and unknown files, and refuses unknown or edited installations. Historical releases remain available.
+**Upgrading an older installation?** Read [migration and recovery](docs/migration.md). Managed, unchanged same-source installs can upgrade. The installer has no global default, preserves private and unknown files, and refuses unknown installations, edited public files, and symlinked installation targets or managed public paths. Retiring verified managed legacy entries also writes an explicitly chosen backup and removes their managed public files. Existing canonical upgrades are not full I/O transactions; keep a recoverable backup. Manual clones and host-managed plugins need their own migration procedure.
 
-## Call it
+`$wordaim`, `$chinese-writing`, and `$mob-social-writing` have no forwarding entries or packages in v0.4.0; older entries enabled elsewhere may still be discovered. Historical releases remain available. **v0.2.0** contains the earlier social-writing method, without the unified entry or private bundle tools.
 
-Give the intended reader, what the draft should accomplish, and the facts or original text:
+## Use it
+
+Give the intended reader, purpose, and source facts or original text:
 
 > Use $mob-write to reply to this English comment. We haven't met. A brief thank-you is enough: “That option only applies to the CLI; for the API, set it in the request body.” I understand, but haven't tested it.
 
-> 使用 $mob-write 给英文收件人写邮件，先给中文释义，再给英文正文。接口核对计划周四完成；安全审查需等同事下周一回来。请对方确认周五截止是否只指接口核对，不新增交付承诺。
+> Use $mob-write to draft an email for an English recipient, with a separate Chinese review gloss. The interface check is planned to finish on Thursday; security review must wait until a colleague returns next Monday. Ask whether Friday's deadline covers only the interface check. Add no delivery commitment.
 
-> 使用 $mob-write 判断这条群进度是否值得发：今天没有新文档、测试、决定或协作需求，与昨天相同，也没有例行汇报要求。如果没有信息增量，说明即可。
+> Use $mob-write to judge whether this group update is useful: today has no new documents, tests, decisions, or coordination needs compared with yesterday, and no routine reporting requirement. If it adds nothing, explain that.
 
-Usually one usable draft is enough. A review can explain material changes briefly. For a combined request, each deliverable keeps its own purpose, recipient, facts, and communication decision.
+Usually one usable draft is enough. A review can briefly explain material changes. Evaluate each part of a combined request separately; each keeps its own facts, recipient, and communication decision.
+
+| Request | How to use the skill |
+| --- | --- |
+| Draft, revise, or review a message, post, article, or explanation | Supply the recipient, purpose, and source material. |
+| Review an English draft in Chinese | Keep review notes separate from English copy for the recipient. |
+| Judge an unchanged routine update | Recommend waiting when it adds nothing and no reporting requirement is supplied; preserve a supplied obligation to report. |
+| Adapt writing to an industry or project | Keep that project's evidence, terminology, and workflow rules. |
+| Translate with specified specialist requirements, preserve an exact quotation, or change only layout | Follow the requested fidelity and edit scope. |
+| Ask a general question, query a file, or run a command | A Chinese prompt alone does not call for this writing method. |
+| Send or publish copy | Use a separately authorized tool or workflow; drafting grants no sending permission. |
 
 ## Small core, guidance on demand
 
-`SKILL.md` is the single entry and owns purpose, reader language, factual boundaries, and routing. For each deliverable, select a scene when it fits the purpose; otherwise the core is enough. Add only necessary guidance:
+[`SKILL.md`](SKILL.md) is the sole entry. It owns purpose, recipient language, factual boundaries, and routing. Select a scene by purpose; use the core alone when no scene fits. Load Chinese expression or optional voice only when relevant.
 
 ```text
-SKILL.md                  purpose, reader, facts, routing
-references/               work, social, documents; Chinese and optional overlays
-examples/                 worked cases, opened when calibration is useful
-assets/                   blank profile and sample templates
-scripts/                  explicit-target installer, public packaging, local corpus tools
-tests/                    structural checks, writing fixtures, recorded behavior results
-docs/                     design, migration, evaluation, project principles
+SKILL.md       purpose, reader, facts, routing
+references/    work, social, documents; Chinese and optional overlays
+examples/      worked cases for optional calibration
+assets/        blank profile and synthetic sample templates
+scripts/       explicit-target installation, packaging, local corpus tools
+tests/         structural checks, fixtures, recorded behavior results
+docs/          design, migration, evaluation, project principles
 ```
 
-A work email does not need social rules just because it is friendly. A short English reply does not need Chinese expression rules unless Chinese prose is also requested. Examples and local learning tools are optional; the method does not load the entire directory for every task. See [design](docs/design.md) for source ownership and routing.
+A friendly work email still uses work guidance. A short English reply needs Chinese expression rules only if Chinese prose is also requested. The skill does not load the entire directory for every task. See [design](docs/design.md) for source ownership and routing.
 
-The public default has no private personal voice. Use a replaceable [private bundle](assets/private-bundle-template/README.md) outside the installation: its owner and scope, profile, feedback notes, and corpus remain separate from public source and packages. For an installed skill:
+## Optional private voice
+
+The public default has no private personal voice. Keep a replaceable [private bundle](assets/private-bundle-template/README.md) **outside the installation**, with its owner and scope, profile, feedback notes, and corpus. For an installed skill:
 
 ```sh
 python3 /path/to/skills/mob-write/scripts/private_data.py init --data-dir /path/to/private/my-writing --owner 'Your name' --scope 'Personal developer replies; formal reports excluded'
@@ -97,55 +98,60 @@ python3 /path/to/skills/mob-write/scripts/private_data.py connect --data-dir /pa
 python3 /path/to/skills/mob-write/scripts/private_data.py show
 ```
 
-`connect` writes only the ignored `.local/config.json` pointer. To replace an author, initialize another private directory and connect it; data are not merged. The installed corpus tool uses the connected directory unless `--data-dir` is explicit. Public upgrades preserve the connection without reading private data. A writing task checks the bundle's scope before loading voice material; without a connection, generic writing works normally. Profile preferences cannot change facts, recipient language, or authorization. Connection, host discovery, source loading, and writing effect require separate checks.
+`connect` writes only the ignored `.local/config.json` pointer. To switch authors, initialize another private directory and connect it; data are not merged. The installed corpus tool selects the connection unless `--data-dir` is explicit. Public upgrades preserve the connection without reading private data.
+
+Before loading voice material, a writing task checks the bundle's scope. Without a connection, generic writing works normally. Preferences cannot change facts, recipient language, or authorization. Connection, host discovery, source loading, and writing effect need separate checks; connecting data does not prove the model learned your voice. See [personal voice guidance](references/profile.md).
 
 ## Packages and ChatGPT
 
-Build both public packages from the same checkout, **offline by default**, into an empty output directory:
+Download packages from the [release](https://github.com/hotmob/mob-write/releases/tag/v0.4.0), or build both from the same checkout **offline by default** into an empty directory:
 
 ```sh
 python3 scripts/build_chatgpt.py --output dist
 ```
 
-- `mob-write-chatgpt-skill.zip`: for a host that supports skill-file upload.
-- `mob-write-plugin.zip`: for a host that supports skills-only plugin import; identity `mob-write`.
+| Artifact | Intended use |
+| --- | --- |
+| `mob-write-chatgpt-skill.zip` | A host that supports skill-file upload. |
+| `mob-write-plugin.zip` | A host that supports skills-only plugin import; identity `mob-write`. |
+| `package-manifest.json` | Version, public file identities, and SHA-256 values. |
 
-`package-manifest.json` records the version and SHA-256 values. These are the only generated ZIPs. [ChatGPT notes](chatgpt/START-HERE.md) cover host access and persistence limits; a built ZIP does not establish account installation or directory publication.
+These are the only generated ZIPs. [ChatGPT notes](chatgpt/START-HERE.md) explain file access and persistence limits; a built package does not establish account installation or directory publication.
 
-The builder uses a public allowlist and excludes private profiles, drafts, feedback, credentials, and private paths. Four attributed external snippets and their licenses remain included. The separate pinned 40-text public corpus is optional with `--with-reference`, or `--reference-file FILE` for an exact downloaded copy; it is not the synthetic teaching library. See [sources](references/sources.md) and [optional local learning](references/learning.md).
+The builder's public path allowlist excludes private directories, drafts, feedback, credentials, and personal paths. Four attributed external snippets and their licenses are included. Keep private material out of public source files too: the allowlist is not a private-text detector. The separate pinned 40-text public corpus is optional with `--with-reference`, or `--reference-file FILE` for an exact downloaded copy. It is external reference material, separate from the synthetic teaching library; it does not supply your experiences. See [sources](references/sources.md) and [local learning](references/learning.md).
 
-## Verify and contribute
+## Validation and contributions
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-All **55 structural checks** pass. They cover public package boundaries, source/package identity, isolated installation and upgrade, private bundle selection, author switching, and preservation of connected data. **Passing them does not establish writing quality.** Model trials separately record actual outputs and source reads. [rc.4 validation](docs/rc4-validation.md) preserves the initial ten-case comparison, targeted confirmations, and observed risks; its results were not rerun or rewritten as rc.5 results.
+**v0.4.0 passed 55 structural checks** covering package boundaries, source/package identity, isolated installation and upgrade, bundle selection, author switching, and connected-data preservation. The badge above reports the current main workflow. Structural checks do not establish writing quality; behavior trials separately record actual outputs and source reads.
 
-The [bounded rc.5 fidelity check](docs/rc5-validation.md) compares the two earlier ambiguous requests and four new explicit-boundary requests. The candidate retained the broader “interface” wording in one work run, but its date wording remained ambiguous. Both methods met the four new requests' criteria. The clearer rules therefore do not establish repeatable improvement or resolution of either risk. No trial opened the teaching library, so an example-library benefit remains unmeasured. Small synthetic trials do not prove reliable behavior, general improvement, reader understanding, or real-task usefulness.
+| Behavior evidence | What it establishes and what remains limited |
+| --- | --- |
+| [rc.4 comparison](docs/rc4-validation.md) | Initial ten-case comparison and targeted confirmations, with observed risks. These results were not rerun or relabeled as rc.5. |
+| [rc.5 fidelity check](docs/rc5-validation.md) | Two earlier ambiguous requests and four new explicit-boundary requests. One candidate run retained broader “interface” wording, but date wording stayed ambiguous. Both methods met the four new requests' criteria; repeatable improvement and risk resolution remain unproven. |
+| [rc.6 bundle check](docs/rc6-validation.md) | Three fresh isolated sessions, generic writing, two fictional profiles, and a formal-report scope exclusion. Reads matched installed sources and drafts showed limited profile differences. One draft omitted an explicit status; another inferred ongoing progress from an incomplete state. No corpus or feedback notes were read, so this proves neither sample learning nor complete factual fidelity. |
 
-The [rc.6 bundle check](docs/rc6-validation.md) exercised three fresh isolated sessions: generic writing without a configuration, two fictional profiles, and an excluded formal-report scope. Actual reads matched the installed sources, and the drafts showed limited profile differences. One draft omitted an explicit status; another inferred ongoing progress from an incomplete state. None read the sample corpus, so this is profile-loading evidence rather than proof of personal learning or complete factual fidelity.
+No behavior trial opened the teaching library, so its benefit remains unmeasured. Small synthetic trials do not establish reliable behavior, general improvement, reader understanding, real-task usefulness, or compatibility across every model and host.
 
-Contributions should show the original request, scene, observed problem, public-safe example, and applicable boundary. Use synthetic or authorized public material; keep private writing, profiles, and conversations out of issues and patches. Project principles are in the [constitution](docs/constitution.md); planned work is in the [roadmap](docs/roadmap.md).
+Contributions should include the original request, scene, observed problem, public-safe example, and boundary. Use synthetic or authorized public material; keep private writing, profiles, and conversations out of issues and patches. See the [constitution](docs/constitution.md), [evaluation](docs/evaluation.md), and [roadmap](docs/roadmap.md).
 
-Stars show interest; download counts include possible repeats. Neither measures installed or active users. The project adds no telemetry and promises no engagement growth or AI-detection result.
+Stars show interest; download counts can include repeats. Neither measures installed or active users. The project adds no telemetry and promises no engagement growth or AI-detection result.
 
-## Acknowledgements / 参考来源
+## Sources and license
 
-These Skills informed the writing method:
-
-| Skill and GitHub repository | What we borrowed | Use in Mob Write |
+| Skill and repository | What informed Mob Write | Bundled material |
 | --- | --- | --- |
-| Meng To's **write-like-meng-on-x** — [MengTo/Skills](https://github.com/MengTo/Skills) | Distinguish replies from standalone posts, learn from authored examples, preserve current wording, and treat generated drafts as weak voice evidence. | Adapted methods; four attributed short excerpts and an optional pinned public corpus, under MIT. |
-| Siqi Chen's **Humanizer** — [blader/humanizer](https://github.com/blader/humanizer) | Preserve facts and the author's voice, notice repetitive structures, and make a light final edit. | Adapted editing guidance, under MIT. |
-| rabden's **X Social Media Manager** — [rabden/X-twitter-social-manager-skill](https://github.com/rabden/X-twitter-social-manager-skill) | Preserve exact replies as records for later review. | Reference only; no upstream text is bundled. Its reviewed reply archive was an empty template. |
+| Meng To's [write-like-meng-on-x](https://github.com/MengTo/Skills/blob/321c769739b823de5eb94eb3a52aa1974fe783a2/agent-skills/codex/write-like-meng-on-x/SKILL.md) · [MengTo/Skills](https://github.com/MengTo/Skills) | Replies versus posts, authored examples, current wording, and generated drafts as weak voice evidence. | Adapted methods, four attributed excerpts, and an optional pinned public corpus, under MIT. |
+| Siqi Chen's [Humanizer](https://github.com/blader/humanizer/blob/9862685f575c65a8247f90369951df1b3416e3d6/SKILL.md) · [blader/humanizer](https://github.com/blader/humanizer) | Preserve facts and voice, notice repetitive structures, and make a light final edit. | Adapted editing guidance, under MIT. |
+| rabden's [X Social Media Manager](https://github.com/rabden/X-twitter-social-manager-skill) | Preserve exact replies for later review. | Method reference only; no upstream text is bundled. The reviewed reply archive was an empty template. |
 
-For structure, we consulted the locally installed Codex **skill-creator** and its UI-metadata reference: a small entry, supporting resources loaded as needed, and `agents/openai.yaml`. Its [public counterpart in openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) documents these conventions; the consulted local copy was not pinned to an upstream revision. This was an authoring reference, not a source of writing examples or bundled code.
+For structure, we consulted the locally installed Codex **skill-creator** and its UI-metadata reference: a small entry, on-demand resources, and `agents/openai.yaml`. The consulted local copy was not pinned to an upstream revision. This was an authoring reference, not a source of writing examples or bundled code. The historical [openai/skills catalog](https://github.com/openai/skills) now directs authors to [OpenAI Plugins](https://github.com/openai/plugins).
 
-The historical **chinese-writing** Skill came from a user-supplied local guide and was added to [this repository's history](https://github.com/hotmob/mob-write/tree/f878474706754aed0878efc562d3a93c9557a919/chinese-writing); no separate public upstream was established. **mob-social-writing** is this project's former name, not an independent upstream. Private profiles, drafts, and conversations are excluded.
+The historical **chinese-writing** Skill came from a user-supplied local guide and entered [this repository's history](https://github.com/hotmob/mob-write/tree/f878474706754aed0878efc562d3a93c9557a919/chinese-writing); no separate public upstream was established. **mob-social-writing** is this project's former name. Private profiles, drafts, and conversations are excluded.
 
-Reviewed versions and adaptation limits are in [source notes](references/sources.md); copied material retains [third-party attribution and licenses](THIRD_PARTY_NOTICES.md). Projects considered only for naming are not content sources. No upstream endorsement is implied.
+Reviewed revisions and adaptation limits are in [source notes](references/sources.md). Copied material retains [third-party notices and licenses](THIRD_PARTY_NOTICES.md). Projects considered only for naming are not content sources. No upstream endorsement is implied.
 
-## License
-
-[MIT](LICENSE). Meng To's public examples and Siqi Chen's editing guidance retain [their notices and licenses](THIRD_PARTY_NOTICES.md). External samples show expression; they do not supply your experiences or endorsements. Added third-party material needs its own authorization.
+**License:** [MIT](LICENSE), with full notices for Meng To's public examples and Siqi Chen's editing guidance. External samples supply wording evidence, not your biography or endorsements. Added third-party material needs its own authorization.
