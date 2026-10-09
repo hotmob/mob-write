@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-06",
+  "repository_id_before": 1372577862,
+  "repository_id_after": 1372577862,
+  "repository_before": "hotmob/mob-social-writing",
+  "repository_after": "hotmob/mob-write",
+  "visibility": "public",
+  "redirects": [
+    {
+      "old": "https://github.com/hotmob/mob-social-writing",
+      "status": "HTTP/2 301 ",
+      "location": "https://github.com/hotmob/mob-write"
+    },
+    {
+      "old": "https://github.com/hotmob/mob-social-writing/pull/2",
+      "status": "HTTP/2 301",
+      "location": "https://github.com/hotmob/mob-write/pull/2"
+    },
+    {
+      "old": "https://github.com/hotmob/mob-social-writing/actions/runs/37315632754",
+      "status": "HTTP/2 301 ",
+      "location": "https://github.com/hotmob/mob-write/actions/runs/37315632754"
+    }
+  ],
+  "old_git_url_resolved": true,
+  "retained_head_before_update": "7a1f8b47052639b03a0261c5e68c685a48f2b86a",
+  "retained_main": "42e3fb69359c4345b271899677ec1ce8f8fd689b",
+  "pr_2_retained": {
+    "url": "https://github.com/hotmob/mob-write/pull/2",
+    "state": "OPEN",
+    "draft": true
+  },
+  "rename_exception_checks": {
+    "github_pages_site": false,
+    "repository_hosted_custom_action": false
+  },
+  "scope": "In-place repository rename; no new canonical repository, merge or release."
+}

@@ -1,59 +1,17 @@
-# 在 ChatGPT 用 Mob Social Writing
+# Mob Write in ChatGPT
 
-你可以在 ChatGPT 中直接使用这套写作规则和有来源的样本，无需部署服务器或配置 API Key。这里提供两个用途不同的包。
+This is Mob Write v0.4.0, the unified writing release. The historical v0.2.0 release contains the earlier social method. Verify the release and package manifest; importing these files does not establish host discovery.
 
-## 个人使用：技能上传包
+When your host offers skill file upload, use `mob-write-chatgpt-skill.zip`. When it supports a skills-only plugin import, use `mob-write-plugin.zip`, with identity `mob-write`. These are the only generated ZIPs and use the same canonical writing rules. Availability depends on the host/account/workspace. This project does not promise a specific current UI route.
 
-从 [GitHub Releases](https://github.com/hotmob/mob-social-writing/releases) 下载 `mob-social-writing-chatgpt-skill.zip`。
+Build offline from the candidate source with `python3 scripts/build_chatgpt.py --output dist`, using an empty output directory. The builder refuses retired alias archive names in the output; move any retained earlier packages to a separate archive location before rebuilding. Core and scene rules plus licenses are included. Full external examples are optional with `--with-reference` or an exact pinned `--reference-file`. The build manifest records the choice and file hashes.
 
-在支持该功能的 ChatGPT 中：
+Use `$mob-write` with the recipient, original material, and what the draft should achieve. Chinese review language and recipient language are independent. The public default has no private personal voice.
 
-1. 打开侧栏 **Plugins → Skills → Create → Upload from your computer**。
-2. 选择 `mob-social-writing-chatgpt-skill.zip`，按页面提示完成扫描与安装。
-3. 在可使用该技能的对话里说：“用 Mob Social Writing 帮我回这条。我们不熟，轻松一点：［原帖］”。
+Old calls `$wordaim`, `$chinese-writing` and `$mob-social-writing` have no forwarding entries in v0.4.0. Remove any older active upload or plugin through the host's supported mechanism, then import Mob Write and inspect its catalog in a fresh session. A new plugin identity does not automatically remove the old one, and an already running session may keep earlier instructions. Historical releases retain their old names.
 
-技能包包含写作规则、40 条公开参考、来源与许可，以及可选本地语料工具。写作时直接读 Markdown 即可，不依赖脚本执行或再次下载语料。**不要把完整插件 ZIP 上传到单技能入口。**
+If your host has no skill upload, paste `chat-starter.md` and attach the relevant extracted references. This is manual context, not automatic skill installation. Missing files should be reported. Do not load every reference for a small request.
 
-截至 2026-09-16，官方列出的个人 Skills 可用账户为符合条件的 Business、Enterprise、Healthcare、Edu，且受工作空间设置和产品开放情况影响。入口不存在不一定是安装包问题；个人 Plus/Pro 不能假设有相同上传入口。官方说明：[Skills in ChatGPT](https://help.openai.com/en/articles/20001066)。
+The package cannot access your computer's private profile or keep feedback across sessions automatically. When you request a voice card, it can produce a file for you to save; it must not claim permanent memory without a verified save. Drafting does not authorize sending or posting.
 
-## 完整插件：本地插件来源与后续分发
-
-`mob-social-writing-plugin.zip` 包含 `.codex-plugin/plugin.json` 和 `skills/mob-social-writing/`，采用官方仍支持的兼容格式。它可交给支持本地插件的客户端或管理员导入，也可用于后续官方目录投稿。
-
-ChatGPT 桌面端的 Work/Codex 本地插件来源，与网页版个人 Skills 上传是不同入口；不是任意网页账号都能直接上传完整插件 ZIP。需要在支持的宿主里配置本地 marketplace 并安装时，可解压完整包，再让 `plugin-creator` 将其加入个人插件来源。
-
-这里的 GitHub 发布**不等于**上架 ChatGPT 公共插件目录。目录投稿和工作空间发布是独立操作，需要相应身份、权限和审核。本项目不含 MCP、外部账号连接或服务端。打包规范见 [Package your plugin](https://developers.openai.com/plugins/build/plugins)。
-
-## 没有 Skills 入口也可以用
-
-在普通 ChatGPT 新对话中，粘贴 [chat-starter.md](chat-starter.md) 的全部内容，再贴原帖。需要参考样本时，将技能 ZIP 解压后，把其中的 `references/reply-moves.md` 和 `references/external-examples.md` 附到同一对话。也可在可用的项目中放入这些资料，并将起始说明放入项目指令。
-
-这是当前对话/项目中的使用方式，不代表插件已安装。不会自动读取你电脑上的技能或私人反馈。
-
-## 让它逐步像你
-
-直接说“这句太正式”“这里道谢就够了”“这种玩笑像我”。同一对话中会按反馈修订。想留到以后，可以说：
-
-> 把我明确说过的语气偏好整理成口吻卡。区分本人样本、AI 草稿和外部参考，没有确认的别当结论。
-
-保存口吻卡，之后在新对话附上，或更新你自己的项目资料/私人技能副本。本包没有自动同步或跨会话存储服务，不会将这些反馈提交到公开 GitHub。
-
-## 安装后试这几类请求
-
-- “对方回答了我的问题，帮我简单道谢。”应能自然结束，不强加问题。
-- “对方发了自己做的作品，我们不熟，回一句。”不应变成技术验收，也不应冒称用过。
-- “这句不像我，少一点工作汇报感。”应直接改稿，不要求填写校准问卷。
-- “把这个外部作者的经历改成我的。”应保留事实边界，不冒用经历。
-- “替我发出去。”本包本身没有发送工具，不能报告已发送。
-
-包结构、引用完整性和测试在仓库中验证；账户内的实际安装、扫描结果与调用需要在对应 ChatGPT 环境里确认。
-
-## 从源码重新打包
-
-在仓库根目录运行：
-
-```sh
-python3 scripts/build_chatgpt.py
-```
-
-仅下载已固定版本和 SHA-256 的公开 Meng To 语料，并从明确文件清单构建两个 ZIP 和校验清单，输出到 `dist/`。不读取 `.local/`，不包含私人资料。离线构建可用 `--reference-file /path/to/original-tweet-corpus.jsonl` 提供**同一哈希**的上游原始文件；不是导入私人语料的入口。
+GitHub build, account upload, fresh-session discovery, and public directory listing are distinct states. Account upload and public directory listing require their own verification.

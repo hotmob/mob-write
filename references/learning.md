@@ -4,18 +4,32 @@
 
 ## 数据放在哪里
 
-所有个人数据默认写到技能目录下被 Git 忽略的 `.local/`：
+建议将个人数据放在技能安装目录之外的一个私有资料包，升级公共方法时保持资料独立。空白目录结构见[私有资料包模板](../assets/private-bundle-template/README.md)：
 
 - `profile.md`：称呼、使用语言、表达偏好，按需读取。
 - `voice-notes.md`：用户明确的语气反馈及适用范围。
 - `corpus.jsonl`：本人样本、明确认可或否定的稿件。
 - `reference-corpus.jsonl`：下载的外部作者样本，始终保留外部身份。
+- `bundle.json`：`schema: 1`、owner 和 scope。owner 只标记资料归属；scope 说明适用语言、平台、关系和例外，不替代收件人语言。
 
-`--data-dir` 可以指定其他本地目录。公开仓库源码只包含方法、少量署名片段和模板；完整参考语料在本地按需下载。ChatGPT 发布包另附固定公开源生成的只读 `references/external-examples.md`，不读取或打包个人 `.local/`。`.gitignore` 不是访问控制，分享文件前仍要检查实际打包内容。
+通过 `scripts/private_data.py` 初始化并显式连接自己的目录。连接记录只写到安装目录被 Git 忽略的 `.local/config.json`，内容为 `schema: 1` 和绝对 `data_dir`；公共源码、安装收据与发布包不包含私人路径或资料。切换开发者时连接另一目录，不合并不同作者的数据。
+
+```sh
+python3 scripts/private_data.py init --data-dir /path/to/private-writing-bundle --owner 'Your name' --scope 'English replies to developer peers; formal work messages excluded'
+# 在私有目录填写 profile.md 与 voice-notes.md，再连接。
+python3 scripts/private_data.py connect --data-dir /path/to/private-writing-bundle
+python3 scripts/private_data.py show
+```
+
+`connect` 和 `show` 默认针对脚本所属的技能目录；需要指定实际安装时使用 `--skill-dir /path/to/skills/mob-write`。初始化保留空语料，不导入虚构模板，不伪造认可。连接只确认显式目录与清单格式、profile 文件存在，不读取私人正文；命令成功不能证明写作时已加载或效果符合本人语气。
+
+语料命令的 `--data-dir` 可以显式指定资料包；不传时采用已连接目录，没有连接则沿用技能目录下 `.local/`。这个旧的本地数据位置不表示已自动选择个人口吻。读取 profile 前仍要核对资料归属和范围。资料缺失或宿主不能访问时，保持通用起草，不声称已学习或应用口吻。
+
+公开仓库源码只包含方法、少量署名片段和空白/合成模板；完整参考语料在本地按需下载。ChatGPT 发布包可选附带固定公开源生成的只读 `references/external-examples.md`，不读取或打包个人 `.local/` 或已连接目录。`.gitignore` 不是访问控制，分享文件前仍要检查实际打包内容。
 
 ## 下载已有参考语料
 
-在技能目录运行：
+在技能目录运行；需要选择特定资料包时，在子命令前加 `--data-dir /path/to/private-writing-bundle`：
 
 ```sh
 python3 scripts/corpus.py fetch-reference
@@ -66,6 +80,6 @@ python3 scripts/corpus.py search --rejected --limit 4
 
 读与当前任务同平台、同类型的少量样本，观察用户通常如何表达感谢、惊讶、认同、分歧或提问。注意双方关系和父帖语境，不仅看标点。
 
-将有重复证据或明确用户反馈的结论写进 `.local/voice-notes.md`，注明适用范围和来源。少量例子先作为倾向，不扩成“永远不问问题”“每句必须小写”等规则。没有反馈就保留未确认状态。
+将有重复证据或明确用户反馈的结论写进所选私有资料包的 `voice-notes.md`，注明适用范围和来源。少量例子先作为倾向，不扩成“永远不问问题”“每句必须小写”等规则。没有反馈就保留未确认状态。
 
 新的草稿正常交给用户。用户明确认可或纠正语气时，在已获授权维护语料的任务里记录反馈；不要每次都发起问卷。

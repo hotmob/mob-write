@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "date": "2026-10-06",
+  "candidate_version": "0.4.0-rc.2",
+  "host": "Codex CLI 0.145.0",
+  "model_selection": "CLI default, no explicit model override; exact served model and sampling settings not established.",
+  "protocol": "Fresh ephemeral read-only sessions, normal auth, user config ignored, command-scoped disable of discovered legacy global writing paths. No global configuration/installation change. Only fixture requests and applicable local rules were authorized.",
+  "canonical_entry_sha256": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+  "trials": [
+    {
+      "id": "implicit",
+      "fixture_ids": [
+        "1",
+        "2"
+      ],
+      "actual_read_paths": [
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/chinese.md",
+        "skills/mob-write/references/social.md",
+        "skills/mob-write/references/work.md",
+        "skills/mob-write/references/reply-moves.md"
+      ],
+      "read_file_sha256": {
+        "skills/mob-write/SKILL.md": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+        "skills/mob-write/references/chinese.md": "df655f2da3f4f343fae429193bec9fb7f78e8eb4ab3b079b315d14ea7147baf2",
+        "skills/mob-write/references/social.md": "bc3b7311c7e89dd04a1942c1a441322d2035d0bbc3dca5365cd3f5864799a3a6",
+        "skills/mob-write/references/work.md": "7d33232292ea136f2aa825971a41c32bfa905146e2e398ee9ac4ae4ad94c139b",
+        "skills/mob-write/references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0"
+      },
+      "drafts": {
+        "email_review_zh": "草稿的事实和承诺边界清楚。建议在英文邮件中分别说明可在周四前完成的接口核对、安全审查的依赖，以及需要 Jordan 确认的截止范围，避免对方误以为你承诺周五完成全部迁移。",
+        "email_to_jordan_en": {
+          "subject": "Clarification on the Friday Deadline",
+          "body": "Hi Jordan,\n\nThanks for putting together the migration checklist. I can review the API items by Thursday, but the security review will need to wait until Lea returns next Monday. Because of that, I can’t commit to completing the entire migration by Friday.\n\nCould you confirm whether the Friday deadline applies only to the API review?\n\nBest,\n[Your Name]"
+        },
+        "project_group_daily_update_zh": "今日进展：今天继续考虑方案，较昨日没有实质变化。没有新增文档、测试或决策，目前也没有需要其他人配合的事项。"
+      },
+      "observation": "The current entry was located and read without a supplied skill-file path. English delivery and Chinese review were separated, but the unchanged daily update was drafted rather than omitted. Social and reply examples were also read for the work tasks."
+    },
+    {
+      "id": "alias",
+      "fixture_ids": [
+        "5"
+      ],
+      "actual_read_paths": [
+        "skills/wordaim/SKILL.md",
+        "skills/mob-write/SKILL.md",
+        "skills/mob-write/references/social.md",
+        "skills/mob-write/references/reply-moves.md"
+      ],
+      "read_file_sha256": {
+        "skills/wordaim/SKILL.md": "c6d076b100e3dba8598c24e33ee0250ae5481b8114a282806a405a7057edc2e0",
+        "skills/mob-write/SKILL.md": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+        "skills/mob-write/references/social.md": "bc3b7311c7e89dd04a1942c1a441322d2035d0bbc3dca5365cd3f5864799a3a6",
+        "skills/mob-write/references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0"
+      },
+      "drafts": [
+        "Ah, got it—thanks for clearing that up!"
+      ],
+      "observation": "The explicit old wordaim call opened its thin alias, then the new canonical entry and social references."
+    },
+    {
+      "id": "return",
+      "fixture_ids": [
+        "5"
+      ],
+      "actual_read_paths": [
+        "retained-rc1/skills/wordaim/references/social.md",
+        "retained-rc1/skills/wordaim/references/reply-moves.md"
+      ],
+      "read_file_sha256": {
+        "retained-rc1/skills/wordaim/references/social.md": "bc3b7311c7e89dd04a1942c1a441322d2035d0bbc3dca5365cd3f5864799a3a6",
+        "retained-rc1/skills/wordaim/references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0"
+      },
+      "drafts": [
+        "Ah, got it—thanks for clearing that up!"
+      ],
+      "observation": "The retained old directory supplied old social references, but the selected entry was not explicitly opened. This alone does not establish the entry version."
+    },
+    {
+      "id": "return-verified",
+      "fixture_ids": [
+        "5"
+      ],
+      "actual_read_paths": [
+        "retained-rc1/skills/wordaim/SKILL.md",
+        "retained-rc1/skills/wordaim/references/social.md",
+        "retained-rc1/skills/wordaim/references/reply-moves.md"
+      ],
+      "read_file_sha256": {
+        "retained-rc1/skills/wordaim/SKILL.md": "28a6c658b224e5b4308b37178e681a56274ee878efc70d3cd9c9010a69fce809",
+        "retained-rc1/skills/wordaim/references/social.md": "bc3b7311c7e89dd04a1942c1a441322d2035d0bbc3dca5365cd3f5864799a3a6",
+        "retained-rc1/skills/wordaim/references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0"
+      },
+      "drafts": [
+        "Ah, got it—thanks for clearing that up!"
+      ],
+      "observation": "A follow-up explicitly requested an entry read and hash. The retained rc1 entry hash was verified, without overwriting or downgrading the new installation."
+    }
+  ],
+  "limitations": [
+    "Small synthetic probes, not a reliability benchmark or a causal comparison.",
+    "The work-task batch failed to omit a no-change broadcast; successful discovery does not imply consistent execution of the method.",
+    "The first retained-version probe omitted an explicit entry read; the follow-up adds version evidence rather than erasing that observation.",
+    "The email outputs use by Thursday for the supplied Chinese deadline; this can include Thursday, so exact deadline intent needs review before external delivery. The CLI additionally narrows interface review to API review.",
+    "No send, publication, recipient response, profile use or real adoption was measured. Raw logs remain local because host metadata may be private."
+  ]
+}

@@ -20,6 +20,8 @@ import unicodedata
 import urllib.error
 import urllib.request
 
+import private_data
+
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_DIR = SKILL_ROOT / ".local"
@@ -271,8 +273,8 @@ def select_samples(records: list[dict], *, intent: str | None = None, query: str
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR,
-                        help="Private local data directory (default: skill root/.local)")
+    parser.add_argument("--data-dir", type=Path,
+                        help="Explicit data directory; otherwise connected bundle or skill root/.local")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("fetch-reference", help="Fetch the fixed, hash-verified public reference corpus")
     add = commands.add_parser("add", help="Validate and atomically import a JSONL file")
@@ -292,8 +294,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "search" and args.limit < 1:
         parser.error("--limit must be positive")
-    data_dir = args.data_dir.expanduser().resolve()
     try:
+        data_dir = private_data.data_directory(SKILL_ROOT, args.data_dir)
         if args.command == "fetch-reference":
             rows = convert_reference(download_reference())
             combine_local_reference(read_records(data_dir / "corpus.jsonl"), rows)
@@ -338,7 +340,7 @@ def main(argv: list[str] | None = None) -> int:
                       "by_feedback": dict(Counter(row["feedback"] for row in rows)),
                       "by_format": dict(Counter(row["format"] for row in rows)),
                       "missing_parent": sum(row["parent_text"] is None for row in rows)}
-    except (CorpusError, OSError, urllib.error.URLError) as exc:
+    except (ValueError, OSError, urllib.error.URLError) as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 1
     print(json.dumps(result, ensure_ascii=False, indent=2))

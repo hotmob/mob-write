@@ -1,0 +1,1120 @@
+{
+  "schema_version": 1,
+  "evaluation": "Mob Write 0.4.0-rc.4 synthetic writing and routing observations",
+  "status": "Independent initial and follow-up reviews complete",
+  "provenance": {
+    "material": "All requests, people, dates, organizations, situations and outputs are synthetic. No private conversations or personal profiles are published.",
+    "raw_request_scope": "Only the original writing request is exported. Evaluation harness instructions, fixture criteria, local paths, run helpers and full tool events are excluded.",
+    "outputs": "Every outputs.text value is preserved verbatim from its raw result JSON; no editorial correction or path substitution was applied to output text.",
+    "private_trace_boundary": "Independent reviewers inspected local completed tool-command traces. This file exports their normalized trial-level read findings, not full tool events.",
+    "path_scope": "Method path metadata is relative to the Mob Write root. Local source and installation locations are not published."
+  },
+  "execution_environment": {
+    "client": "Codex CLI",
+    "cli_version": "0.145.0",
+    "model": "Client default; exact served model version was not explicitly pinned or recorded.",
+    "random_seed": "Not pinned.",
+    "sampling": "No controlled sampling comparison; no statistical conclusion.",
+    "installation": "Separate isolated project-local installations of frozen public files; no global installation or cross-project integration.",
+    "external_actions": "Drafting and read-only evaluation only; no sending, publication, deployment or trial file mutation."
+  },
+  "comparison_design": {
+    "baseline": "Previous installed Mob Write method, 0.4.0-rc.3 at commit 1fcffc78edd73305899f926b1f74626e94988ef5; not a no-skill control.",
+    "initial_round": "Four baseline sessions and four candidate sessions: two five-case batches and two routing probes per arm.",
+    "followup": "Three newly authored confirmation requests under the final freeze, plus a repeat of the original work-routing probe. The repeat is not unseen confirmation.",
+    "dependencies": "Cases within each five-case batch share context. They are not independent repeated runs, and per-case reference application is model-reported.",
+    "catalog_boundary": "Catalog entries are model-reported, not a complete independently enumerated catalog. Observed entry reads and matching hashes identify the selected method.",
+    "reads_boundary": "Trace reads are trial-level observed file opens. Per-case applied-reference claims are self-reports; neither establishes runtime enforcement."
+  },
+  "method_freezes": {
+    "baseline": {
+      "version": "0.4.0-rc.3",
+      "entry_sha256": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+      "canonical_content_sha256": "bd097c9b594ee6b306ac9b49b0868d7d74482a434bffd52f28a2f59eab79ec92",
+      "public_file_sha256": {
+        ".gitignore": "e99b4d7697e0e5d137b3146cee595df809b0cf3f0d6ebb17f628ea640a049206",
+        "LICENSE": "de849b31872753dbbe6c8f1dea783ae6c48935c4fdc30dc5208a9e0bcff00073",
+        "SKILL.md": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+        "THIRD_PARTY_NOTICES.md": "ad43f5d8d7c98bc27bde0086a96069c89ad5acfac6cf43af661f197d4673ba79",
+        "agents/openai.yaml": "7a05633bf255a3ece5fa0d72e9a4550496d6da576124271c708746181270f59f",
+        "assets/sample-record.example.jsonl": "df9af389665521db7386186853fd946b2986165939e91ccfcf70ac2bc1d303f6",
+        "assets/voice-profile.example.md": "2d8d6a6dcd0bb5885cdeb0dd4e99da0d971c0b7947c5e3fec5e15f7c1ca692fa",
+        "references/chatgpt.md": "4ce2230000ec0f50d68742db06825164ef13dfd56cf52728031896afb6680b2a",
+        "references/chinese.md": "df655f2da3f4f343fae429193bec9fb7f78e8eb4ab3b079b315d14ea7147baf2",
+        "references/learning.md": "9aa1d65a56e7515ed2e7187cebf0e7415050562143acb2e6d0b7d550e74e3a21",
+        "references/profile.md": "9043d322428336c7d4980022f513278d4cb378882a14d6d7d2f2f109f637ec67",
+        "references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+        "references/social.md": "bc3b7311c7e89dd04a1942c1a441322d2035d0bbc3dca5365cd3f5864799a3a6",
+        "references/sources.md": "d6cd35cccf762ae0fe459734dbf4dea03e9140b69914142fb67c0c77bcb076a3",
+        "references/technical-document.md": "70b12270c294cba68b30cf7131e3f62834ec8e3e7d2acb44497e7c3011a342ab",
+        "references/work.md": "7d33232292ea136f2aa825971a41c32bfa905146e2e398ee9ac4ae4ad94c139b",
+        "scripts/corpus.py": "b8707196180276ab940e5382ff5433ca2939206c121b53d20848e8c3574a94fc",
+        "third_party/Humanizer-LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+        "third_party/MengTo-LICENSE": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+      },
+      "hash_scope": "Public method allowlist only; paths are relative to the Mob Write root. Documentation and behavior results are outside this method content hash.",
+      "verification": "Each listed frozen-source and isolated-installed file was independently SHA-256 checked against the public installation receipt.",
+      "source_commit": "1fcffc78edd73305899f926b1f74626e94988ef5"
+    },
+    "candidate": {
+      "version": "0.4.0-rc.4",
+      "entry_sha256": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+      "canonical_content_sha256": "61913b4107c74ce8dbdb0c4f42f8f95dc7f8ff49294af58a1a8a7da5d3f92bfe",
+      "public_file_sha256": {
+        ".gitignore": "e99b4d7697e0e5d137b3146cee595df809b0cf3f0d6ebb17f628ea640a049206",
+        "LICENSE": "de849b31872753dbbe6c8f1dea783ae6c48935c4fdc30dc5208a9e0bcff00073",
+        "SKILL.md": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+        "THIRD_PARTY_NOTICES.md": "ad43f5d8d7c98bc27bde0086a96069c89ad5acfac6cf43af661f197d4673ba79",
+        "agents/openai.yaml": "7a05633bf255a3ece5fa0d72e9a4550496d6da576124271c708746181270f59f",
+        "assets/sample-record.example.jsonl": "df9af389665521db7386186853fd946b2986165939e91ccfcf70ac2bc1d303f6",
+        "assets/voice-profile.example.md": "2d8d6a6dcd0bb5885cdeb0dd4e99da0d971c0b7947c5e3fec5e15f7c1ca692fa",
+        "examples/documents.md": "334698d1ac3b2696fada89bdb8a6673f3348d78752d4d7127a99f243f9e37f7f",
+        "examples/social.md": "f32208cc4e45943694924aa931ef1b0404d208358f621dad0643392635d6c220",
+        "examples/work.md": "6c635e2c342511a28365540369d44ae5528350b06965206f2ddb398915670d14",
+        "references/chatgpt.md": "4ce2230000ec0f50d68742db06825164ef13dfd56cf52728031896afb6680b2a",
+        "references/chinese.md": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074",
+        "references/learning.md": "9aa1d65a56e7515ed2e7187cebf0e7415050562143acb2e6d0b7d550e74e3a21",
+        "references/profile.md": "bdebf3cd1ebfcddc0cc6b8636e905dbc257bb287bd4be2dbcea14578e5bcf5f7",
+        "references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+        "references/social.md": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc",
+        "references/sources.md": "d6cd35cccf762ae0fe459734dbf4dea03e9140b69914142fb67c0c77bcb076a3",
+        "references/technical-document.md": "1768b3ead8a8cda463d1257b8863751435a41d12791689e6625250edc34363ab",
+        "references/work.md": "a7a2f4e49f5d816ddb0b0087e89d90fae67e9e6431d4fbeb8b443dad087fcfa5",
+        "scripts/corpus.py": "b8707196180276ab940e5382ff5433ca2939206c121b53d20848e8c3574a94fc",
+        "third_party/Humanizer-LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+        "third_party/MengTo-LICENSE": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+      },
+      "hash_scope": "Public method allowlist only; paths are relative to the Mob Write root. Documentation and behavior results are outside this method content hash.",
+      "verification": "Each listed frozen-source and isolated-installed file was independently SHA-256 checked against the public installation receipt.",
+      "freeze_method": "Frozen public files before behavior runs; current sources must match before commit."
+    },
+    "followup": {
+      "version": "0.4.0-rc.4",
+      "entry_sha256": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "canonical_content_sha256": "52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3",
+      "public_file_sha256": {
+        ".gitignore": "e99b4d7697e0e5d137b3146cee595df809b0cf3f0d6ebb17f628ea640a049206",
+        "LICENSE": "de849b31872753dbbe6c8f1dea783ae6c48935c4fdc30dc5208a9e0bcff00073",
+        "SKILL.md": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+        "THIRD_PARTY_NOTICES.md": "ad43f5d8d7c98bc27bde0086a96069c89ad5acfac6cf43af661f197d4673ba79",
+        "agents/openai.yaml": "7a05633bf255a3ece5fa0d72e9a4550496d6da576124271c708746181270f59f",
+        "assets/sample-record.example.jsonl": "df9af389665521db7386186853fd946b2986165939e91ccfcf70ac2bc1d303f6",
+        "assets/voice-profile.example.md": "2d8d6a6dcd0bb5885cdeb0dd4e99da0d971c0b7947c5e3fec5e15f7c1ca692fa",
+        "examples/documents.md": "334698d1ac3b2696fada89bdb8a6673f3348d78752d4d7127a99f243f9e37f7f",
+        "examples/social.md": "f32208cc4e45943694924aa931ef1b0404d208358f621dad0643392635d6c220",
+        "examples/work.md": "6c635e2c342511a28365540369d44ae5528350b06965206f2ddb398915670d14",
+        "references/chatgpt.md": "4ce2230000ec0f50d68742db06825164ef13dfd56cf52728031896afb6680b2a",
+        "references/chinese.md": "be7dfe441251c28ab005bb0601f9d2a32a664f9bddc271d8787c27fb3d297074",
+        "references/learning.md": "9aa1d65a56e7515ed2e7187cebf0e7415050562143acb2e6d0b7d550e74e3a21",
+        "references/profile.md": "bdebf3cd1ebfcddc0cc6b8636e905dbc257bb287bd4be2dbcea14578e5bcf5f7",
+        "references/reply-moves.md": "b79d9e394d6f32bb204b227c81e40269ed5a1e5c33dba20e8031e0bd962affc0",
+        "references/social.md": "b45e77409087264ef44dfd9ecedc4a39c991fb29f29e7ade4c767e3b243034bc",
+        "references/sources.md": "d6cd35cccf762ae0fe459734dbf4dea03e9140b69914142fb67c0c77bcb076a3",
+        "references/technical-document.md": "1768b3ead8a8cda463d1257b8863751435a41d12791689e6625250edc34363ab",
+        "references/work.md": "e3f3f12fa940a04e49f7787f178f5e62a6d377ab49a724dcae0a515a5cc7772d",
+        "scripts/corpus.py": "b8707196180276ab940e5382ff5433ca2939206c121b53d20848e8c3574a94fc",
+        "third_party/Humanizer-LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+        "third_party/MengTo-LICENSE": "b2a071ba22fefd803f4e9d1f5c777dd79c62d191695586a1a73fd4d0ebd051c6"
+      },
+      "hash_scope": "Public method allowlist only; paths are relative to the Mob Write root. Documentation and behavior results are outside this method content hash.",
+      "verification": "Each listed frozen-source and isolated-installed file was independently SHA-256 checked against the public installation receipt.",
+      "freeze_method": "Frozen final writing rules before follow-up confirmation; original candidate results retained."
+    }
+  },
+  "trials": [
+    {
+      "id": "baseline-batch-A",
+      "arm": "baseline",
+      "kind": "five_case_shared_context_batch",
+      "method_freeze": "baseline",
+      "input_result_sha256": "2a0271928785fcdba7e15e42391f5b9ef1cd64df45e3de3bea1e69f1ce1bc7e8",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/chinese.md",
+        "references/social.md",
+        "references/work.md",
+        "references/technical-document.md",
+        "references/reply-moves.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/chinese.md",
+        "references/social.md",
+        "references/work.md",
+        "references/technical-document.md",
+        "references/reply-moves.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "h01_social_and_empty_update",
+          "raw_request": "请用 mob-write 一次处理两件事。第一件：给熟悉的同行写一条聊天回复，他说‘新办公室终于布置好了，窗边能看到树。’我想表达替他高兴，语气自然，不用提问，也别约时间。第二件：帮我决定今天要不要给协作者发项目进度。我昨天已发过‘样稿已交给设计方，等对方反馈’，今天状态完全一样，没有新样稿、没有反馈、没有阻塞变化，也没有需要对方做的动作。除非这次播报对他有实际用处，否则不要生成可发送的进度消息。请分别给出第一件的可发送文字和第二件的判断。",
+          "text": "第一件：太好了，终于布置妥当了！窗边还能看到树，听着就很舒服。\n\n第二件：今天不发进度消息。状态与昨天完全相同，没有新增进展、阻塞变化或需要协作者采取的动作，再次播报没有实际用处。",
+          "applied_references_model_reported": [
+            "references/chinese.md",
+            "references/social.md",
+            "references/work.md",
+            "references/reply-moves.md"
+          ]
+        },
+        {
+          "id": "h02_english_recipient_chinese_review",
+          "raw_request": "请用 mob-write 整理一封发给海外项目联络人的邮件，先给我中文审稿说明，再给可直接发的英文邮件。收件人日常只用英语，名字和称呼未提供，不要猜。事实：他们申请延长我方材料提交期限；我只同意把期限从 2026 年 10 月 14 日改到 2026 年 10 月 16 日 17:00 UTC；收件人需要回复是否能按新期限提交。我们没有承诺再延期、预审材料或催其他团队。中文审稿说明里简要说清这次允许了什么和还需要对方做什么。",
+          "text": "中文审稿说明：本次仅同意将材料提交期限从 2026 年 10 月 14 日延至 2026 年 10 月 16 日 17:00 UTC。对方仍需回复确认能否在新期限前提交；邮件未承诺再次延期、预审材料或催促其他团队。\n\n英文邮件：\n\nWe can extend the deadline for submitting your materials from October 14, 2026, to October 16, 2026, at 17:00 UTC.\n\nPlease confirm whether you can submit the materials by the new deadline.",
+          "applied_references_model_reported": [
+            "references/chinese.md",
+            "references/work.md"
+          ]
+        },
+        {
+          "id": "h03_technical_short_but_complete",
+          "raw_request": "请用 mob-write 把下面的技术变更说明改得容易读，尽量短，但给值班同事保留判断和操作所需的条件。事实原文：‘仅当 queue_depth 连续 5 分钟高于 800 且 retry_rate 低于 2% 时，可将 worker_count 从 4 调到 6；如果 error_rate 达到 1%，必须立即恢复为 4。此操作只适用于 sandbox 集群，生产环境本周不允许调整。没有满足全部条件时不执行。’交付一段可放进交接单的中文说明，不要说‘我会继续观察’，也不要添加新的阈值或保证效果。",
+          "text": "仅限 sandbox 集群：只有当 queue_depth 连续 5 分钟高于 800，且 retry_rate 低于 2% 时，才可将 worker_count 从 4 调至 6；条件未全部满足时不执行。调整后如 error_rate 达到 1%，立即将 worker_count 恢复为 4。本周禁止在生产环境调整。",
+          "applied_references_model_reported": [
+            "references/chinese.md",
+            "references/work.md",
+            "references/technical-document.md"
+          ]
+        },
+        {
+          "id": "h04_same_facts_different_decision",
+          "raw_request": "请用 mob-write 基于同一组事实写两个版本，每个只用这些事实。事实：客服分流试验运行了 10 个工作日；8 名试用员工参与；完成 42 次工单分流；人工抽查发现 5 次分类错误；错误都出现在含两个问题的工单里；未在生产启用；尚未测量处理时长变化。版本一给部门负责人，用于决定下周是否批准生产上线；版本二给实现同事，用于决定下一轮该验证什么。不要把‘未测量’写成‘没有提升’，不要自行替负责人批准上线，也不要把建议说成已经完成。",
+          "text": "版本一｜给部门负责人\n\n客服分流试验已运行 10 个工作日，8 名试用员工共完成 42 次工单分流。人工抽查发现 5 次分类错误，且都发生在包含两个问题的工单中。目前尚未在生产启用，也尚未测量处理时长变化。决定下周是否批准生产上线时，需要同时考虑现有分类错误及处理时长数据缺失。\n\n版本二｜给实现同事\n\n客服分流试验已运行 10 个工作日，8 名试用员工共完成 42 次工单分流；人工抽查发现的 5 次分类错误均来自包含两个问题的工单。下一轮可重点验证这类工单的分类，并测量处理时长变化。目前该试验尚未在生产启用。",
+          "applied_references_model_reported": [
+            "references/chinese.md",
+            "references/work.md",
+            "references/technical-document.md"
+          ]
+        },
+        {
+          "id": "h05_translation_negation_timing_uncertainty",
+          "raw_request": "请用 mob-write 将这段英文忠实翻译为中文，供法务旁边的项目同事审稿。保留逻辑、否定、时间限制和不确定性，不改成宣传口吻，不新增建议。原文：‘We have not ruled out a delay. The feature will not be available before Friday. If the sandbox test passes, we may enable it for up to twelve pilot accounts next week; this is not a rollout commitment.’ 只给译文。",
+          "text": "我们尚未排除延期的可能。该功能最早要到周五才会开放。如果沙箱测试通过，我们可能会在下周为最多 12 个试点账户启用该功能；这并不构成正式上线的承诺。",
+          "applied_references_model_reported": [
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "仅进行了只读起草与判断；未发送、发布或修改任何文件。",
+        "未使用网络、浏览器、全局或私人资料，也未读取其他项目、历史记录或相邻的 fixture、result、source 目录。",
+        "h02 未提供收件人姓名、称呼或发件人署名，因此英文邮件未虚构这些内容。"
+      ]
+    },
+    {
+      "id": "baseline-batch-B",
+      "arm": "baseline",
+      "kind": "five_case_shared_context_batch",
+      "method_freeze": "baseline",
+      "input_result_sha256": "b118b85623704126c7cff73227db9972bf8c29c0e32b59066b3e53abde306e28",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/chinese.md",
+        "references/social.md",
+        "references/work.md",
+        "references/reply-moves.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/chinese.md",
+        "references/social.md",
+        "references/work.md",
+        "references/reply-moves.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "h06_natural_social_no_question",
+          "raw_request": "请用 mob-write 帮我回一个关系熟悉但不常聊天的朋友。他发来‘终于把周末留空了，这次就想睡饱、散散步。’我只想轻松表示赞同，不接着开话题，不问问题，不约见面，也不提自己的安排。给一条自然的中文短回复，不要解说。",
+          "text": "这才是周末该有的样子，舒舒服服放空一下。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/social.md",
+            "references/reply-moves.md"
+          ]
+        },
+        {
+          "id": "h07_industry_prototype_no_gains",
+          "raw_request": "请用 mob-write 写一段行业分享的开场，给做采购决策的企业运营负责人看。只用合成事实：我们做了一个可以在测试界面里按自然语言检索供应商记录的原型；演示数据是人为构造的 60 条样例记录；没有接入客户数据、没有实际部署、没有测量节省时间或采购成本。下一步想邀请愿意讨论业务约束的人交换看法，但不承诺试用名额、交付时间、价格或可用能力。开场要自然清楚，允许表达设想，必须把原型和实效分开。别写成融资宣传。",
+          "text": "最近我们做了一个原型，可以在测试界面里用自然语言检索供应商记录。当前演示基于人为构造的 60 条样例记录，尚未接入客户数据，也没有实际部署；节省时间或采购成本等实际效果同样没有测量。现阶段，我们更想和愿意讨论业务约束的企业运营负责人交换看法，一起判断这类设想在真实采购流程中需要满足哪些条件。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/work.md"
+          ]
+        },
+        {
+          "id": "h08_localization_permission_still_faithful",
+          "raw_request": "请用 mob-write 把下面英文界面提示本地化成自然中文。可以调整句式和常见产品用语，但不能改行为，不要补说明或客服承诺。原文：‘Canceling pauses future renewals. Your current access remains available until 23:59 UTC on November 2. A refund may be considered only if no files have been exported; approval is not guaranteed.’ 交付适合设置页的一段中文。",
+          "text": "取消后，后续续费将暂停。您当前的使用权限仍可保留至 11 月 2 日 23:59（UTC）。仅在未导出任何文件的情况下，退款申请才可能被考虑，但不保证获批。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h09_exact_supplied_text_no_progress",
+          "raw_request": "请用 mob-write 完成两项文字处理，别执行任何操作。A：下面是审核过的对外英文句子，只帮我按原样返回，不润色、不翻译、不补称呼或署名：\nThe review is complete. No change to the deployment date is authorized.\nB：我在犹豫是否给同事另发一条‘部署准备正在进行’。已知今天没有新的检查结果，没有实际部署动作，没有需要同事决定的事；我也没有委托你做部署。请直接判断是否有必要发，不要替我编一条进度消息。",
+          "text": "A：\nThe review is complete. No change to the deployment date is authorized.\n\nB：没有必要另发。今天没有新的检查结果、实际部署动作或需要同事决定的事项，“部署准备正在进行”不构成有用的新进展。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/work.md"
+          ]
+        },
+        {
+          "id": "h10_professional_update_real_blocker",
+          "raw_request": "请用 mob-write 写一条发给审批人的中文项目更新。昨天发过‘测试报告已提交，等待批准’，今天仍未获批准，但出现了新情况：测试环境的临时访问权限将在明天 16:00 UTC 到期；如果审批今天无法完成，需要审批人决定是否延长访问权限；延期申请由我们提交，还没有提交，也未获批。不要暗示上线已经批准，不催促没有关键信息的人，不承诺延期会成功。把事实、影响和需要审批人作出的决定说清楚即可。",
+          "text": "项目更新：测试报告昨天已提交，目前仍在等待批准。新增情况是，测试环境的临时访问权限将在明天 16:00 UTC 到期。如果审批今天无法完成，需要您决定是否延长访问权限。延期申请将由我们提交，目前尚未提交，也未获批准。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/work.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "仅依据请求中提供的虚构事实起草；未核验任何外部状态。",
+        "未使用网络或浏览器，未读取全局或私人资料，也未读取相邻项目、fixture、result 或 source 目录。",
+        "未发送、发布或修改任何文件。"
+      ]
+    },
+    {
+      "id": "baseline-social-routing",
+      "arm": "baseline",
+      "kind": "routing_probe",
+      "method_freeze": "baseline",
+      "input_result_sha256": "febea50ef379b16eb7e23daf1a6f650060f788672096142d11b577a652ec2235",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/social.md",
+        "references/reply-moves.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/social.md",
+        "references/reply-moves.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "social-routing",
+          "raw_request": "朋友解释了一个设置：“This flag changes the local preview, not the published page.” 我看懂了，但还没实际运行。帮我给一句自然的英文回复，谢一下就够了，不追问，不说已经验证，不提供中文解释。",
+          "text": "Thanks, that makes sense!",
+          "applied_references_model_reported": [
+            "references/social.md",
+            "references/reply-moves.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "The setting was not run or verified; the reply only acknowledges the explanation."
+      ]
+    },
+    {
+      "id": "baseline-work-routing",
+      "arm": "baseline",
+      "kind": "routing_probe",
+      "method_freeze": "baseline",
+      "input_result_sha256": "9363c583ec27f9dad49dfbf668ac40c4b9616595f7802dc56b199ea5afeb6443",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/chinese.md",
+        "references/work.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/chinese.md",
+        "references/work.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "work-routing",
+          "raw_request": "请帮我一次处理两件事，不要发送。第一件：给只读英文的项目搭档写邮件。感谢他提供对接清单；接口部分我能在星期三以前核对，完整安全审查需等另一位同事下周回来；请他确认星期五截止是否只针对接口核对。先给中文审稿说明，再给英文正文；收发人姓名未提供。第二件：给群里准备今天的专业进展说明。今天与昨天完全一样，仍在想方案，没有新文档、测试、决定或需要人配合的事。",
+          "text": "第一件｜中文审稿说明\n\n邮件先感谢对方提供对接清单，再分别说明两个时间点：接口部分可在星期三以前核对；完整安全审查要等另一位同事下周回来。最后请对方确认星期五的截止时间是否只适用于接口核对，避免把尚不能承诺的完整审查写成星期五前完成。因未提供姓名，英文正文使用通用称呼和落款。\n\n英文正文\n\nSubject: Clarification on the Friday deadline\n\nHi,\n\nThank you for providing the integration checklist. I can review the API-related items by Wednesday. The full security review will need to wait until another colleague returns next week.\n\nCould you please confirm whether the Friday deadline applies only to the API review?\n\nBest,\n\n第二件｜群内专业进展说明\n\n今天暂无新增进展：仍在梳理方案，与昨天相比没有新文档、测试结果或决定，目前也没有需要大家配合的事项。",
+          "applied_references_model_reported": [
+            "references/chinese.md",
+            "references/work.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未提供收发人姓名，因此邮件采用通用称呼，落款留空。",
+        "未发送或发布任何内容，也未修改文件。",
+        "群内进展没有新增信息；所给说明仅如实压缩现状，若无需例行汇报可暂不发送。"
+      ]
+    },
+    {
+      "id": "candidate-batch-A",
+      "arm": "candidate",
+      "kind": "five_case_shared_context_batch",
+      "method_freeze": "candidate",
+      "input_result_sha256": "53e08c22d4c9f77b623de7367f9fa8c80d2257cc1026f664127ba382e208ed75",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/social.md",
+        "references/work.md",
+        "references/technical-document.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/social.md",
+        "references/technical-document.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "h01_social_and_empty_update",
+          "raw_request": "请用 mob-write 一次处理两件事。第一件：给熟悉的同行写一条聊天回复，他说‘新办公室终于布置好了，窗边能看到树。’我想表达替他高兴，语气自然，不用提问，也别约时间。第二件：帮我决定今天要不要给协作者发项目进度。我昨天已发过‘样稿已交给设计方，等对方反馈’，今天状态完全一样，没有新样稿、没有反馈、没有阻塞变化，也没有需要对方做的动作。除非这次播报对他有实际用处，否则不要生成可发送的进度消息。请分别给出第一件的可发送文字和第二件的判断。",
+          "text": "第一件：太好了，终于布置妥当了！窗边还能看到树，听着就很舒服。\n\n第二件：今天不发进度消息。相比昨天没有任何状态变化、阻塞变化或待协作动作，这次播报没有实际信息增量。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/social.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h02_english_recipient_chinese_review",
+          "raw_request": "请用 mob-write 整理一封发给海外项目联络人的邮件，先给我中文审稿说明，再给可直接发的英文邮件。收件人日常只用英语，名字和称呼未提供，不要猜。事实：他们申请延长我方材料提交期限；我只同意把期限从 2026 年 10 月 14 日改到 2026 年 10 月 16 日 17:00 UTC；收件人需要回复是否能按新期限提交。我们没有承诺再延期、预审材料或催其他团队。中文审稿说明里简要说清这次允许了什么和还需要对方做什么。",
+          "text": "中文审稿说明：本次仅同意将材料提交期限从 2026 年 10 月 14 日延至 2026 年 10 月 16 日 17:00 UTC。对方仍需回复确认能否在新期限前提交。\n\nSubject: Revised Submission Deadline\n\nWe can agree to extend the deadline for submitting your materials from October 14, 2026, to October 16, 2026, at 17:00 UTC.\n\nPlease confirm whether you can submit the materials by the revised deadline.",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h03_technical_short_but_complete",
+          "raw_request": "请用 mob-write 把下面的技术变更说明改得容易读，尽量短，但给值班同事保留判断和操作所需的条件。事实原文：‘仅当 queue_depth 连续 5 分钟高于 800 且 retry_rate 低于 2% 时，可将 worker_count 从 4 调到 6；如果 error_rate 达到 1%，必须立即恢复为 4。此操作只适用于 sandbox 集群，生产环境本周不允许调整。没有满足全部条件时不执行。’交付一段可放进交接单的中文说明，不要说‘我会继续观察’，也不要添加新的阈值或保证效果。",
+          "text": "仅限 sandbox 集群：只有当 queue_depth 连续 5 分钟高于 800，且 retry_rate 低于 2% 时，才可将 worker_count 从 4 调至 6；任一条件不满足，不执行调整。调整后如 error_rate 达到 1%，立即将 worker_count 恢复为 4。本周禁止在生产环境调整。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/technical-document.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h04_same_facts_different_decision",
+          "raw_request": "请用 mob-write 基于同一组事实写两个版本，每个只用这些事实。事实：客服分流试验运行了 10 个工作日；8 名试用员工参与；完成 42 次工单分流；人工抽查发现 5 次分类错误；错误都出现在含两个问题的工单里；未在生产启用；尚未测量处理时长变化。版本一给部门负责人，用于决定下周是否批准生产上线；版本二给实现同事，用于决定下一轮该验证什么。不要把‘未测量’写成‘没有提升’，不要自行替负责人批准上线，也不要把建议说成已经完成。",
+          "text": "版本一（部门负责人）：客服分流试验已运行 10 个工作日，8 名试用员工共完成 42 次工单分流。人工抽查发现 5 次分类错误，且全部出现在包含两个问题的工单中。该功能尚未在生产启用，也尚未测量处理时长变化。基于现有结果，下周是否批准生产上线仍需审慎决定。\n\n版本二（实现同事）：客服分流试验运行 10 个工作日后，8 名试用员工共完成 42 次分流；人工抽查发现的 5 次分类错误都集中在包含两个问题的工单中。下一轮应重点验证这类工单的分类，并测量处理时长变化。目前尚未在生产启用。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h05_translation_negation_timing_uncertainty",
+          "raw_request": "请用 mob-write 将这段英文忠实翻译为中文，供法务旁边的项目同事审稿。保留逻辑、否定、时间限制和不确定性，不改成宣传口吻，不新增建议。原文：‘We have not ruled out a delay. The feature will not be available before Friday. If the sandbox test passes, we may enable it for up to twelve pilot accounts next week; this is not a rollout commitment.’ 只给译文。",
+          "text": "我们尚未排除延期的可能性。该功能在周五之前不会开放。如果沙箱测试通过，我们下周可能会为最多 12 个试点账户启用该功能；这并不构成推广上线的承诺。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未使用网络、浏览器、全局或私人资料，也未读取其他项目、历史记录、相邻夹具、结果或源目录。",
+        "未发送、发布或修改任何文件。"
+      ]
+    },
+    {
+      "id": "candidate-batch-B",
+      "arm": "candidate",
+      "kind": "five_case_shared_context_batch",
+      "method_freeze": "candidate",
+      "input_result_sha256": "b90787fe19ee3b05b73867b400ad7655df7a42082b597272c2f5295316ad30ec",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/social.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/social.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "h06_natural_social_no_question",
+          "raw_request": "请用 mob-write 帮我回一个关系熟悉但不常聊天的朋友。他发来‘终于把周末留空了，这次就想睡饱、散散步。’我只想轻松表示赞同，不接着开话题，不问问题，不约见面，也不提自己的安排。给一条自然的中文短回复，不要解说。",
+          "text": "这才是周末该有的样子，好好放松一下。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/social.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h07_industry_prototype_no_gains",
+          "raw_request": "请用 mob-write 写一段行业分享的开场，给做采购决策的企业运营负责人看。只用合成事实：我们做了一个可以在测试界面里按自然语言检索供应商记录的原型；演示数据是人为构造的 60 条样例记录；没有接入客户数据、没有实际部署、没有测量节省时间或采购成本。下一步想邀请愿意讨论业务约束的人交换看法，但不承诺试用名额、交付时间、价格或可用能力。开场要自然清楚，允许表达设想，必须把原型和实效分开。别写成融资宣传。",
+          "text": "我们做了一个原型，可以在测试界面里用自然语言检索供应商记录。目前演示使用的是人为构造的 60 条样例记录，尚未接入客户数据，也没有实际部署；节省时间、降低采购成本等实际效果也还没有测量。现阶段，我们更想借这个原型讨论真实采购场景中的业务约束和判断标准，欢迎愿意交流这些问题的企业运营负责人交换看法。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h08_localization_permission_still_faithful",
+          "raw_request": "请用 mob-write 把下面英文界面提示本地化成自然中文。可以调整句式和常见产品用语，但不能改行为，不要补说明或客服承诺。原文：‘Canceling pauses future renewals. Your current access remains available until 23:59 UTC on November 2. A refund may be considered only if no files have been exported; approval is not guaranteed.’ 交付适合设置页的一段中文。",
+          "text": "取消后，后续续费将暂停。您当前的访问权限仍可使用至 11 月 2 日 23:59（UTC）。仅在未导出任何文件的情况下，退款申请才可能被考虑，但不保证获批。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h09_exact_supplied_text_no_progress",
+          "raw_request": "请用 mob-write 完成两项文字处理，别执行任何操作。A：下面是审核过的对外英文句子，只帮我按原样返回，不润色、不翻译、不补称呼或署名：\nThe review is complete. No change to the deployment date is authorized.\nB：我在犹豫是否给同事另发一条‘部署准备正在进行’。已知今天没有新的检查结果，没有实际部署动作，没有需要同事决定的事；我也没有委托你做部署。请直接判断是否有必要发，不要替我编一条进度消息。",
+          "text": "A：The review is complete. No change to the deployment date is authorized.\nB：没有必要另发。今天没有新的检查结果、实际部署动作或需要同事决定的事项，这条消息不会提供有效的进度增量。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        },
+        {
+          "id": "h10_professional_update_real_blocker",
+          "raw_request": "请用 mob-write 写一条发给审批人的中文项目更新。昨天发过‘测试报告已提交，等待批准’，今天仍未获批准，但出现了新情况：测试环境的临时访问权限将在明天 16:00 UTC 到期；如果审批今天无法完成，需要审批人决定是否延长访问权限；延期申请由我们提交，还没有提交，也未获批。不要暗示上线已经批准，不催促没有关键信息的人，不承诺延期会成功。把事实、影响和需要审批人作出的决定说清楚即可。",
+          "text": "测试报告昨天已提交，目前仍在等待批准。新情况是，测试环境的临时访问权限将在明天 16:00 UTC 到期；如果今天无法完成审批，需要您决定是否延长访问权限。若决定延期，将由我们提交申请；目前申请尚未提交，能否获批也尚未确定。",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "仅依据用户提供的合成事实和项目内 mob-write 方法起草；未核验任何外部事实。",
+        "未使用网络、浏览器、全局或私人资料、示例、相邻项目、fixture、结果或标准答案。",
+        "全程只读；未发送、发布或修改文件。"
+      ]
+    },
+    {
+      "id": "candidate-social-routing",
+      "arm": "candidate",
+      "kind": "routing_probe",
+      "method_freeze": "candidate",
+      "input_result_sha256": "acb43d45966a1a938d411ad16c81d6329f5504e94dc5a3aa07d1a8ea175c96e7",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/social.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/social.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "social-routing",
+          "raw_request": "朋友解释了一个设置：“This flag changes the local preview, not the published page.” 我看懂了，但还没实际运行。帮我给一句自然的英文回复，谢一下就够了，不追问，不说已经验证，不提供中文解释。",
+          "text": "Thanks, that makes sense!",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/social.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "The setting was not run or independently verified."
+      ]
+    },
+    {
+      "id": "candidate-work-routing",
+      "arm": "candidate",
+      "kind": "routing_probe",
+      "method_freeze": "candidate",
+      "input_result_sha256": "51059de6593ce9b9bf3e4f23bce61896356fa06c3badd473cc463557c8499c45",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "work-routing",
+          "raw_request": "请帮我一次处理两件事，不要发送。第一件：给只读英文的项目搭档写邮件。感谢他提供对接清单；接口部分我能在星期三以前核对，完整安全审查需等另一位同事下周回来；请他确认星期五截止是否只针对接口核对。先给中文审稿说明，再给英文正文；收发人姓名未提供。第二件：给群里准备今天的专业进展说明。今天与昨天完全一样，仍在想方案，没有新文档、测试、决定或需要人配合的事。",
+          "text": "第一件｜中文审稿说明\n\n邮件先感谢对方提供对接清单，再分别说明两项时间安排：接口部分可在星期三以前核对；完整安全审查要等另一位同事下周回来。结尾请对方确认，星期五的截止时间是否仅针对接口核对。由于收发人姓名均未提供，正文不补写姓名或署名。\n\n英文正文\n\nSubject: Clarification on Friday’s Deadline\n\nHello,\n\nThank you for providing the integration checklist. I can review the interface portion before Wednesday. The complete security review will need to wait until another colleague returns next week.\n\nCould you please confirm whether Friday’s deadline applies only to the interface review?\n\nBest regards,\n\n第二件｜群内进展说明\n\n这条更新没有信息增量，也没有给出必须日报的要求，建议今天不发。如果群内有固定汇报要求，可使用：\n\n今天的状态与昨天相同，目前仍在考虑方案。暂无新文档、测试结果或决定，也没有需要大家配合的事项。",
+          "applied_references_model_reported": [
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未提供收件人和发件人姓名，因此英文邮件仅使用通用称呼，未添加姓名或署名。",
+        "未提供星期三、星期五和“下周”的具体日期或时区，因此保留原有相对时间表述。",
+        "未说明群内进展汇报是否为固定或强制要求，因此优先建议不发送，并另附必须汇报时可用的忠实文本。"
+      ]
+    },
+    {
+      "id": "followup-confirmation-1",
+      "arm": "followup",
+      "kind": "new_followup_confirmation",
+      "method_freeze": "followup",
+      "input_result_sha256": "2baf5a64796573eb361693c732151f647cecf1b126e2138b3fc02e2ab3983803",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "c01_effective_email_and_unchanged_group_update",
+          "raw_request": "请用 mob-write 帮我处理今天两件沟通。第一件是给协作测试同事写一封简短中文邮件：新的测试报告已上传到双方已有的共享目录；报告中两项失败都涉及空白输入；请他确认明天是否能复测这两项；没有指定复测时段，也没有承诺明天一定能修好。第二件是项目群更新：昨天群里已经说过‘修订方案交给负责人审核，等审核意见’，今天还是这个状态，没有新意见、新材料、阻塞变化，也没有群成员需要决定或办理的事。你建议今天群里的进度更新怎么处理？请分别给邮件文字和群更新建议。",
+          "text": "邮件文字：\n\n你好，新的测试报告已上传到我们已有的共享目录。报告中的两项失败都涉及空白输入。请确认明天是否可以复测这两项，谢谢。\n\n群更新建议：\n\n今天建议不发进度更新。当前状态与昨天相同，没有新的审核意见、材料或阻塞变化，也没有需要群成员决定或办理的事项，因此这次更新没有信息增量。",
+          "applied_references_model_reported": [
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未提供必须每日汇报或固定签到的要求，因此群更新建议按“无信息增量则不发送”处理。",
+        "邮件未添加具体复测时段、修复完成承诺、主题、署名或其他未提供的信息。"
+      ]
+    },
+    {
+      "id": "followup-confirmation-2",
+      "arm": "followup",
+      "kind": "new_followup_confirmation",
+      "method_freeze": "followup",
+      "input_result_sha256": "cce3617b6343afd5adfd58ba752653c647b7d40de60197881f1a93a1415da08e",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "c02_mandatory_checkin_unchanged_state",
+          "raw_request": "请用 mob-write 给项目群写今天的状态签到。这个群已有明确制度：负责人每个工作日 16:30 必须发一条签到，即使状态没变也要发；我就是今天的负责人。已知事实：测试报告昨天已交审核人，今天 15:50 核对时仍未收到审核意见；没有新材料、没有额外问题，也没有重新测试或部署；审核完成日期没有给出。请给一条可直接发送的中文签到，让群里知道实际状态。",
+          "text": "今日签到：测试报告已于昨天提交审核。截至今天 15:50，仍未收到审核意见，审核完成日期尚未明确。今天没有新材料或额外问题，也未重新测试或部署，整体状态无变化。",
+          "applied_references_model_reported": [
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "仅依据用户提供的虚构事实起草；未发送或发布消息，未修改文件，未使用网络或读取其他目录。"
+      ]
+    },
+    {
+      "id": "followup-confirmation-3",
+      "arm": "followup",
+      "kind": "new_followup_confirmation",
+      "method_freeze": "followup",
+      "input_result_sha256": "c6ecd0c7a7aa60b7ea0a78ca0faca3ada2deb855359a0792242c05202147acd1",
+      "catalog_writing_entries_model_reported": [
+        "SKILL.md"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "c03_english_delivery_approved_deadline_only",
+          "raw_request": "请用 mob-write 帮我起草一封邮件，先给中文审阅说明，再给可直接发送的英文正文。接收者只用英语；双方姓名、公司名称和署名都没提供。事实：对方申请把提交资料的期限从 2026 年 11 月 15 日改到 2026 年 11 月 17 日 09:30 UTC+03:00；我已经同意这个新期限，不是等待批准。对方需要回信确认能按新期限提交。我没有答应预审资料、发提醒、安排会议、再延期或保证资料会被接受。请据此写，时间不要换算，中文只用于我审阅。",
+          "text": "中文审阅说明：邮件明确告知对方，新的提交期限已经获批，并请对方回信确认能否按期提交。正文没有承诺预审、提醒、会议、再次延期或资料一定会被接受。由于双方姓名、公司名称和署名均未提供，采用中性称呼且不添加署名。时间保留原时区，不作换算。\n\nSubject: Revised Submission Deadline Approved\n\nHello,\n\nYour request to change the submission deadline from November 15, 2026, to November 17, 2026, at 09:30 UTC+03:00 has been approved.\n\nPlease reply to confirm that you can submit the materials by the new deadline.\n\nThank you.",
+          "applied_references_model_reported": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "No recipient or sender name, company name, or signature was provided, so the draft uses a neutral greeting and omits a signature.",
+        "The draft is based only on the fictional facts supplied in the request and the applicable local writing guidance."
+      ]
+    },
+    {
+      "id": "followup-work-routing",
+      "arm": "followup",
+      "kind": "repeated_initial_probe",
+      "method_freeze": "followup",
+      "input_result_sha256": "0f3cd3f97536edd4ce2c34053c488078bbca3e6c5983af9d87fd412d74f1ceb7",
+      "catalog_writing_entries_model_reported": [
+        "mob-write"
+      ],
+      "read_paths_model_reported": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_observed_read_paths": [
+        "SKILL.md",
+        "references/work.md",
+        "references/chinese.md"
+      ],
+      "trace_review_status": "independently_reviewed",
+      "entry_sha256_model_reported": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+      "entry_sha256_matches_verified_freeze": true,
+      "outputs": [
+        {
+          "id": "work-routing",
+          "raw_request": "请帮我一次处理两件事，不要发送。第一件：给只读英文的项目搭档写邮件。感谢他提供对接清单；接口部分我能在星期三以前核对，完整安全审查需等另一位同事下周回来；请他确认星期五截止是否只针对接口核对。先给中文审稿说明，再给英文正文；收发人姓名未提供。第二件：给群里准备今天的专业进展说明。今天与昨天完全一样，仍在想方案，没有新文档、测试、决定或需要人配合的事。",
+          "text": "第一件｜中文审稿说明\n\n邮件先感谢对方提供对接清单，再区分两项工作的时间：接口部分可在星期三以前核对，完整安全审查则要等另一位同事下周回来。结尾请对方确认星期五的截止时间是否仅适用于接口核对，避免擅自推断截止范围。收发人姓名均未提供，因此正文使用中性称呼，不补写姓名或署名。\n\n英文正文\n\nSubject: Clarification on Friday’s Deadline\n\nHello,\n\nThank you for providing the integration checklist. I can verify the API portion before Wednesday. The full security review will need to wait until another colleague returns next week.\n\nCould you confirm whether Friday’s deadline applies only to the API verification?\n\n第二件｜群进展说明\n\n建议今天不发。与昨天相比没有新进展、文档、测试、决定、阻塞或协作请求，也未说明存在强制汇报义务；因此这条群消息没有信息增量，不另行起草备用文案。",
+          "applied_references_model_reported": [
+            "references/work.md",
+            "references/chinese.md"
+          ]
+        }
+      ],
+      "limitations_model_reported": [
+        "未提供收发人姓名，因此未补写姓名或发件人署名。",
+        "未提供具体日期、年份或时区，因此保留“before Wednesday”“Friday”和“next week”的相对时间表达。",
+        "未说明存在固定或强制进展汇报义务，因此依据本地方法建议不发布第二项群消息。",
+        "仅起草和评估文本；未发送、发布或修改任何文件。"
+      ]
+    }
+  ],
+  "independent_reviews": {
+    "initial": {
+      "schema_version": 1,
+      "review_kind": "Independent source, output and tool-trace review",
+      "public_safe": true,
+      "review_boundary": {
+        "source_review_before_case_access": true,
+        "no_source_implementation_by_reviewer": true,
+        "cases_not_shared_with_implementation_or_example_authors": true,
+        "material": "Synthetic requests and outputs only. Paths below are relative evidence or public source paths.",
+        "baseline": "Previous method at commit 1fcffc78edd73305899f926b1f74626e94988ef5, version 0.4.0-rc.3; not a bare model without a skill.",
+        "baseline_entry_sha256": "1af74beb06b7717b20e4df23867f65a93989c059021cbab8220d98a59f473635",
+        "candidate": "Frozen public candidate 0.4.0-rc.4",
+        "candidate_entry_sha256": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a"
+      },
+      "static_review": {
+        "status": "No remaining blocking source issue identified in the reviewed core, scene references, README and twelve synthetic worked examples.",
+        "verified_fixes": [
+          {
+            "source": "examples/documents.md:43",
+            "issue": "The Chinese gloss described an ability statement, I can finish, as a commitment.",
+            "fix": "The gloss now says the timing scope includes only the interface review."
+          },
+          {
+            "source": "examples/documents.md:97",
+            "issue": "No factory field test was strengthened into no entry into a factory setting.",
+            "fix": "The useful draft now says factory field testing has not been performed."
+          },
+          {
+            "source": "README.md:21",
+            "issue": "An early README draft omitted the supplied CSV size from the useful performance comparison.",
+            "fix": "The final README comparison includes the 100,000-row CSV size as well as the machine, test count, timing and untested environments."
+          }
+        ],
+        "observations": [
+          "The root owns shared purpose, recipient language, factual and editing boundaries; scenes add scoped guidance instead of another canonical method.",
+          "Examples are optional, explicitly synthetic, and include reasons and boundaries rather than universal wording templates.",
+          "No private profile or adopting project's business workflow is made a public default. The industry example's local workflow is explicitly synthetic task input.",
+          "README distinguishes candidate installation, host discovery, existing-session state and formal release, and distinguishes interest/downloads from actual users.",
+          "The package allowlist includes all three example files and retains the attributed fragments, notices and both third-party MIT licenses.",
+          "Source/package/installation tests cannot establish writing quality or actual application of rules."
+        ]
+      },
+      "held_out_results": {
+        "batch_A": {
+          "cases": 5,
+          "baseline_material_failures": 0,
+          "candidate_material_failures": 0
+        },
+        "batch_B": {
+          "cases": 5,
+          "baseline_material_failures": 0,
+          "candidate_material_failures": 0
+        },
+        "interpretation": "No material failure identified against the ten supplied case constraints in either arm. This does not demonstrate an improved pass rate, universal fidelity, or overall quality superiority.",
+        "cases": [
+          {
+            "id": "h01_social_and_empty_update",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both supply a natural social response and recommend omitting the unchanged update without fabricating action or progress."
+          },
+          {
+            "id": "h02_english_recipient_chinese_review",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both separate Chinese review from English delivery, preserve the deadline and UTC, request confirmation, and invent no identity or extra commitment."
+          },
+          {
+            "id": "h03_technical_short_but_complete",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both retain the conjunction, duration, thresholds, worker counts, rollback and sandbox/production boundaries."
+          },
+          {
+            "id": "h04_same_facts_different_decision",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both preserve trial facts and distinguish the two readers without approving rollout or claiming unmeasured gains.",
+            "utility_note": "The candidate's manager conclusion, still needs a cautious decision, is less concrete than the baseline's explicit reminder to consider classification errors and missing timing evidence. Do not claim uniform improvement in decision usefulness."
+          },
+          {
+            "id": "h05_translation_negation_timing_uncertainty",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both preserve delay possibility, Friday as the earliest boundary, the sandbox condition, may, the twelve-account cap and denial of a rollout commitment.",
+            "nuance": "The baseline's earliest-Friday phrasing is not a promise of availability on Friday; the candidate follows the negative source form more directly. Neither establishes that all translation ambiguities are solved."
+          },
+          {
+            "id": "h06_natural_social_no_question",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both produce one casual assent without a question, invitation, invented circumstance or new plan. The candidate's relax phrasing is an ordinary social assent, not an advice checklist."
+          },
+          {
+            "id": "h07_industry_prototype_no_gains",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both state the synthetic-record prototype boundary, lack of deployment and measured gains, and invite discussion without trial, price or delivery promises."
+          },
+          {
+            "id": "h08_localization_permission_still_faithful",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both preserve future-renewal suspension, current access through the stated UTC time, the no-export requirement and non-guaranteed refund approval."
+          },
+          {
+            "id": "h09_exact_supplied_text_no_progress",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both preserve the approved English sentence as the A deliverable and decline the empty B update without claiming an executed operation. A/B labels organize the compound response; they do not alter the approved sentence."
+          },
+          {
+            "id": "h10_professional_update_real_blocker",
+            "baseline": "pass",
+            "candidate": "pass",
+            "reason": "Both report a real new expiry/decision need and preserve unapproved, unsubmitted state and UTC.",
+            "precision_note": "The baseline's will-submit wording slightly strengthens responsibility into an unconditioned future action. The candidate explicitly conditions filing on the decision to extend, preserving the intended dependency more precisely."
+          }
+        ]
+      },
+      "routing_probes": [
+        {
+          "id": "social-routing",
+          "baseline": "Output meets the request; the old method also opens reply-moves.md.",
+          "candidate": "The same suitable brief thanks, opening only the core and social reference.",
+          "verdict": "Observed reduction of an unnecessary supplemental read with no observed loss of output fidelity."
+        },
+        {
+          "id": "work-routing",
+          "baseline": "Narrows interface to API, renders before Wednesday as by Wednesday without clarification, and gives a sendable no-change group update; the final limitation suggesting omission does not undo that generated deliverable.",
+          "candidate": "Preserves interface and before Wednesday, recommends not posting, but also supplies a fallback group draft for a reporting obligation not provided in the request.",
+          "verdict": "Partial resolution. The main decision improves, but the unnecessary conditional draft remains. The fallback is qualified and does not invent new progress, so it should not be described as the same unqualified failure or as complete suppression.",
+          "remaining_limit": "Do not claim empty broadcasts are eliminated. Keep the observed conditional-draft behavior in the validation limits."
+        }
+      ],
+      "actual_tool_reads_by_trial": {
+        "evidence": "Completed command events in the matching *-events.jsonl files; normalized relative to the installed method root. These are observed file opens, separate from per-case applied_references self-reports.",
+        "baseline": {
+          "batch-A": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/social.md",
+            "references/work.md",
+            "references/technical-document.md",
+            "references/reply-moves.md"
+          ],
+          "batch-B": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/social.md",
+            "references/work.md",
+            "references/reply-moves.md"
+          ],
+          "work-routing": [
+            "SKILL.md",
+            "references/chinese.md",
+            "references/work.md"
+          ],
+          "social-routing": [
+            "SKILL.md",
+            "references/social.md",
+            "references/reply-moves.md"
+          ]
+        },
+        "candidate": {
+          "batch-A": [
+            "SKILL.md",
+            "references/work.md",
+            "references/social.md",
+            "references/technical-document.md",
+            "references/chinese.md"
+          ],
+          "batch-B": [
+            "SKILL.md",
+            "references/social.md",
+            "references/work.md",
+            "references/chinese.md"
+          ],
+          "work-routing": [
+            "SKILL.md",
+            "references/work.md",
+            "references/chinese.md"
+          ],
+          "social-routing": [
+            "SKILL.md",
+            "references/social.md"
+          ]
+        },
+        "observations": [
+          "The candidate omits reply-moves.md in three trials where the baseline opens it; the work probe reads the same three files in both arms.",
+          "No trial opens the public worked examples; these results cannot attribute behavior gains to the added example library.",
+          "All observed rule reads occur before substantive final drafts. Earlier agent messages announce intended method use and contain no draft outputs.",
+          "No observed tool trace reads another project, a private profile, credentials, neighboring fixtures/results/source trees, or network/browser content.",
+          "No observed sending, publishing, deployment or file mutation occurs inside the writing trials.",
+          "Multi-case trials reuse a common context. Tool traces prove trial-level reading, not distinct per-case application or ideal independent per-request routing.",
+          "Catalog fields are model reports. Observed entry opens and hashes confirm the selected installed method; these records are not a complete independently enumerated host catalog."
+        ]
+      },
+      "limits": [
+        "One run per arm for each of four sessions; five cases share each batch context. Case outputs are not ten independent repeated experiments.",
+        "The harness does not explicitly pin a model version or random seed. No significance, reliability or universal quality claim is justified.",
+        "The baseline is the previous installed method, not a no-skill control.",
+        "Synthetic constraints are unusually explicit. More ambiguous real requests may still produce unnecessary content or altered nuance.",
+        "No real recipient comprehension, real task adoption, global installation or already-running-session update was measured.",
+        "Model wording and per-case applied-reference claims do not prove runtime enforcement, private-source isolation beyond the observed trace, or complete host discovery.",
+        "Structural checks, teaching examples and model outputs are distinct evidence; none substitutes for the others."
+      ],
+      "conclusion": "The reviewed candidate is suitable to present as a small public review candidate with clearer source ownership, safer worked examples, observed reduction in optional social-reference reads and a partially improved compound-request probe. Preserve the conditional empty-update draft, decision-usefulness nuance and small-trial limits; do not market this as proven universal writing improvement or complete resolution of prior failures."
+    },
+    "followup": {
+      "schema_version": 1,
+      "review_kind": "Independent follow-up confirmation and repeated development-probe review",
+      "public_safe": true,
+      "prior_review_unchanged": "review.json",
+      "source_identity": {
+        "version": "0.4.0-rc.4",
+        "entry_sha256": "fd7b18ba5e861c8377bb3ef192a1c59d0d7b4c67178616b18d0f8954b8c9d328",
+        "canonical_content_sha256": "52a39fca80f12fc9879e206bcb51d331bfad8cd95153048baa035ad0138415c3",
+        "earlier_rc4_entry_sha256": "26b6910beeb79a65255e05ef84276e0b1ac2d67d23834153b27df31e0929ee5a",
+        "change_under_review": "The core and work reference now recommend omitting a no-value update without inventing a hypothetical reporting obligation or drafting its fallback; supplied mandatory reporting and faithful-retention exceptions remain."
+      },
+      "review_boundary": {
+        "material": "Three independently authored new synthetic prompts, one explicitly repeated development probe, and actual tool-event streams. No private profiles, counterparties or messages are used.",
+        "cases_not_shared_with_implementation_or_example_authors": true,
+        "no_source_implementation_by_reviewer": true,
+        "no_old_review_rewrite": true,
+        "rating": "Major failures are judged against each new case's supplied evidence and criteria. Minor fidelity risks and the repeated probe's errors are recorded separately rather than hidden by the pass count."
+      },
+      "new_confirmation": {
+        "cases": 3,
+        "material_failures": 0,
+        "cases_with_minor_fidelity_note": 1,
+        "results": [
+          {
+            "id": "c01_effective_email_and_unchanged_group_update",
+            "verdict": "pass",
+            "observed": "The useful email reports the new test report and asks whether the colleague can retest tomorrow. It invents no cause, repair promise, time slot or directory address. The unchanged group item receives only an omission recommendation and rationale, with no hypothetical fallback draft.",
+            "scope": "Shows separate decisions in this compound request, preserving the genuinely useful email while omitting the empty group update."
+          },
+          {
+            "id": "c02_mandatory_checkin_unchanged_state",
+            "verdict": "pass_with_minor_fidelity_note",
+            "observed": "A sendable mandatory check-in is provided despite no new progress. It preserves the report's submitted state, the 15:50 observation, no review comments, and no retest or deployment, without an invented completion date or result.",
+            "minor_fidelity_note": "The input says no review-completion date was supplied; the draft says that date is not yet clear. This risks inferring the world's planning state from an omission in the materials. Omit that sentence or explicitly state the knowledge boundary rather than treating absence of supplied evidence as proof of actual uncertainty.",
+            "scope": "Confirms the supplied mandatory-report exception in this one case; the minor knowledge-boundary risk remains."
+          },
+          {
+            "id": "c03_english_delivery_approved_deadline_only",
+            "verdict": "pass",
+            "observed": "The Chinese review is separate from the English email. The draft correctly presents the extension as already approved, preserves the original and new dates and 09:30 UTC+03:00 without conversion, requests recipient confirmation and adds no identity or extra commitment.",
+            "scope": "Confirms supplied approval status and exact time-zone preservation in this one case; it is not a general translation-fidelity guarantee."
+          }
+        ]
+      },
+      "repeated_development_probe": {
+        "id": "work-routing",
+        "is_unseen_confirmation": false,
+        "empty_update_result": "The follow-up recommends not posting and explicitly does not draft a fallback. The earlier candidate's hypothetical reporting-obligation copy is absent.",
+        "deadline_result": "Before Wednesday remains before Wednesday, without inventing an exact date or time zone.",
+        "remaining_fidelity_failure": "The source's general interface portion becomes API portion and API verification. The previous candidate retained interface, but the repeated follow-up again narrows it without supplied evidence.",
+        "verdict": "The targeted empty-fallback behavior is improved in this repeat; terminology fidelity still fails. Do not report the whole probe as passing or the interface/API issue as solved.",
+        "source_rule": "SKILL.md:20 already prohibits narrowing a general term without evidence. Reading that rule does not prove the model follows it."
+      },
+      "actual_tool_reads_by_trial": {
+        "evidence": "Completed command events in the matching followup-*-events.jsonl files, normalized relative to the installed method. These observed opens are distinct from per-case applied_references self-reports.",
+        "confirmation-1": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "confirmation-2": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "confirmation-3": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "work-routing": [
+          "SKILL.md",
+          "references/work.md",
+          "references/chinese.md"
+        ],
+        "observations": [
+          "The entry hashes reported in all four outputs match the frozen follow-up hash; the tool streams include the entry read and SHA-256 command.",
+          "All applicable method reads precede substantive draft output. Earlier agent messages announce intended use, with empty outputs.",
+          "The first confirmation lists the local host files and local .agents tree; it does not open another project or a private profile.",
+          "No observed command opens worked examples, global/private sources, credentials, neighboring fixtures/results/source trees or network/browser content.",
+          "No observed sending, publishing, tests, deployment or file mutation occurs within these writing trials.",
+          "Per-case applied_references remains a model self-report. The tool trace confirms only that the listed method files were actually opened before the draft."
+        ]
+      },
+      "limits": [
+        "One run for each new confirmation and one repeated development probe, without a follow-up baseline arm, explicit model-version pin, fixed seed or statistical analysis.",
+        "The original ten-case comparison used an earlier frozen rc.4 source hash. It was preserved, not silently treated as a complete rerun of the tightened final source.",
+        "The new requests supply clear facts and restrictions. They do not establish robust performance on ambiguous real conversations.",
+        "The meaningful email in confirmation-1 and the mandatory group report in confirmation-2 exercise positive exceptions. A group update with a genuinely new blocker was not rerun on this final source; its prior case used the earlier freeze.",
+        "The general interface-to-API narrowing recurs despite the rule; the no-date-to-unclear-date inference remains a minor fidelity risk.",
+        "No trial reads the teaching library, so the observed change cannot be credited to the added worked examples.",
+        "No real recipient outcome, production installation, adoption or already-running-session update is measured."
+      ],
+      "conclusion": "The tightened source handles the three new confirmation prompts without a listed major failure and omits the unnecessary fallback in the repeated probe while retaining the explicit mandatory-report exception. This supports the narrow no-hypothetical-fallback improvement in these observed runs. It does not establish universal suppression of empty broadcasts or translation/fact fidelity; the repeated interface-to-API error and a minor missing-evidence inference must remain visible in delivery and validation."
+    },
+    "followup_status": "complete"
+  },
+  "observed_limits_to_preserve": [
+    "Initial candidate work-routing recommends not posting but also supplies a conditional fallback group draft for a reporting obligation absent from the request. This is partial resolution, not complete suppression.",
+    "Final work-routing repeat omits the fallback group draft, but again narrows interface to API without support. One passing communication decision does not resolve the terminology error.",
+    "Final confirmation-2 infers an unclear review-completion date from an unspecified date in the input. This is a minor knowledge-boundary risk, not evidence that the actual date is unknown in the world.",
+    "The initial manager-facing held-out draft is less concrete about the pending decision than its baseline; do not claim uniform usefulness improvement.",
+    "No recorded initial trial opens the synthetic teaching examples. Added examples cannot be credited causally for these outputs.",
+    "Synthetic explicit constraints, small samples, shared batch contexts, unpinned model and seed, and no real-recipient feedback limit generalization.",
+    "Structure tests, actual model outputs and source-reading evidence serve different purposes. None proves reliable triggering, universal writing quality, adoption, or real user counts."
+  ],
+  "review_summary": {
+    "initial_ten_case_comparison": {
+      "source_freezes": [
+        "baseline",
+        "candidate"
+      ],
+      "material_failures_identified": {
+        "baseline": 0,
+        "candidate": 0
+      },
+      "scope": "Ten shared-context requests per arm, not ten independent repeated experiments. This is not a comparison against an instruction-free model and does not prove improvement."
+    },
+    "initial_work_routing": {
+      "source_freezes": [
+        "baseline",
+        "candidate"
+      ],
+      "candidate_verdict": "Partial resolution: recommends omission but supplies an unrequested hypothetical mandatory-report fallback."
+    },
+    "final_new_confirmation": {
+      "source_freeze": "followup",
+      "new_requests": 3,
+      "material_failures_identified": 0,
+      "minor_fidelity_notes": 1,
+      "minor_note": "Confirmation-2 infers that the review-completion date is unclear from the fact that the input supplied no date."
+    },
+    "final_repeated_work_probe": {
+      "source_freeze": "followup",
+      "is_unseen_confirmation": false,
+      "fallback_group_draft": "Omitted in the observed repeat.",
+      "remaining_material_fidelity_failure": "Interface is narrowed to API without evidence.",
+      "overall_pass": false
+    },
+    "loading": {
+      "trial_count": 12,
+      "trials_opening_teaching_examples": 0,
+      "finding": "The initial candidate omits reply-moves.md in three trials where the baseline opens it. All four follow-up trials open only the core, work and Chinese method files."
+    },
+    "aggregation_boundary": "The original ten-case candidate comparison and final follow-up use different writing-rule hashes. They are not a final-source 13/13 result, and the repeated work probe fails terminology fidelity."
+  }
+}

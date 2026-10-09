@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "candidate_version": "0.4.0-rc.1",
+  "host": "Codex CLI 0.145.0",
+  "model_selection": "CLI default; no explicit model override; exact served model not established by this record",
+  "date": "2026-10-05",
+  "canonical_skill_sha256": "28a6c658b224e5b4308b37178e681a56274ee878efc70d3cd9c9010a69fce809",
+  "installed_content_sha256": "e63f3f2f8aaddc6b314734c10fd836d59c78c64a0bca54b7b54ab28062e94909",
+  "protocol": "Fresh ephemeral, read-only sessions; project-local isolated install; user config ignored; second trial command-scoped skills.config disabled legacy paths. Normal auth used; no global installation/config edits.",
+  "synthetic_recipient_context": "Synthetic recipient context, authorized for this test only.\nAlex reads English only. The author reviews drafts in Chinese.\nNo personal identity or real conversation is represented.\n",
+  "trials": [
+    {
+      "id": "coexisting_legacy",
+      "catalog_wordaim_found": true,
+      "actual_read_paths": [
+        "skills/wordaim/SKILL.md",
+        "legacy-global/chinese-writing/SKILL.md",
+        "synthetic/recipient-context.md",
+        "skills/wordaim/references/chinese.md",
+        "skills/wordaim/references/social.md",
+        "skills/wordaim/references/reply-moves.md"
+      ],
+      "draft": {
+        "chinese_review_gloss": "谢谢你解释这个设置，Alex——我们现在明白了，但还没有测试过。",
+        "english_send_text": "Thanks for explaining that setting, Alex—we understand it now, but we haven’t tested it yet."
+      },
+      "extra_scene_reference": [],
+      "legacy_rule_loaded": true
+    },
+    {
+      "id": "session_scoped_legacy_disable",
+      "catalog_wordaim_found": true,
+      "actual_read_paths": [
+        "skills/wordaim/SKILL.md",
+        "synthetic/recipient-context.md",
+        "skills/wordaim/references/chinese.md",
+        "skills/wordaim/references/social.md",
+        "skills/wordaim/references/work.md",
+        "skills/wordaim/references/reply-moves.md"
+      ],
+      "draft": {
+        "中文审稿释义": "谢谢 Alex 的解释。我们现在已经理解这个设置的作用，但还没有实际测试。",
+        "可发送正文": "Thanks for explaining, Alex. We understand the setting now, though we haven’t tested it yet."
+      },
+      "extra_scene_reference": [
+        "skills/wordaim/references/work.md"
+      ],
+      "legacy_rule_loaded": false
+    }
+  ],
+  "evidence": "Completed CLI read commands were inspected against final output. Raw logs remain local because host metadata can be private.",
+  "limitations": [
+    "Single synthetic reply per configuration, not a comparative benchmark.",
+    "The clean trial additionally read work.md for a short social reply; minimum-context routing is not guaranteed.",
+    "No profiles, unrelated private sources, browser interactions, messages, or publication were performed.",
+    "Successful file installation and catalog discovery do not prove discovery in every client or account."
+  ]
+}

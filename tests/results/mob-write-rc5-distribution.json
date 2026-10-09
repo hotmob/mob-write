@@ -1,0 +1,29 @@
+{
+  "version": "0.4.0-rc.5",
+  "previous_version": "0.4.0-rc.4",
+  "previous_commit": "034ab3d0e0adc1bd127d893f508376acded72152",
+  "entry_sha256": "9f70d982e1480572652cf27c356bcb78e5d017d72e2bdb0d4ee02c5ca117b9cf",
+  "canonical_content_sha256": "531fe70fe9886475463a55907f3e8586e893374856a446224a023d9cb11b7aed",
+  "package_sha256": {
+    "START-HERE.md": "5949128156a14a63ba40d3ae90816eabce80705cd9665205005ac9178602af2e",
+    "chat-starter.md": "1ab9c1b66e6c28eca0c4bc22004dc5bdd1ea32366445a125d9e43e43d68726ba",
+    "mob-write-chatgpt-skill.zip": "42ff00055f50a3be1a14cae1d44fcdb88722a37da0bc9af43f8e7efa6feb56a2",
+    "mob-write-plugin.zip": "bf3eb872aff09978d359783a3b5b76eb951ea1a0d2df78cf76bb0aef99189f93"
+  },
+  "checks": {
+    "source_matches_final_frozen_behavior_install": true,
+    "both_zips_match_all_22_public_source_files": true,
+    "actual_rc4_original_installer_then_rc5_upgrade": true,
+    "upgraded_install_matches_all_public_source_files": true,
+    "synthetic_private_marker_preserved": true,
+    "repeat_install_succeeded": true,
+    "automated_structural_checks": 48
+  },
+  "scope": "Isolated public writing candidate only. No global installation or other-project integration.",
+  "limitations": [
+    "Writing quality is separately reviewed; structure and hashes do not establish it.",
+    "No real private profile was read or migrated.",
+    "No account upload, merge or formal release.",
+    "Existing canonical upgrades are not full I/O transactions."
+  ]
+}
