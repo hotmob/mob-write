@@ -1,17 +1,17 @@
 # Installation and migration
 
-The 0.4.0-rc.6 candidate installs only canonical `mob-write`. Former `$wordaim`, `$chinese-writing` and `$mob-social-writing` calls no longer have forwarding entries. Update active writing routes to `$mob-write`; preserve the adopting project's business, source, audience and governance constraints separately.
+Version 0.4.0 installs only canonical `mob-write`. Former `$wordaim`, `$chinese-writing` and `$mob-social-writing` calls no longer have forwarding entries. Update active writing routes to `$mob-write`; preserve the adopting project's business, source, audience and governance constraints separately.
 
 ## New isolated installation
 
 ```sh
-git clone --branch feat/unified-writing https://github.com/hotmob/mob-write.git mob-write-source
+git clone --branch v0.4.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
 cd mob-write-source
 git rev-parse HEAD
 python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
 ```
 
-The target is explicit; no global installation is selected. Use an empty host-discoverable directory and a fresh session. A receipt proves file identity, not discovery. Main and release v0.2.0 retain earlier behavior until a separate merge/release decision; building this candidate does not make it a formal release.
+The target is explicit; no global installation is selected. Use an empty host-discoverable directory and a fresh session. A receipt proves file identity, not discovery. Release v0.4.0 provides this unified entry; historical v0.2.0 retains the earlier social-writing method. Building a checkout alone does not establish release publication or host discovery.
 
 ## Upgrade a supported managed candidate
 
@@ -67,7 +67,7 @@ Verify the source commit, package manifest and hashes, installation receipt, and
 
 ## Replaceable private bundle
 
-Install the public candidate first. Keep a complete recoverable copy of legacy entries, including private files and symlink identities, outside host discovery before retirement. The public installer deliberately does not migrate private data. For an authorized personal migration, copy the selected legacy private directory to an independently owned private bundle outside the installation; preserve profile, notes, corpus, reference provenance, and history byte-for-byte. Add only `bundle.json` with schema=1, owner and applicable scope, then use the installed `scripts/private_data.py connect --data-dir DIR`. Do not infer approved feedback or convert external reference samples into authored samples. No missing corpus or history should be manufactured.
+Install the public release first. Keep a complete recoverable copy of legacy entries, including private files and symlink identities, outside host discovery before retirement. The public installer deliberately does not migrate private data. For an authorized personal migration, copy the selected legacy private directory to an independently owned private bundle outside the installation; preserve profile, notes, corpus, reference provenance, and history byte-for-byte. Add only `bundle.json` with schema=1, owner and applicable scope, then use the installed `scripts/private_data.py connect --data-dir DIR`. Do not infer approved feedback or convert external reference samples into authored samples. No missing corpus or history should be manufactured.
 
 The binding lives in `mob-write/.local/config.json`, excluded from public hashes and packages. A public upgrade preserves it. `private_data.py init` refuses existing directories; `connect` checks metadata and file presence without reading private prose. `show` reveals local path/owner/scope, so do not paste its output into public issues. To switch authors, connect a different validated bundle; retain the previous one unchanged.
 

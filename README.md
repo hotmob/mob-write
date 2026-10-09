@@ -41,14 +41,14 @@ Scene guidance and teaching explanations are mainly in Chinese; this does not re
 | Translate under a specialized terminology or fidelity contract | Follow that contract; apply wording guidance only within the permitted scope. |
 | Send or publish the draft | Use an independently authorized tool or workflow. This skill drafts and reviews text. |
 
-## Install the candidate
+## Install v0.4.0
 
-This branch is **0.4.0-rc.6**, a review candidate in [draft PR #2](https://github.com/hotmob/mob-write/pull/2). The published **v0.2.0** release contains the earlier social-writing method. Cloning main or downloading v0.2.0 does not install this candidate. Merge and formal release are separate decisions.
+**v0.4.0** is the unified writing release. Install the pinned release below, or download its packages from [GitHub Releases](https://github.com/hotmob/mob-write/releases/tag/v0.4.0). The historical **v0.2.0** release contains the earlier social-writing method; it does not provide this unified entry or private bundle tools.
 
 Python 3.10+ is needed for installation and packaging. The writing instructions are Markdown; the optional Python tools make no model or social-account calls.
 
 ```sh
-git clone --branch feat/unified-writing https://github.com/hotmob/mob-write.git mob-write-source
+git clone --branch v0.4.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
 cd mob-write-source
 git rev-parse HEAD
 python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
@@ -58,7 +58,7 @@ For a first trial, choose an empty, project-local skills directory your client a
 
 The installer writes only `mob-write/`, with a receipt recording the version and public file hashes. In a **fresh client session**, confirm Mob Write appears and that the host reads this installed version. A successful installation does not prove automatic discovery; an already running session may retain its earlier catalog.
 
-**Old names have been retired:** `$wordaim`, `$chinese-writing`, and `$mob-social-writing` have no forwarding entries or packages in this candidate. Older installations enabled elsewhere can still be discovered. For upgrades, recoverable backups, manual clones, symlinks, and host-managed plugins, follow [migration](docs/migration.md). The installer has no global target default, preserves private and unknown files, and refuses unknown or edited installations. Historical releases remain available.
+**Old names have been retired:** `$wordaim`, `$chinese-writing`, and `$mob-social-writing` have no forwarding entries or packages in v0.4.0. Older installations enabled elsewhere can still be discovered. For upgrades, recoverable backups, manual clones, symlinks, and host-managed plugins, follow [migration](docs/migration.md). The installer has no global target default, preserves private and unknown files, and refuses unknown or edited installations. Historical releases remain available.
 
 ## Call it
 
