@@ -47,25 +47,30 @@ class SocialRoutingTests(unittest.TestCase):
         self.assertEqual(skill.count("name: mob-write"), 1)
         self.assertNotIn("x-viral-writing", skill)
         self.assertIn("references/social.md", skill)
-        self.assertIn("matching subguide", skill)
+        self.assertIn("choose the deliverable first", skill)
+        self.assertIn("Ordinary factual questions alone in any language", skill)
         self.assertIn("every social subguide", skill)
-        self.assertIn("specialist translation stays on its own route", skill)
+        self.assertIn("Apply only to the Chinese portion", skill)
         self.assertIn("references/work.md", skill)
         self.assertIn("references/technical-document.md", skill)
         self.assertIn("Do not invent", skill)
         self.assertIn("Preserve explicitly supplied uncertainty", skill)
 
-    def test_social_index_loads_one_matching_subguide(self):
+    def test_social_index_has_one_owner_for_reference_selection(self):
         social = read("references/social.md")
-        self.assertIn("简单感谢、确认和普通回复用本文件", social)
-        self.assertIn("不要为了这些回复去读帖子成稿或新闻评论", social)
-        self.assertIn("social-posts.md", social)
-        self.assertIn("social-commentary.md", social)
-        self.assertIn("reply-moves.md", social)
-        self.assertIn("work.md", social)
-        self.assertIn("technical-document.md", social)
-        self.assertIn("指定方法的翻译", social)
-        self.assertIn("不改成社媒评论", social)
+        rows = [line for line in social.splitlines() if line.startswith("| ")]
+        def route(label):
+            return next(row for row in rows if label in row).split("|")[2]
+        self.assertNotIn("social-", route("普通回复"))
+        self.assertIn("social-commentary.md", route("给原作者的直接回复"))
+        self.assertIn("不读帖子成稿", route("给原作者的直接回复"))
+        self.assertIn("social-posts.md", route("原创短帖"))
+        self.assertIn("才先读评论", route("原创短帖"))
+        self.assertIn("不读帖子成稿", route("不交付帖子"))
+        self.assertIn("不读社交参考", route("工作邮件"))
+        self.assertIn("先读评论，再读帖子成稿，每份只读一次", social)
+        self.assertNotIn("(social-commentary.md)", read("references/social-posts.md"))
+        self.assertNotIn("(social-posts.md)", read("references/social-commentary.md"))
 
     def test_short_posts_are_not_forced_into_headlines_or_nicknames(self):
         posts = read("references/social-posts.md")
@@ -111,8 +116,6 @@ class SocialRoutingTests(unittest.TestCase):
         self.assertIn("我看甲公司是想靠模型，把开发者留在自己的生态体系里。", commentary)
         self.assertIn("不提供产品事实", commentary)
         self.assertIn("不许把原句或“生态体系”套到别的新闻上", commentary)
-        posts = read("references/social-posts.md")
-        self.assertIn("来源报幕、没有增量的常识建议和揭底式金句", posts)
         examples = read("examples/social.md")
         self.assertIn("这是灯塔实验室公布的结果", examples)
         self.assertIn("还不能当成其他店已经省下的时间", examples)
