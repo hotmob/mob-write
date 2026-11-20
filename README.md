@@ -28,7 +28,7 @@ These are **synthetic teaching examples**, not measured model outputs or private
 
 A thank-you can be enough. A technical conclusion may need its evidence and limitations. Shorter is useful only when the necessary meaning survives.
 
-There are **12 synthetic worked examples**: [work communication](examples/work.md) (4), [social writing](examples/social.md) (2), and [documents and explanations](examples/documents.md) (6). Each includes the problem, an improved draft, a reason, and a boundary. Scene guidance and teaching explanations are mainly in Chinese; drafts can use the recipient's language. Examples teach decisions, not sentences to imitate.
+There are **14 synthetic worked examples**: [work communication](examples/work.md) (4), [social writing](examples/social.md) (4), and [documents and explanations](examples/documents.md) (6). Each includes the problem, an improved draft, a reason, and a boundary. Scene guidance and teaching explanations are mainly in Chinese; drafts can use the recipient's language. Examples teach decisions, not sentences to imitate.
 
 ## Install v0.4.0
 
@@ -85,7 +85,7 @@ tests/         structural checks, fixtures, recorded behavior results
 docs/          design, migration, evaluation, project principles
 ```
 
-A friendly work email still uses work guidance. A short English reply needs Chinese expression rules only if Chinese prose is also requested. The skill does not load the entire directory for every task. See [design](docs/design.md) for source ownership and routing.
+A friendly work email still uses work guidance. A short English reply needs Chinese expression rules only if Chinese prose is also requested. A thank-you stays on the short social note. An original post, quote, long post, or Article adds the post note; commentary on news or a technical change adds the commentary note for that task. Work email, specialist translation, and technical documents keep their own notes. The skill does not load the entire directory for every task. See [design](docs/design.md) for source ownership and routing.
 
 ## Optional private voice
 

@@ -11,7 +11,9 @@ SKILL.md                         purpose, recipient, facts, per-deliverable rout
 agents/openai.yaml               one discoverable writing entry
 references/
   work.md                        emails, requests, updates, decisions
-  social.md                      replies, posts, ordinary social exchange
+  social.md                      replies and which social subguide to open
+  social-posts.md                short posts, quotes, long posts, Articles
+  social-commentary.md           news and technical-progress commentary
   technical-document.md          explanations, formal documents, formatting
   chinese.md                     Chinese prose and Chinese review glosses
   profile.md                     optional scoped voice, without a real profile
@@ -21,7 +23,7 @@ references/
   sources.md                     provenance and licensing
 examples/
   work.md                        four synthetic worked cases
-  social.md                      two synthetic worked cases
+  social.md                      four synthetic worked cases
   documents.md                   six synthetic worked cases
 assets/                          blank local-data templates
 scripts/                         installer, public packaging, corpus tools
@@ -30,6 +32,8 @@ docs/                            design, migration, evaluation, project principl
 ```
 
 The root owns the shared decisions and routing. Scene references add the relevant methods without duplicating the root. Each deliverable selects a fitting scene, or uses only the core if none fits; Chinese expression, a supplied profile, or host-specific file handling are added only when they apply. A combined task evaluates each output separately: a useful email does not make a no-change progress post useful, and a friendly work message does not automatically become a social reply.
+
+`references/social.md` is the social scene. It covers ordinary replies, then names two optional notes: `social-posts.md` for an original short post, a quote that states a view, a long post, or an Article, and `social-commentary.md` for commentary on news or a technical development. A thank-you stops at `social.md`. A manual stays in `technical-document.md`, a specialist translation stays in the core, and a work message stays in `work.md`. Commentary considers developers, the AI industry, and society, then keeps only supported dimensions in the draft. A short post gets a separate title when the format or the request asks for one. The notes leave recommender weights and posting mechanics out. This is the same on-demand pattern as `reply-moves.md`.
 
 Read applicable rules before drafting and reuse current sources within the task. Worked examples are opened when a relevant judgment needs calibration, not as a default reading list. They illustrate an error, a useful revision, its reason, and a boundary. Their sentences are not templates or the user's biography. No folder of examples should be loaded just because it exists.
 
@@ -45,7 +49,7 @@ Private profiles are optional local data. Public builds use an allowlist, reject
 
 ## Examples and tests serve different purposes
 
-The 12 worked examples are synthetic public teaching material. Attributed external snippets remain separate, with their source and license limits. Neither kind establishes the author's experiences or measured effectiveness.
+The 14 worked examples are synthetic public teaching material. Attributed external snippets remain separate, with their source and license limits. Neither kind establishes the author's experiences or measured effectiveness.
 
 Structural tests check package and installation properties: one entry, valid references, public-file identity, private-path boundaries, refusal of unknown edits, and recoverable managed retirement. Model trials inspect actual outputs and source reads, including held-out variants outside the teaching library. Fixtures, expected judgments, and recorded results do not belong in the default writing context.
 
