@@ -11,7 +11,7 @@ SKILL.md                         purpose, recipient, facts, per-deliverable rout
 agents/openai.yaml               one discoverable writing entry
 references/
   work.md                        emails, requests, updates, decisions
-  social.md                      replies and which social subguide to open
+  social.md                      social deliverable and analysis routing
   social-posts.md                short posts, quotes, long posts, Articles
   social-commentary.md           news and technical-progress commentary
   technical-document.md          explanations, formal documents, formatting
@@ -31,9 +31,9 @@ tests/                           structural checks, fixtures, behavior evidence
 docs/                            design, migration, evaluation, project principles
 ```
 
-The root owns the shared decisions and routing. Scene references add the relevant methods without duplicating the root. Each deliverable selects a fitting scene, or uses only the core if none fits; Chinese expression, a supplied profile, or host-specific file handling are added only when they apply. A combined task evaluates each output separately: a useful email does not make a no-change progress post useful, and a friendly work message does not automatically become a social reply.
+`SKILL.md` owns activation, shared constraints, and the choice of primary scene. `references/social.md` alone owns the choice and ordering of social references. The commentary and post references own analysis and format respectively; they do not route to each other. This design document, examples, and tests describe or exercise those rules without becoming a second runtime specification. Each deliverable selects a fitting scene, or uses only the core if none fits; Chinese expression, a supplied profile, or host-specific file handling are added only when they apply. A combined task evaluates each output separately: a useful email does not make a no-change progress post useful, and a friendly work message does not automatically become a social reply.
 
-`references/social.md` is the social scene. It covers ordinary replies, then names two optional notes: `social-posts.md` for an original short post, a quote that states a view, a long post, or an Article, and `social-commentary.md` for commentary on news or a technical development. A thank-you stops at `social.md`. A manual stays in `technical-document.md`, a specialist translation stays in the core, and a work message stays in `work.md`. Commentary considers developers, the AI industry, and society, then keeps only supported dimensions in the draft. A short post gets a separate title when the format or the request asks for one. The notes leave recommender weights and posting mechanics out. This is the same on-demand pattern as `reply-moves.md`.
+The social route separates what to deliver from whether it needs a supported judgment. As examples, a simple thank-you stops at `social.md`; a direct reply with a judgment adds commentary but not post format; and analysis explicitly for a future post does not require a draft. `references/social.md` is the reference for the full routing table and read order. Ordinary factual questions do not activate the writing skill, even when the subject could be newsworthy.
 
 Read applicable rules before drafting and reuse current sources within the task. Worked examples are opened when a relevant judgment needs calibration, not as a default reading list. They illustrate an error, a useful revision, its reason, and a boundary. Their sentences are not templates or the user's biography. No folder of examples should be loaded just because it exists.
 
@@ -57,7 +57,7 @@ The [rc.4 validation](rc4-validation.md) preserves the initial comparison, confi
 
 ## Names, installation, and continuity
 
-The **0.4.0-rc.5** candidate exposes only `$mob-write`. There are no `$wordaim`, `$chinese-writing`, or `$mob-social-writing` forwarders or alias packages. Chinese expression remains an internal reference; historical releases and evaluation records retain their original names. This change breaks old calls. Adopting projects need to update their active routes while keeping their own business and governance constraints.
+The current repository manifest declares **0.4.0** and the public method exposes only `$mob-write`. The changes on `main` are source changes, not proof that a released archive or an installed host includes them. There are no `$wordaim`, `$chinese-writing`, or `$mob-social-writing` forwarders or alias packages. Chinese expression remains an internal reference; historical releases and evaluation records retain their original names. This change breaks old calls. Adopting projects need to update their active routes while keeping their own business and governance constraints.
 
 The builder produces only `mob-write-chatgpt-skill.zip` and `mob-write-plugin.zip`, with plugin identity `mob-write`. Both derive from the same public source; manifests and receipts record version and file hashes. The builder refuses retired alias archive names in its output directory. Use an empty build directory to keep versions distinct.
 
