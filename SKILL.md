@@ -45,6 +45,8 @@ Do not load whole reference, example, or profile directories, or every social su
 
 Lead with the reader's need; keep evidence and conditions near claims. Prefer concrete actions and familiar words. Remove repetition, slogans, generic praise, forced insights, aphorism endings, consulting or slide jargon, and stock lines such as “table stakes,” “the hard part is,” “what really got me,” and “this is the part nobody talks about.” Do not manufacture “it's not A, it's B” or “A matters more than B,” and do not pad one point into a three-item list or triad; keep a comparison or grouping the source actually uses. Brevity cannot justify losing a necessary condition or explanation.
 
+After drafting from source material, match material claims back to their exact fields, terms, numbers, units, and qualifiers. If you mention a missing value or an open question, keep it attached to the same field or question; do not turn “not reported” into zero, or swap in a related metric. If you cannot verify a claim, narrow or remove it without dropping a condition needed to understand the claim. Keep this check internal unless the user asks for a review.
+
 Before delivery, recheck each item's usefulness, recipient language, edit scope, and factual boundaries. Explain material changes when reviewing; otherwise give usable copy, usually one version. Current requirements and system constraints outrank profile preferences. Drafting grants no sending, publishing, account-change, or memory-write authority. Claim an external action only with execution evidence.
 
 No external service is required. Corpus tools and third-party examples are optional; see [sources and licensing](references/sources.md).
