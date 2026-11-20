@@ -33,3 +33,11 @@ Adapted ideas: preserve facts, notice repetitive structures, and avoid editing a
 Reference link only. Its README states MIT, but this snapshot has no standalone license text. No upstream text is bundled from this repository. The archive is an empty template rather than a populated corpus. The idea of preserving exact replies is useful; its blanket phrase bans, compulsory engagement prompts, credential setup, and growth workflow are not imported.
 
 These authors do not endorse this project. Licenses for project code do not turn external authors' experiences into the user's experiences or authorize unrelated social account actions.
+
+## Local x-viral-writing notes
+
+A separate local note named x-viral-writing was reviewed while extending social posts. It is not vendored, not a second entry, and not an instruction that overrides this skill. No account, corpus, path, or credential from that note is included.
+
+Portable ideas absorbed into `social-posts.md`: name the reader and the useful reason to share; open with a supported, specific change; identify the topic in recognizable terms; keep one useful detail; sound like a person; match the requested medium; add a visual only when it carries information; if the user later supplies their own results, treat repeated patterns as hypotheses.
+
+Omitted, because the note did not include evidence this repository can check: recommender weights, required numbers, required images, length bands, posting quotas, a conflict line in every post, a “most people versus experts” contrast, promises of virality, and platform sending mechanics. Those claims are not restated here and are not writing rules.

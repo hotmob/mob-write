@@ -1,6 +1,6 @@
 ---
 name: mob-write
-description: Draft, revise, translate, or review messages, social replies, articles, and technical explanations for intended readers. Use for writing requests, including Chinese copy or English drafts reviewed in Chinese. Chinese questions alone do not trigger this skill; optional personal voice stays local.
+description: Draft, revise, translate, or review messages, social replies, posts, articles, and technical explanations for intended readers. Use for writing requests, including Chinese copy or English drafts reviewed in Chinese. Chinese questions alone do not trigger this skill; optional personal voice stays local.
 ---
 
 # Mob Write
@@ -31,7 +31,7 @@ Choose a primary scene by purpose, not a keyword or courtesy. If none fits, use 
 
 | Trigger | Read | What it supplies |
 |---|---|---|
-| Social reply, post, or quote caption | [Social writing](references/social.md) | The actual exchange; a work email thanking someone is still work |
+| Social reply, quote, short post, long post, or Article | [Social writing](references/social.md) | The exchange, then only the matching subguide named there; a work email stays work, and a manual, formal report, or specialist translation stays on its own route |
 | Email, work message, update, or decision request | [Work communication](references/work.md) | Recipient need and useful coordination |
 | Technical explanation, manual, or formal report | [Technical documents](references/technical-document.md) | Reader knowledge and document conventions; not every message mentioning software |
 | Writing or polishing Chinese prose, including review notes | [Chinese expression](references/chinese.md) | Expression; not Chinese instructions alone or an exact layout-only edit |
@@ -39,7 +39,7 @@ Choose a primary scene by purpose, not a keyword or courtesy. If none fits, use 
 | Import samples, save feedback, or maintain a profile | [Local learning](references/learning.md) | Optional corpus tools and provenance |
 | ChatGPT file access or persistence affects the task | [Environment notes](references/chatgpt.md) | What can actually be read or saved |
 
-Do not load whole reference, example, or profile directories. Examples are optional comparisons, not templates. Identify missing required guidance; continue supported parts without claiming it was applied.
+Do not load whole reference, example, or profile directories, or every social subguide. Examples are optional comparisons, not templates. Identify missing required guidance; continue supported parts without claiming it was applied.
 
 ## Write and check
 
