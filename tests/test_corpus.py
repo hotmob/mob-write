@@ -29,6 +29,52 @@ def sample(identifier="one", **changes):
 
 
 class CorpusTests(unittest.TestCase):
+    def test_search_format_and_field_are_strict_before_limit(self):
+        rows = [
+            sample("post", format="post", text="Thanks from a post", feedback="approved",
+                   feedback_note="explicitly approved"),
+            sample("quote", format="quote", text="Thanks from a quote"),
+            sample("note-only", text="Different wording", feedback="approved",
+                   feedback_note="Thanks is too generic here"),
+            sample("reply", text="Thanks for sharing the result."),
+            sample("external", text="Thanks for the demo.", parent_text=None,
+                   intent="unknown", origin="external_reference", author="Other author",
+                   source_url="https://example.com/source", source_revision="fake",
+                   external_context="parent_missing"),
+        ]
+        d = self.data
+        d.mkdir()
+        (d / "corpus.jsonl").write_text(
+            "".join(json.dumps(row) + "\n" for row in rows[:-1]), encoding="utf-8")
+        (d / "reference-corpus.jsonl").write_text(
+            json.dumps(rows[-1]) + "\n", encoding="utf-8")
+
+        code, result = self.run_command("search", "--format", "reply", "--field", "sample",
+                                        "--query", "thanks", "--limit", "1")
+        self.assertEqual(code, 0)
+        self.assertEqual([x["id"] for x in result["samples"]], ["reply"])
+        code, result = self.run_command("search", "--format", "reply", "--field", "sample",
+                                        "--query", "thanks")
+        self.assertEqual(code, 0)
+        self.assertEqual([x["id"] for x in result["samples"]], ["reply", "external"])
+        external = result["samples"][1]
+        self.assertEqual(external["origin"], "external_reference")
+        self.assertEqual(external["intent"], "unknown")
+        self.assertEqual(external["author"], "Other author")
+        self.assertTrue(external["parent_missing"])
+        for rest, expected in [
+            (("--field", "feedback"), ["note-only"]),
+            ((), ["note-only", "reply", "external"]),
+            (("--field", "sample", "--intent", "gratitude"), []),
+        ]:
+            code, result = self.run_command("search", "--format", "reply", "--query", "thanks", *rest)
+            self.assertEqual(code, 0)
+            self.assertEqual([x["id"] for x in result["samples"]], expected)
+        code, result = self.run_command("search", "--format", "reply", "--field", "sample",
+                                        "--query", "from a quote")
+        self.assertEqual(code, 0)
+        self.assertEqual(result["samples"], [])
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)

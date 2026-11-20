@@ -235,7 +235,12 @@ def combine_local_reference(local: list[dict], reference: list[dict]) -> list[di
 
 
 def select_samples(records: list[dict], *, intent: str | None = None, query: str | None = None,
-                   approved: bool = False, rejected: bool = False, limit: int = 5) -> list[dict]:
+                   approved: bool = False, rejected: bool = False, limit: int = 5,
+                   sample_format: str | None = None, field: str = "any") -> list[dict]:
+    if sample_format is not None and sample_format not in FORMATS:
+        raise CorpusError("Invalid sample format")
+    if field not in {"any", "sample", "feedback"}:
+        raise CorpusError("Invalid search field")
     selected = []
     words = query.casefold().split() if query else []
     # Preserve history on disk, but use the last explicit judgment for a given context.
@@ -247,6 +252,8 @@ def select_samples(records: list[dict], *, intent: str | None = None, query: str
         if previous is None or row["feedback"] != "unreviewed" or row["feedback_note"].strip():
             effective[key] = row
     for row in effective.values():
+        if sample_format is not None and row["format"] != sample_format:
+            continue
         if rejected:
             if row["feedback"] != "rejected":
                 continue
@@ -257,7 +264,13 @@ def select_samples(records: list[dict], *, intent: str | None = None, query: str
             continue
         if intent and row["intent"].casefold() != intent.casefold():
             continue
-        searchable = " ".join((row["text"], row["parent_text"] or "", row["intent"], row["feedback_note"])).casefold()
+        if field == "sample":
+            searchable = row["text"].casefold()
+        elif field == "feedback":
+            searchable = row["feedback_note"].casefold()
+        else:
+            searchable = " ".join((row["text"], row["parent_text"] or "",
+                                   row["intent"], row["feedback_note"])).casefold()
         if words and not all(word in searchable for word in words):
             continue
         selected.append(row)
@@ -282,6 +295,10 @@ def main(argv: list[str] | None = None) -> int:
     search = commands.add_parser("search", help="Return matching samples with provenance")
     search.add_argument("--intent")
     search.add_argument("--query")
+    search.add_argument("--format", dest="sample_format", choices=sorted(FORMATS),
+                        help="Require an exact format; never substitute a different one")
+    search.add_argument("--field", choices=("any", "sample", "feedback"), default="any",
+                        help="Where to match --query (default: legacy all-fields search)")
     feedback = search.add_mutually_exclusive_group()
     feedback.add_argument("--approved", action="store_true")
     feedback.add_argument("--rejected", action="store_true")
@@ -332,7 +349,8 @@ def main(argv: list[str] | None = None) -> int:
                       "author": revised["author"], "path": str(path)}
         elif args.command == "search":
             result = {"samples": select_samples(load_all(data_dir), intent=args.intent, query=args.query,
-                       approved=args.approved, rejected=args.rejected, limit=args.limit)}
+                       approved=args.approved, rejected=args.rejected, limit=args.limit,
+                       sample_format=args.sample_format, field=args.field)}
         else:
             rows = load_all(data_dir)
             result = {"data_dir": str(data_dir), "total": len(rows),

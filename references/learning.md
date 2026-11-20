@@ -34,7 +34,7 @@ python3 scripts/private_data.py show
 ```sh
 python3 scripts/corpus.py fetch-reference
 python3 scripts/corpus.py stats
-python3 scripts/corpus.py search --query 'thank' --limit 4
+python3 scripts/corpus.py search --format reply --field sample --query 'thank' --limit 4
 ```
 
 `fetch-reference` 只向 GitHub 的公开原始文件地址请求固定版本的 MengTo 语料，不需要令牌。先校验 SHA-256，再将 40 条记录转为本地格式；不安装依赖、不执行来源脚本、不访问 X 账号。它固定使用已审核的 commit，不会自动跟随 main 更新。
@@ -43,6 +43,8 @@ python3 scripts/corpus.py search --query 'thank' --limit 4
 
 Humanizer 提供编辑规则；rabden 的回复归档在核验版本中是空白模板。不能把三者都说成已下载的真实对话语料库。
 
+写作选例先按实际交付选 `--format reply|post|quote`，再用 `--field sample` 匹配正文；无匹配就不用样本，不拿别的帖型凑。用 `--field feedback` 搜审稿意见，不把意见当口吻证据。不指定 `--field` 时保留原搜索方式（正文、父帖、意图和意见）。匹配仍是词面搜索，不自动识别语言或替中文分词；选例时核对实际交付语言。外部导入的 `intent` 保持 `unknown`，不把它当作已标注的真实意图或个人口吻。
+
 ## 加入自己的真实样本
 
 每行一个 JSON 对象，字段示例见 [示例记录](../assets/sample-record.example.jsonl)。该文件是虚构的格式演示，不是已认可语料，请填入自己的内容后再导入。
@@ -50,8 +52,8 @@ Humanizer 提供编辑规则；rabden 的回复归档在核验版本中是空白
 ```sh
 python3 scripts/corpus.py add --file /path/to/my-reviewed-replies.jsonl
 python3 scripts/corpus.py feedback --id my-reply-001 --status approved --note '用户明确说这句像自己的语气'
-python3 scripts/corpus.py search --approved --intent gratitude --limit 4
-python3 scripts/corpus.py search --rejected --limit 4
+python3 scripts/corpus.py search --format reply --field sample --approved --intent gratitude --limit 4
+python3 scripts/corpus.py search --format reply --field feedback --rejected --query '太端着' --limit 4
 ```
 
 记录字段：

@@ -1,6 +1,6 @@
 ---
 name: mob-write
-description: Draft, revise, translate, or review messages, social replies, posts, articles, and technical explanations for intended readers. Use when the user asks for a draft or an edit, including Chinese copy or English drafts reviewed in Chinese. Ordinary factual questions alone in any language do not trigger this skill; optional personal voice stays local.
+description: Draft, revise, translate, or review messages, social replies, posts, articles, and technical explanations for intended readers. Use when the user asks for writing, including Chinese copy or English drafts reviewed in Chinese, or explicitly asks for topic selection or analysis to prepare social writing without a draft. Ordinary factual questions alone in any language do not trigger this skill; optional personal voice stays local.
 ---
 
 # Mob Write
@@ -31,7 +31,7 @@ Choose a primary scene by purpose, not a keyword or courtesy. If none fits, use 
 
 | Trigger | Read | What it supplies |
 |---|---|---|
-| Social reply, quote, short post, long post, or Article | [Social writing](references/social.md) | The exchange and the table there: choose the deliverable first, then add analysis guidance only if needed |
+| Social reply, quote, short post, long post, Article, or explicit analysis or topic selection to prepare one | [Social writing](references/social.md) | The exchange and the table there: choose the deliverable first, then add analysis guidance only if needed |
 | Email, work message, update, or decision request | [Work communication](references/work.md) | Recipient need and useful coordination |
 | Technical explanation, manual, or formal report | [Technical documents](references/technical-document.md) | Reader knowledge and document conventions; not every message mentioning software |
 | A deliverable or separate review note written or polished in Chinese | [Chinese expression](references/chinese.md) | Apply only to the Chinese portion, not Chinese instructions alone or exact layout-only edits |
