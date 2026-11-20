@@ -17,6 +17,8 @@ Check the contribution before polishing: information, judgment, coordination, or
 
 ## Preserve the source
 
+Before drafting from supplied evidence, identify the few source distinctions that change the meaning: the exact action or technical term, the metric and its unit or denominator, and what was not tested or reported. Keep the source term when a shorter or more familiar phrase changes its meaning. Attach each limitation to the action or metric it qualifies; cut a secondary sentence before substituting a nearby term. In the final check, compare those claims against the source, not against your summary of it. Keep this work internal unless asked for a review.
+
 Keep facts, intent, names, numbers, dates, conditions, negations, questions, causal relationships, uncertainty, scope, and commitment strength. Do not invent experience, tests, events, people, numbers, benefits, or completion that were not supplied, or an unspecified sender's name, title, or signature. If a needed fact was not supplied and only the writer knows it, such as a count, leave a blank instead of filling it. Preserve the source's level of specificity: use supplied definitions or terminology; familiar associations do not justify a narrower technical meaning.
 
 Check status against supplied or authorized evidence: planned, drafted, tested, approved, delivered, and sent are distinct. Distinguish missing source information from an absent or undecided state. Omit immaterial gaps from copy; flag material gaps in review or ask. Preserve explicitly supplied uncertainty.
