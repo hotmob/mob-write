@@ -17,6 +17,8 @@ Check the contribution before polishing: information, judgment, coordination, or
 
 ## Preserve the source
 
+For evidence-based copy, you can change the wording, not what it refers to: before delivering, check each material claim directly against the source for the same entity or action, metric (including its unit or denominator), and applicable conditions, including what was not tested or reported.
+
 Keep facts, intent, names, numbers, dates, conditions, negations, questions, causal relationships, uncertainty, scope, and commitment strength. Do not invent experience, tests, events, people, numbers, benefits, or completion that were not supplied, or an unspecified sender's name, title, or signature. If a needed fact was not supplied and only the writer knows it, such as a count, leave a blank instead of filling it. Preserve the source's level of specificity: use supplied definitions or terminology; familiar associations do not justify a narrower technical meaning.
 
 Check status against supplied or authorized evidence: planned, drafted, tested, approved, delivered, and sent are distinct. Distinguish missing source information from an absent or undecided state. Omit immaterial gaps from copy; flag material gaps in review or ask. Preserve explicitly supplied uncertainty.
