@@ -1,19 +1,16 @@
 # Installation and migration
 
-Version 0.4.0 installs only canonical `mob-write`. Former `$wordaim`, `$chinese-writing` and `$mob-social-writing` calls no longer have forwarding entries. Update active writing routes to `$mob-write`; preserve the adopting project's business, source, audience and governance constraints separately.
+Starting with v0.4.0, the unified distribution installs only canonical `mob-write`. Former `$wordaim`, `$chinese-writing` and `$mob-social-writing` calls no longer have forwarding entries. Update active writing routes to `$mob-write`; preserve the adopting project's business, source, audience and governance constraints separately.
 
 ## New isolated installation
 
-```sh
-git clone --branch v0.4.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
-cd mob-write-source
-git rev-parse HEAD
-python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
-```
+Use the release-pinned install command in the [English README](../README.md) or [简体中文 README](../README.zh-CN.md). If you opened this guide from an older tag, choose the version you intend to install on the [Releases page](https://github.com/hotmob/mob-write/releases) and use the README for that version.
 
-The target is explicit; no global installation is selected. Use an empty host-discoverable directory and a fresh session. A receipt proves file identity, not discovery. Release v0.4.0 provides this unified entry; historical v0.2.0 retains the earlier social-writing method. Building a checkout alone does not establish release publication or host discovery.
+The target is explicit; no global installation is selected. Use an empty host-discoverable directory and a fresh session. A receipt proves file identity, not discovery. Building a checkout alone does not establish release publication or host discovery.
 
 ## Upgrade a supported managed candidate
+
+Use the installer from the target release, following the pinned source instructions above.
 
 The installer recognizes supported receipts from this same project, including the earlier WordAim candidate and Mob Write 0.4.0-rc.2, as well as its current receipt. Recognition checks the source identity, canonical name, receipt schema and recorded public file hashes; a version string alone is not proof. It verifies every managed public file and all targets before writing. An unrelated source, unknown clone, changed public file, unsafe path or conflicting receipts causes refusal.
 
