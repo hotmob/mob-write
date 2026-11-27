@@ -30,12 +30,12 @@
 
 完整例库有 **14 个合成案例**：[工作沟通](examples/work.md) 4 个、[社交写作](examples/social.md) 4 个、[文档与说明](examples/documents.md) 6 个。每个案例包含问题、改稿、理由和适用边界。场景指导与教学说明主要使用中文，正文可以按收件人的语言交付。示例帮助判断，不提供固定套句。
 
-## 安装 v0.4.0
+## 安装 v0.5.0
 
-使用固定版本 [v0.4.0](https://github.com/hotmob/mob-write/releases/tag/v0.4.0)。安装与打包需要 **Python 3.10+**。写作规则是 Markdown；可选工具不调用模型或社交账号。
+使用固定版本 [v0.5.0](https://github.com/hotmob/mob-write/releases/tag/v0.5.0)。安装与打包需要 **Python 3.10+**。写作规则是 Markdown；可选工具不调用模型或社交账号。
 
 ```sh
-git clone --branch v0.4.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
+git clone --branch v0.5.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
 cd mob-write-source
 git rev-parse HEAD
 python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
@@ -47,7 +47,7 @@ python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
 
 **升级旧安装？** 先读[迁移与恢复](docs/migration.md)。来源相同、受管理且公共文件未改动的安装可以升级。安装器没有默认全局目标，保留私密文件和未知文件，拒绝未知安装、修改过的公共文件，以及含符号链接的安装目标或受管理公共路径。退役已验证的受管理旧入口时，还会向显式指定的位置写入备份，并删除其受管理公共文件。已有 canonical 安装的升级不具备完整 I/O 事务性，应保留可恢复备份。手工 clone 和宿主管理的插件需要分别迁移。
 
-`$wordaim`、`$chinese-writing`、`$mob-social-writing` 在 v0.4.0 中没有转发入口或安装包；其他位置仍启用的旧入口可能继续被发现。历史 release 保留。**v0.2.0** 是较早的社交写作版本，没有统一入口和私密 bundle 工具。
+`$wordaim`、`$chinese-writing`、`$mob-social-writing` 在 v0.5.0 中没有转发入口或安装包；其他位置仍启用的旧入口可能继续被发现。历史 release 保留。**v0.2.0** 是较早的社交写作版本，没有统一入口和私密 bundle 工具。
 
 ## 使用
 
@@ -104,7 +104,7 @@ python3 /path/to/skills/mob-write/scripts/private_data.py show
 
 ## 安装包与 ChatGPT
 
-从 [release](https://github.com/hotmob/mob-write/releases/tag/v0.4.0) 下载，或从同一份源码构建两个公共安装包。**默认离线构建**，输出目录应为空：
+从 [release](https://github.com/hotmob/mob-write/releases/tag/v0.5.0) 下载，或从同一份源码构建两个公共安装包。**默认离线构建**，输出目录应为空：
 
 ```sh
 python3 scripts/build_chatgpt.py --output dist

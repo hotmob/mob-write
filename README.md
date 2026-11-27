@@ -14,7 +14,7 @@ Draft and review messages, social replies, articles, and technical explanations.
 
 **Series:** Mob Skills · **Project:** Mob Write · **Call:** `$mob-write` · **Repository:** [`hotmob/mob-write`](https://github.com/hotmob/mob-write)
 
-[Examples](#what-changes-in-a-draft) · [Install](#install-v040) · [Usage](#use-it) · [Private voice](#optional-private-voice) · [Validation](#validation-and-contributions) · [Sources](#sources-and-license)
+[Examples](#what-changes-in-a-draft) · [Install](#install-v050) · [Usage](#use-it) · [Private voice](#optional-private-voice) · [Validation](#validation-and-contributions) · [Sources](#sources-and-license)
 
 ## What changes in a draft
 
@@ -30,12 +30,12 @@ A thank-you can be enough. A technical conclusion may need its evidence and limi
 
 There are **14 synthetic worked examples**: [work communication](examples/work.md) (4), [social writing](examples/social.md) (4), and [documents and explanations](examples/documents.md) (6). Each includes the problem, an improved draft, a reason, and a boundary. Scene guidance and teaching explanations are mainly in Chinese; drafts can use the recipient's language. Examples teach decisions, not sentences to imitate.
 
-## Install v0.4.0
+## Install v0.5.0
 
-Use the pinned [v0.4.0 release](https://github.com/hotmob/mob-write/releases/tag/v0.4.0). **Python 3.10+** is needed for installation and packaging. The writing instructions are Markdown; the optional tools make no model or social-account calls.
+Use the pinned [v0.5.0 release](https://github.com/hotmob/mob-write/releases/tag/v0.5.0). **Python 3.10+** is needed for installation and packaging. The writing instructions are Markdown; the optional tools make no model or social-account calls.
 
 ```sh
-git clone --branch v0.4.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
+git clone --branch v0.5.0 --depth 1 https://github.com/hotmob/mob-write.git mob-write-source
 cd mob-write-source
 git rev-parse HEAD
 python3 scripts/install.py --skills-dir /path/to/test-project/.agents/skills
@@ -47,7 +47,7 @@ A fresh installation writes only `mob-write/`, including a receipt with the vers
 
 **Upgrading an older installation?** Read [migration and recovery](docs/migration.md). Managed, unchanged same-source installs can upgrade. The installer has no global default, preserves private and unknown files, and refuses unknown installations, edited public files, and symlinked installation targets or managed public paths. Retiring verified managed legacy entries also writes an explicitly chosen backup and removes their managed public files. Existing canonical upgrades are not full I/O transactions; keep a recoverable backup. Manual clones and host-managed plugins need their own migration procedure.
 
-`$wordaim`, `$chinese-writing`, and `$mob-social-writing` have no forwarding entries or packages in v0.4.0; older entries enabled elsewhere may still be discovered. Historical releases remain available. **v0.2.0** contains the earlier social-writing method, without the unified entry or private bundle tools.
+`$wordaim`, `$chinese-writing`, and `$mob-social-writing` have no forwarding entries or packages in v0.5.0; older entries enabled elsewhere may still be discovered. Historical releases remain available. **v0.2.0** contains the earlier social-writing method, without the unified entry or private bundle tools.
 
 ## Use it
 
@@ -104,7 +104,7 @@ Before loading voice material, a writing task checks the bundle's scope. Without
 
 ## Packages and ChatGPT
 
-Download packages from the [release](https://github.com/hotmob/mob-write/releases/tag/v0.4.0), or build both from the same checkout **offline by default** into an empty directory:
+Download packages from the [release](https://github.com/hotmob/mob-write/releases/tag/v0.5.0), or build both from the same checkout **offline by default** into an empty directory:
 
 ```sh
 python3 scripts/build_chatgpt.py --output dist
