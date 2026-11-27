@@ -105,7 +105,7 @@ class InstallTests(unittest.TestCase):
         self.assertIn("--skills-dir", missing.stderr)
         completed = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)
-        self.assertEqual(json.loads(completed.stdout)["version"], "0.4.0")
+        self.assertEqual(json.loads(completed.stdout)["version"], builder.plugin_manifest(builder.ROOT)[0]["version"])
         second = subprocess.run(command + ["--skills-dir", str(self.target)], capture_output=True, text=True)
         self.assertEqual(second.returncode, 0, second.stderr)
         for name in (builder.NAME,):
