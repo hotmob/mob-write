@@ -88,6 +88,14 @@ class SocialRoutingTests(unittest.TestCase):
         self.assertIn("我更在意", posts)
         self.assertIn("未经验证的推荐权重", posts)
 
+    def test_short_post_without_action_can_stop_at_the_facts(self):
+        posts = read("references/social-posts.md")
+        self.assertIn("两样都没有时，判断必须让读者多知道一件事实里还没有的具体的事", posts)
+        self.assertIn("只留下事实和来源，就算一条写完的帖子", posts)
+        self.assertIn("不要默认收成两块：一段事实，再加一段判断", posts)
+        self.assertNotIn("就直接写有依据的判断", posts)
+        self.assertIn("不要用「我最想看……」「我更在意……」代替行动", posts)
+
     def test_commentary_uses_three_dimensions_without_a_three_part_draft(self):
         commentary = read("references/social-commentary.md")
         for dimension in ("开发者", "AI 行业", "社会"):
@@ -116,6 +124,16 @@ class SocialRoutingTests(unittest.TestCase):
         self.assertIn("我看甲公司是想靠模型，把开发者留在自己的生态体系里。", commentary)
         self.assertIn("不提供产品事实", commentary)
         self.assertIn("不许把原句或“生态体系”套到别的新闻上", commentary)
+        self.assertIn("已有材料支持的结论要留下", commentary)
+        self.assertIn("这条只适用于通过交付前增量检查的判断", commentary)
+        self.assertIn("## 交付前", commentary)
+        self.assertIn("收尾的判断也要查，不只查常识补句", commentary)
+        self.assertIn("删掉一句之后，读者若没有少知道一件具体的事，这句就删", commentary)
+        self.assertIn("只剩“值得关注”或“我更在意”才删，这个标准不够", commentary)
+        self.assertIn(
+            "把前文数字换个说法再说一遍，也要删，例如“计量一改，同一套任务可能半路停”",
+            commentary,
+        )
         examples = read("examples/social.md")
         self.assertIn("这是灯塔实验室公布的结果", examples)
         self.assertIn("还不能当成其他店已经省下的时间", examples)
